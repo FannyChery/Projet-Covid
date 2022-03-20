@@ -1,1 +1,5 @@
-df <-read.csv("USA.csv", sep= ";", header= T)
+library(data.table)
+library(dplyr)
+df <-read.csv("covidALL.csv", sep= ";", header= T)
+data.table(df)
+distinct(df,df$nom,.keep_all = T)
