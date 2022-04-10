@@ -1,5 +1,7 @@
 library(data.table)
 library(BenfordTests)
+#library(devtools)
+#install_github("st-homme/benfordSmoothTest")
 df <- read.csv("datafrance.csv")
 data.table(df)
 #____________________________ test analyses données france ______________________

@@ -1,0 +1,47 @@
+---
+title: "Projet fraudes covid"
+author: "LUCEA Lenny"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#-------------------- chargement data -------------------
+df <- read.csv("datafrance.csv")
+data.table(df)
+dfdonn <- df[,c("cas", "deces", "guerisons")]
+x <- c(df$cas,df$deces,df$guerisons)
+```
+
+
+```{r}
+par(mfrow=c(1,2))
+benlaw <- function(d) log10(1 + 1 / d)
+digits <- 1:9
+firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
+pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
+df <- pctFirstDigit(x)
+baseBarplot <- barplot(benlaw(digits), names.arg = digits, xlab = "First Digit", 
+                       ylim = c(0, .35),col="blue")
+lines(x = baseBarplot[,1], y = df$Freq, col = "red", lwd = 4, 
+      type = "b", pch = 23, cex = 1.5, bg = "red")
+signifd.analysis(x ,freq= T)
+```
+
+```{r}
+#-------------------------- tests benford -------------------------------
+library(BenfordSmoothTest)
+chisq.benftest(x) # test du khi-deux
+edist.benftest(x) # test distance euclidienne
+jointdigit.benftest(x) # ???
+jpsq.benftest(x) # un test d'adéquation basé sur la corrélation entre la distribution des premiers chiffres et la distribution de Benford
+ks.benftest(x) # smirnov
+mdist.benftest(x) # chebyshev
+usq.benftest(x) # Freedman-Watson
+BenfordSmooth.test(x)
+```
+
