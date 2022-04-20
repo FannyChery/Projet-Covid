@@ -9,8 +9,13 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# BENFORD 6eme VAGUE COVID
+
+exemple data france ancienne données
+
 ```{r}
 #-------------------- chargement data -------------------
+library(data.table)
 df <- read.csv("datafrance.csv")
 data.table(df)
 dfdonn <- df[,c("cas", "deces", "guerisons")]
@@ -29,7 +34,6 @@ baseBarplot <- barplot(benlaw(digits), names.arg = digits, xlab = "First Digit",
                        ylim = c(0, .35),col="blue")
 lines(x = baseBarplot[,1], y = df$Freq, col = "red", lwd = 4, 
       type = "b", pch = 23, cex = 1.5, bg = "red")
-signifd.analysis(x ,freq= T)
 ```
 
 ```{r}
@@ -43,5 +47,115 @@ ks.benftest(x) # smirnov
 mdist.benftest(x) # chebyshev
 usq.benftest(x) # Freedman-Watson
 BenfordSmooth.test(x)
+```
+
+
+Place au vif du sujet !
+
+
+```{r}
+library(data.table)
+library(dplyr)
+df <-read.csv("corona_comp.csv", sep= ";", header= T)
+dfa <- data.table(df)
+distinct(dfa,dfa$Pays)
+```
+
+```{r}
+dfac <- dfa[,c("Infections", "Deces", "Guerisons")]
+```
+
+```{r}
+# fonction plot :
+benf <- function(df){
+  x <- c(df$Infection,df$Deces,df$Guerisons)
+  x <- x[x!=0]
+  signifd.analysis(x)
+}
+```
+
+```{r}
+dfachine <- dfa[dfa$Pays=="Taïwan",]
+dfaMA <- dfa[dfa$Pays=="Martinique",]
+dfaGua <- dfa[dfa$Pays=="Guadeloupe",]
+dfajap <- dfa[dfa$Pays=="Japon",]
+dfaukr <- dfa[dfa$Pays=="Ukraine",]
+dfafr <- dfa[dfa$Pays=="France",]
+dfaQa <- dfa[dfa$Pays=="Qatar"]
+benf(dfachine)
+benf(dfaMA)
+benf(dfafr)
+```
+```{r}
+library(RCurl)
+a <- getURL('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv')
+b = read.table(text=a, sep=",", header = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(data.table)
+b <- data.table(b)
+distinct(b,b$location)
+b <- b[b$date > "2021-09-01",]
+# on commence à partir de septembre 2021 on s'intéresses aux données récentes.
+```
+```{r}
+benf <- function(dd){
+x <- c(dd$new_cases,dd$new_deaths,dd$hosp_patients)
+x <- x[x!=0]
+df %>% drop_na()
+benlaw <- function(d) log10(1 + 1 / d)
+digits <- 1:9
+firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
+pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
+df <- pctFirstDigit(x)
+baseBarplot <- barplot(benlaw(digits), names.arg = digits, xlab = "First Digit", 
+                       ylim = c(0, .35),col="blue",main=dd$location[1])
+lines(x = baseBarplot[,1], y = df$Freq, col = "red", lwd = 4, 
+      type = "b", pch = 23, cex = 1.5, bg = "red")
+}
+```
+
+```{r}
+bq <- b[b$location=="Qatar",]
+bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
+benf(bn)
+```
+```{r}
+bq <- b[b$location=="France",]
+bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
+benf(bn)
+```
+```{r}
+bq <- b[b$location=="Russia",]
+bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
+benf(bn)
+```
+
+```{r}
+bq <- b[b$location=="United Arab Emirates",]
+bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
+benf(bn)
+```
+```{r}
+
+bq <- b[b$location=="United States",]
+bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
+benf(bn)
+```
+```{r, warning=F}
+#remove 50 164
+library(tidyr)
+library(BenfordTests)
+x <- as.vector(name$`b$location`)
+c <- x[1:49]
+d <- x[165:356]
+x <- c(c,d)
+name <- distinct(b,b$location)
+for(i in 1:length(x)){
+  bq <- b[b$location==x[i],]
+  benf(bq)
+} 
 ```
 
