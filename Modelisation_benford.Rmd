@@ -97,23 +97,29 @@ library(dplyr)
 library(data.table)
 b <- data.table(b)
 distinct(b,b$location)
-b <- b[b$date > "2021-09-01",]
+b <- b[b$date > "2021-12-01",]
+drop_na(b)
 # on commence à partir de septembre 2021 on s'intéresses aux données récentes.
 ```
 ```{r}
 benf <- function(dd){
 x <- c(dd$new_cases,dd$new_deaths,dd$hosp_patients)
 x <- x[x!=0]
-df %>% drop_na()
+
 benlaw <- function(d) log10(1 + 1 / d)
 digits <- 1:9
 firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
 pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
 df <- pctFirstDigit(x)
+if(any(1==df)==F| any(2==df)==F | any(3==df)==F | any(4==df)==F | any(5==df)==F| any(6==df)==F | any(7==df)==F | any(8==df)==F | any(9==df)==F){
+  return("graphe non possible")
+}
+else{
 baseBarplot <- barplot(benlaw(digits), names.arg = digits, xlab = "First Digit", 
                        ylim = c(0, .35),col="blue",main=dd$location[1])
 lines(x = baseBarplot[,1], y = df$Freq, col = "red", lwd = 4, 
       type = "b", pch = 23, cex = 1.5, bg = "red")
+}
 }
 ```
 
@@ -145,17 +151,30 @@ bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
 benf(bn)
 ```
 ```{r, warning=F}
-#remove 50 164
 library(tidyr)
 library(BenfordTests)
+name <- distinct(b,b$location)
 x <- as.vector(name$`b$location`)
 c <- x[1:49]
-d <- x[165:356]
+d <- x[120:308]
 x <- c(c,d)
-name <- distinct(b,b$location)
 for(i in 1:length(x)){
   bq <- b[b$location==x[i],]
   benf(bq)
+} 
+```
+
+```{r}
+name <- distinct(b,b$location)
+x <- as.vector(name$`b$location`)
+c <- x[1:49]
+d <- x[120:308]
+x <- c(c,d)
+for(i in 1:length(x)){
+  bq <- b[b$location==x[i],]
+  c <- c(bq$new_cases,bq$new_deaths,bq$hosp_patients)
+  c <- c[c!=0]
+  signifd.analysis(c)
 } 
 ```
 
