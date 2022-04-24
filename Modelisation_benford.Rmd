@@ -11,88 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # BENFORD 6eme VAGUE COVID
 
-exemple data france ancienne données
-
-```{r}
-#-------------------- chargement data -------------------
-library(data.table)
-df <- read.csv("datafrance.csv")
-data.table(df)
-dfdonn <- df[,c("cas", "deces", "guerisons")]
-x <- c(df$cas,df$deces,df$guerisons)
-```
-
-
-```{r}
-benlaw <- function(d) log10(1 + 1 / d)
-digits <- 1:9
-firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
-pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
-df <- pctFirstDigit(x)
-baseBarplot <- barplot(df$Freq[1:9],names.arg = digits,  xlab = "First Digit", ylim = c(0, .35),col="blue")
-lines(y=benlaw(digits), x = baseBarplot[,1], col = "red", lwd = 4, 
-      type = "b", pch = 23, cex = 1.5, bg = "red")
-legend(x="topright", legend=c("Benford distribution"),
-       col=c("red"), lty=1,lwd=4, cex=0.8)
-
-```
-
-```{r}
-#-------------------------- tests benford -------------------------------
-library(BenfordSmoothTest)
-chisq.benftest(x) # test du khi-deux
-edist.benftest(x) # test distance euclidienne
-jointdigit.benftest(x) # ???
-jpsq.benftest(x) # un test d'adéquation basé sur la corrélation entre la distribution des premiers chiffres et la distribution de Benford
-ks.benftest(x) # smirnov
-mdist.benftest(x) # chebyshev
-usq.benftest(x) # Freedman-Watson
-BenfordSmooth.test(x)
-```
-
-
-Place au vif du sujet !
-
-
-```{r}
-library(data.table)
-library(dplyr)
-df <-read.csv("corona_comp.csv", sep= ";", header= T)
-dfa <- data.table(df)
-distinct(dfa,dfa$Pays)
-```
-
-```{r}
-dfac <- dfa[,c("Infections", "Deces", "Guerisons")]
-```
-
-```{r}
-# fonction plot :
-benf <- function(df){
-  x <- c(df$Infection,df$Deces,df$Guerisons)
-  x <- x[x!=0]
-  signifd.analysis(x)
-}
-```
-
-```{r}
-dfachine <- dfa[dfa$Pays=="Taïwan",]
-dfaMA <- dfa[dfa$Pays=="Martinique",]
-dfaGua <- dfa[dfa$Pays=="Guadeloupe",]
-dfajap <- dfa[dfa$Pays=="Japon",]
-dfaukr <- dfa[dfa$Pays=="Ukraine",]
-dfafr <- dfa[dfa$Pays=="France",]
-dfaQa <- dfa[dfa$Pays=="Qatar"]
-benf(dfachine)
-benf(dfaMA)
-benf(dfafr)
-```
-
-
 ```{r}
 library(dplyr)
+library(tidyr)
 library(data.table)
-read.csv("covid6.csv",sep=",",header=T)
+b <-read.csv("covid6.csv",sep=",",header=T)
 b <- data.table(b)
 distinct(b,b$location)
 b <- b[b$date > "2021-12-01",]
@@ -101,6 +24,8 @@ drop_na(b)
 ```
 
 ```{r}
+library(tidyr)
+library(dplyr)
 vec <- function(df){
   x <- c(df$new_cases,df$new_deaths,df$hosp_patients)
   x <- x[x!=0]
@@ -123,7 +48,7 @@ firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
 pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
 df <- pctFirstDigit(x)
 if(length(x)==0){
-  return()
+    return()
 }
 else{
 baseBarplot <- barplot(df$Freq[1:9], names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, .35),col="blue",main=dd$location[1])
@@ -138,14 +63,8 @@ legend(x="topright", legend=c("Benford distribution"),
 
 
 ```{r, warning=F}
-library(tidyr)
-library(dplyr)
-library(BenfordTests)
 name <- distinct(b,b$location)
 x <- as.vector(name$`b$location`)
-c <- x[1:49]
-d <- x[120:308]
-x <- c(c,d)
 for(i in 1:length(x)){
   bq <- b[b$location==x[i],]
   benf(bq)
@@ -167,29 +86,177 @@ for(i in 1:length(x)){
 
 ```{r}
 #_____________________________ comparaison des tests ______________________________
+library(benford.analysis)
+library(BenfordTests)
+# chi2
+ch <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  else{
+  z <- chisq.benftest(x)
+  return(z)
+  }
+}
+# Smirnov
 ks <- function(df){
   x<-vec(df)
   if(length(x)==0){
     return()
   }
-  z <- chisq.benftest(x)
-  return(z)
-}
-sm <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
+  else{
   y <- ks.benftest(x)
   return(y)
+  }
 }
-ks <- function(df){
+
+# distance euclidienne
+edist <- function(df){
   x<-vec(df)
   if(length(x)==0){
     return()
   }
-  z <- chisq.benftest(x)
+  else{
+  z <- edist.benftest(x)
   return(z)
+  }
 }
+
+#Hotelling
+joindigit <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  else{
+  z <- jointdigit.benftest(x)
+  return(z)
+  }
+}
+
+# test de corrélation entre la distribution étudiée et celle de benford
+jpsq <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  else{
+  z <- jpsq.benftest(x)
+  return(z)
+  }
+}
+
+# Chebyshev
+mdist <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  else{
+  z <- mdist.benftest(x)
+  return(z)
+  }
+}
+# test d'adéquation basé sur l'écart des moyennes de la distribution
+md <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  else{
+  z <- meandigit.benftest(x)
+  return(z)
+  }
+}
+
+# variante de Freedman du test de Watson
+wa <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  else{
+  z <- usq.benftest(x)
+  return(z)
+  }
+}
+#test de l'arc de mentisse
+ma <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  else{
+    cp <-benford(x,number.of.digits = 1)
+    cf <- marc(cp)
+    return(cf)
+  }
+}
+```
+
+```{r}
+library(dplyr)
+puiss <- function(df){
+  name <- distinct(df,df$location)
+  x <- as.vector(name$`df$location`)
+  a <- rep(0,length(x))
+  b <- rep(0,length(x))
+  c <- rep(0,length(x))
+  d <- rep(0,length(x))
+  e <- rep(0,length(x))
+  f <- rep(0,length(x))
+  g <- rep(0,length(x))
+  h <- rep(0,length(x))
+  j <- rep(0,length(x))
+  for(i in 1:length(x)){
+    bq <- df[df$location==x[i],]
+    z<-vec(bq)
+    if(length(z != 0)){
+    ch <- ch(bq)
+    ks <- ks(bq)
+    edist <- edist(bq)
+    jd <- joindigit(bq)
+    jpsq <- jpsq(bq)
+    mdist <- mdist(bq)
+    md <- md(bq)
+    wa <- wa(bq)
+    ma <- ma(bq)
+    if(ch$p.value<=0.05){a[i] <- 1}
+    if(ks$p.value <=0.05){b[i] <- 1}
+    if(edist$p.value <=0.05){c[i] <- 1}
+    if(jd$p.value <=0.05){d[i] <- 1}
+    if(jpsq$p.value <=0.05){e[i] <- 1}
+    if(mdist$p.value <=0.05){f[i] <- 1}
+    if(md$p.value <=0.05){g[i] <- 1}
+    if(wa$p.value <=0.05){h[i] <- 1}
+    if(ma$p.value <=0.05){j[i] <- 1}
+    }
+  } 
+  w <- c(mean(a),mean(b),mean(c),mean(d),mean(e),mean(f),mean(g),mean(h),mean(j))
+  p <- c("chi2","kolmogorov.smirnov","euclidian distance","hoyelling","Joenssen's JP square","Chebyshev","Judge-Schechter","Probability Mass function")
+  if(which.max(w)==1){ print("chi2")}
+  if(which.max(w)==2){ print("kolmogorov.smirnov")}
+  if(which.max(w)==3){ print("euclidian distance")}
+  if(which.max(w)==4){print("hoyelling")}
+  if(which.max(w)==5){print("Joenssen's JP square")}
+  if(which.max(w)==6){print("Chebyshev")}
+  if(which.max(w)==7){print("Judge-Schechter")}
+  if(which.max(w)==8){print("Probability Mass function")}
+  if(which.max(w)==9){print("Mantissa arc Test")}
+  print(w)
+}
+```
+
+```{r}
+library("benford.analysis")
+name <- distinct(b,b$location)
+x <- as.vector(name$`b$location`)
+z <- length(as.vector(name$`b$location`))
+for(i in 1:z){
+  bq <- b[b$location==x[i],]
+  w<- vec(bq)
+  if(length(w)!=0){plot(benford(w,number.of.digits = 1),main=x[i])}
+} 
 ```
 
