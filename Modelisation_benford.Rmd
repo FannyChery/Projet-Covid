@@ -24,16 +24,17 @@ x <- c(df$cas,df$deces,df$guerisons)
 
 
 ```{r}
-par(mfrow=c(1,2))
 benlaw <- function(d) log10(1 + 1 / d)
 digits <- 1:9
 firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
 pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
 df <- pctFirstDigit(x)
-baseBarplot <- barplot(benlaw(digits), names.arg = digits, xlab = "First Digit", 
-                       ylim = c(0, .35),col="blue")
-lines(x = baseBarplot[,1], y = df$Freq, col = "red", lwd = 4, 
+baseBarplot <- barplot(df$Freq[1:9],names.arg = digits,  xlab = "First Digit", ylim = c(0, .35),col="blue")
+lines(y=benlaw(digits), x = baseBarplot[,1], col = "red", lwd = 4, 
       type = "b", pch = 23, cex = 1.5, bg = "red")
+legend(x="topright", legend=c("Benford distribution"),
+       col=c("red"), lty=1,lwd=4, cex=0.8)
+
 ```
 
 ```{r}
@@ -86,72 +87,59 @@ benf(dfachine)
 benf(dfaMA)
 benf(dfafr)
 ```
-```{r}
-library(RCurl)
-a <- getURL('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv')
-b = read.table(text=a, sep=",", header = TRUE)
-```
+
 
 ```{r}
 library(dplyr)
 library(data.table)
+read.csv("covid6.csv",sep=",",header=T)
 b <- data.table(b)
 distinct(b,b$location)
 b <- b[b$date > "2021-12-01",]
 drop_na(b)
 # on commence à partir de septembre 2021 on s'intéresses aux données récentes.
 ```
-```{r}
-benf <- function(dd){
-x <- c(dd$new_cases,dd$new_deaths,dd$hosp_patients)
-x <- x[x!=0]
 
+```{r}
+vec <- function(df){
+  x <- c(df$new_cases,df$new_deaths,df$hosp_patients)
+  x <- x[x!=0]
+  j=1
+  for(i in 1:length(x)){
+  if(is.na(x[j])){
+    x <- x[-j]
+  }
+  else{
+    j <- j +1
+  }
+  }
+  return(x)
+}
+benf <- function(dd){
+x <- vec(dd)
 benlaw <- function(d) log10(1 + 1 / d)
 digits <- 1:9
 firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
 pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
 df <- pctFirstDigit(x)
-if(any(1==df)==F| any(2==df)==F | any(3==df)==F | any(4==df)==F | any(5==df)==F| any(6==df)==F | any(7==df)==F | any(8==df)==F | any(9==df)==F){
-  return("graphe non possible")
+if(length(x)==0){
+  return()
 }
 else{
-baseBarplot <- barplot(benlaw(digits), names.arg = digits, xlab = "First Digit", 
-                       ylim = c(0, .35),col="blue",main=dd$location[1])
-lines(x = baseBarplot[,1], y = df$Freq, col = "red", lwd = 4, 
+baseBarplot <- barplot(df$Freq[1:9], names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, .35),col="blue",main=dd$location[1])
+lines(x = baseBarplot[,1], y = benlaw(digits), col = "red", lwd = 4, 
       type = "b", pch = 23, cex = 1.5, bg = "red")
+legend(x="topright", legend=c("Benford distribution"),
+       col=c("red"), lty=1,lwd=4, cex=0.8)
 }
 }
 ```
 
-```{r}
-bq <- b[b$location=="Qatar",]
-bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
-benf(bn)
-```
-```{r}
-bq <- b[b$location=="France",]
-bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
-benf(bn)
-```
-```{r}
-bq <- b[b$location=="Russia",]
-bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
-benf(bn)
-```
 
-```{r}
-bq <- b[b$location=="United Arab Emirates",]
-bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
-benf(bn)
-```
-```{r}
 
-bq <- b[b$location=="United States",]
-bn <- bq[,c("new_cases", "new_deaths", "hosp_patients","location")]
-benf(bn)
-```
 ```{r, warning=F}
 library(tidyr)
+library(dplyr)
 library(BenfordTests)
 name <- distinct(b,b$location)
 x <- as.vector(name$`b$location`)
@@ -165,16 +153,43 @@ for(i in 1:length(x)){
 ```
 
 ```{r}
+#______________________ pas vraiment exploitable on ne voit pas les noms ________
 name <- distinct(b,b$location)
 x <- as.vector(name$`b$location`)
-c <- x[1:49]
-d <- x[120:308]
-x <- c(c,d)
 for(i in 1:length(x)){
   bq <- b[b$location==x[i],]
   c <- c(bq$new_cases,bq$new_deaths,bq$hosp_patients)
   c <- c[c!=0]
+  print(x[i])
   signifd.analysis(c)
 } 
+```
+
+```{r}
+#_____________________________ comparaison des tests ______________________________
+ks <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  z <- chisq.benftest(x)
+  return(z)
+}
+sm <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  y <- ks.benftest(x)
+  return(y)
+}
+ks <- function(df){
+  x<-vec(df)
+  if(length(x)==0){
+    return()
+  }
+  z <- chisq.benftest(x)
+  return(z)
+}
 ```
 
