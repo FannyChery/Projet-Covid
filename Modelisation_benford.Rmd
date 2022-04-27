@@ -27,7 +27,7 @@ drop_na(b)
 library(tidyr)
 library(dplyr)
 vec <- function(df){
-  x <- c(df$new_cases,df$new_deaths,df$hosp_patients)
+  x <- c(df$new_cases)
   x <- x[x!=0]
   j=1
   for(i in 1:length(x)){
@@ -47,7 +47,7 @@ digits <- 1:9
 firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
 pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
 df <- pctFirstDigit(x)
-if(length(x)==0){
+if(length(x)==0|any(1==df)==F| any(2==df)==F | any(3==df)==F | any(4==df)==F | any(5==df)==F| any(6==df)==F | any(7==df)==F | any(8==df)==F | any(9==df)==F){
     return()
 }
 else{
@@ -244,7 +244,7 @@ puiss <- function(df){
   if(which.max(w)==7){print("Judge-Schechter")}
   if(which.max(w)==8){print("Probability Mass function")}
   if(which.max(w)==9){print("Mantissa arc Test")}
-  print(w)
+  print(a)
 }
 ```
 
@@ -257,6 +257,30 @@ for(i in 1:z){
   bq <- b[b$location==x[i],]
   w<- vec(bq)
   if(length(w)!=0){plot(benford(w,number.of.digits = 1),main=x[i])}
+} 
+```
+
+```{r}
+library(BenfordSmoothTest)
+
+```
+
+```{r}
+b <- b[b$continent=="Europe"]
+name <- distinct(b,b$location)
+y <- as.vector(name$`b$location`)
+for(i in 1:length(y)){
+  if(x[i]==1){
+    print(y[i])
+  }
+} 
+
+```
+```{r}
+for(i in 1:length(y)){
+  if(x[i]==0){
+    print(y[i])
+  }
 } 
 ```
 
