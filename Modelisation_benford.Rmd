@@ -23,7 +23,7 @@ drop_na(b)
 # on commence à partir de septembre 2021 on s'intéresses aux données récentes.
 ```
 
-```{r}
+```{r warning=F}
 library(tidyr)
 library(dplyr)
 vec <- function(df){
@@ -54,8 +54,8 @@ else{
 baseBarplot <- barplot(df$Freq[1:9], names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, .35),col="blue",main=dd$location[1])
 lines(x = baseBarplot[,1], y = benlaw(digits), col = "red", lwd = 4, 
       type = "b", pch = 23, cex = 1.5, bg = "red")
-legend(x="topright", legend=c("Benford distribution"),
-       col=c("red"), lty=1,lwd=4, cex=0.8)
+legend(x="topright", legend=c("Benford distribution","data distribution"),
+       col=c("red","blue"), lty=1,lwd=4, cex=0.8)
 }
 }
 ```
@@ -72,16 +72,52 @@ for(i in 1:length(x)){
 ```
 
 ```{r}
-#______________________ pas vraiment exploitable on ne voit pas les noms ________
-name <- distinct(b,b$location)
-x <- as.vector(name$`b$location`)
-for(i in 1:length(x)){
-  bq <- b[b$location==x[i],]
-  c <- c(bq$new_cases,bq$new_deaths,bq$hosp_patients)
-  c <- c[c!=0]
-  print(x[i])
-  signifd.analysis(c)
-} 
+givenames <- function(df){
+  name <- distinct(df,df$location)
+  w <- 0
+  x <- as.vector(name$`df$location`)
+  t=0
+  for(i in 1:length(x)){
+    d <- df[df$location==x[i],]
+    v <- vec(d)
+    dx <- firstDigit(v)
+    if(length(x)==0|any(1==dx)==F| any(2==dx)==F | any(3==dx)==F | any(4==dx)==F | any(5==dx)==F| any(6==dx)==F | any(7==dx)==F | any(8==dx)==F | any(9==dx)==F){
+      t=t
+    }
+    else{
+      t=t+1
+      w[t]=x[i]
+    }
+  }
+  return(w)
+}
+```
+
+```{r }
+library(BenfordSmoothTest)
+T2 <- function(df){
+  x <- vec(df)
+  benf <- BenfordSmooth.test(x)
+  return(benf)
+}
+```
+
+```{r cache=T,echo = T, results = 'hide'}
+w = givenames(b)
+pval = 0
+test = 0
+for(i in 1:length(w)){
+  bq <- b[b$location==w[i],]
+  T_k <- T2(bq)
+  pval[i] <- T_k[3,2]
+  test[i] <- T_k[2,2]
+}
+```
+```{r}
+mat <- matrix(c(w,test,pval),ncol=3)
+mat <- as.data.frame(mat)
+colnames(mat)<- c("Pays", "T_2", "p_value")
+View(mat)
 ```
 
 ```{r}
@@ -283,4 +319,3 @@ for(i in 1:length(y)){
   }
 } 
 ```
-
