@@ -118,6 +118,7 @@ mat <- matrix(c(w,test,pval),ncol=3)
 mat <- as.data.frame(mat)
 colnames(mat)<- c("Pays", "T_2", "p_value")
 View(mat)
+write.csv(mat,"Benfordvague6.csv")
 ```
 
 ```{r}
