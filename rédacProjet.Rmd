@@ -1,0 +1,121 @@
+---
+title: "Rédaction au propre"
+author: "LUCEA Lenny"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    
+    df_print: kable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\renewcommand{\contentsname}{Sommaire}
+
+\tableofcontents
+
+\newpage
+
+------------------------------------------------------------------------
+
+# Explication du T_2
+
+Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford.Par soucis de performance on décidera pour la suite d'appliquer le test du T_2 considéré comme l'un des plus puissants parmis les [[tests d'adéquations lisses pour la loi de Newcomb-Benford]{.ul}](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf)[.]{.ul}
+
+Avant de rentrer dans le vif du sujet nous allons donc tout d'abord faire un point sur les tests pour la loi de newcomb-benford.
+
+Fanny ..
+
+Passons alors à une brève introduction du $T_2$.
+
+\textcolor{red}{Théorème}
+
+:   Soit $X_1,\dots,X_n$ des copies indépendantes d'une variable aléatoire X de densité $f(.)$ par rapport à une mesure $v$. Soit $\{h_0(.) := 1,h_k(.),k=1,2,...\}$ une suite de fonctions orthonormales par rapport à $f(.)$; plus précisément, $\int{h_k(x)h_{k'}(x)f(x)dv(x)=\delta_{kk'}}$, la fonction delta de Kronecker. Soit $U_k=n^{-1/2}\sum_{i=1}^nh_k(X_i)$ et pour un entier $K\ge1$, soir $T_k=\sum_{k=1}^KU^2_k$. Alors sous $H_0$, $T_K\stackrel{L}{\to}\chi^2_K$, la loi khi-deux à K degrés de liberté, et un test de niveau asymptotique $\alpha$ rejette $H_0$ si la valeur observée de $T_K$ dépasse $x^2_{K,1-\alpha}$, le quantile d'ordre $1-\alpha$ de cette loi $\chi_K^2$.
+
+# introduction sur notre base de donnée ( expliquer les selections )
+
+source : <https://github.com/CSSEGISandData/COVID-19>
+
+# Explication des procédés d'analyse
+
+Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 189 pays.
+
+(On considère aussi le monde , l'union européenne et l'europe).
+
+# Analyse des données observées ( *p_value significative ou non* )
+
+Après analyse, on observe qu'on rejette $H_0 :$ l'échantillon suit une loi de Newcomb-Benford contre $H_1 :$ l'échantillon ne suis pas une loi de Newcomb-Benford pour 74 pays ce qui explique que globalement au niveau mondial on rejette $H_0$. On remarque alors qu'on ne rejette pas $H_0$ pour les 115 autres pays avec un risque d'erreur $\alpha=5\%$.
+
+Cette étude nous permet de lever un drapeau d'alerte face aux pays qui ne passent pas le test comme nous pouvons le voir ci-dessous.
+
+```{r  echo=F}
+library(kableExtra)
+ben <-read.csv("benfh1.csv",sep=(","),header=T)
+ben <- ben[,-1]
+ben1 <- ben[1:39,]
+ben2 <- ben[40:78,]
+ben2[39,] <- c("","","")
+kable(cbind(ben1,ben2))%>%
+  footnote(number = c("Pays : nom des différents pays;","T_2 : valeur de la statistique du T_2;"," p_value : p_value associée."))
+```
+
+$$
+Figure~1
+$$
+
+Parmi eux on retrouve notamment l'Afrique, le Qatar, la Russie, le Japon ou encore la Chine.
+
+```{r sample,results='hide',echo=F, results='asis'}
+library(kableExtra)
+library(knitr)
+dat <-read.csv("Benfordvague6.csv",sep=(","),header=T)
+dat<- dat[,-1]
+dat1 <- dat[1:50,]
+dat2 <- dat[51:100,]
+dat3 <- dat[101:146,]
+dat4 <- dat[147:191,]
+rownames(dat1) <- NULL
+rownames(dat2) <- NULL
+rownames(dat3) <- NULL
+rownames(dat4) <- NULL
+t1 <-kable(x=dat1,format = "latex")
+t2 <- kable(x=dat2,format = "latex")
+t3 <-kable(x=dat3,format = "latex")
+t4 <- kable(x=dat4,format = "latex")
+
+cat(c("\\begin{table}[!htb]
+    \\begin{minipage}{.5\\linewidth}
+      \\caption{}
+      \\centering",
+        t1,
+    "\\end{minipage}%
+    \\begin{minipage}{.5\\linewidth}
+      \\centering
+        \\caption{}",
+        t2,
+    "\\end{minipage}
+  \\end{table}"
+)) 
+
+cat(c("\\begin{table}[!htb]
+    \\begin{minipage}{.5\\linewidth}
+      \\caption{}
+      \\centering",
+        t3,
+    "\\end{minipage}%
+    \\begin{minipage}{.5\\linewidth}
+        \\caption{}",
+        t4,
+    "\\end{minipage}
+  \\end{table}"
+)) 
+
+```
+
+*Faire des observations si les pays qui ne suivent pas les hypothèses d'initialisation de la loi de benford.*
+
+\newpage
+
+## ANNEXE :

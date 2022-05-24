@@ -2,28 +2,39 @@
 title: "Projet fraudes covid"
 author: "LUCEA Lenny"
 date: "`r Sys.Date()`"
-output: pdf_document
+output: 
+  pdf_document:
+    
+    df_print: kable
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# BENFORD 6eme VAGUE COVID
+\renewcommand{\contentsname}{Sommaire}
 
-```{r}
+\tableofcontents
+
+\newpage
+
+```{r include=FALSE}
 library(dplyr)
 library(tidyr)
 library(data.table)
 b <-read.csv("covid6.csv",sep=",",header=T)
 b <- data.table(b)
-distinct(b,b$location)
 b <- b[b$date > "2021-12-01",]
 drop_na(b)
+b <- b[b$location!="World",]
+b <- b[b$location!="Europe",]
+b <- b[b$location!="European Union",]
+
 # on commence à partir de septembre 2021 on s'intéresses aux données récentes.
 ```
 
 ```{r warning=F}
+#Fonction graphes
 library(tidyr)
 library(dplyr)
 vec <- function(df){
@@ -47,7 +58,7 @@ digits <- 1:9
 firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
 pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
 df <- pctFirstDigit(x)
-if(length(x)==0|any(1==df)==F| any(2==df)==F | any(3==df)==F | any(4==df)==F | any(5==df)==F| any(6==df)==F | any(7==df)==F | any(8==df)==F | any(9==df)==F){
+if(length(df)<=10){
     return()
 }
 else{
@@ -60,18 +71,8 @@ legend(x="topright", legend=c("Benford distribution","data distribution"),
 }
 ```
 
-
-
-```{r, warning=F}
-name <- distinct(b,b$location)
-x <- as.vector(name$`b$location`)
-for(i in 1:length(x)){
-  bq <- b[b$location==x[i],]
-  benf(bq)
-} 
-```
-
 ```{r}
+#fonction nom de pays pouvant passer le test
 givenames <- function(df){
   name <- distinct(df,df$location)
   w <- 0
@@ -81,7 +82,7 @@ givenames <- function(df){
     d <- df[df$location==x[i],]
     v <- vec(d)
     dx <- firstDigit(v)
-    if(length(x)==0|any(1==dx)==F| any(2==dx)==F | any(3==dx)==F | any(4==dx)==F | any(5==dx)==F| any(6==dx)==F | any(7==dx)==F | any(8==dx)==F | any(9==dx)==F){
+    if(length(dx)<=10){
       t=t
     }
     else{
@@ -94,6 +95,7 @@ givenames <- function(df){
 ```
 
 ```{r }
+# fonction T_2
 library(BenfordSmoothTest)
 T2 <- function(df){
   x <- vec(df)
@@ -102,221 +104,122 @@ T2 <- function(df){
 }
 ```
 
-```{r cache=T,echo = T, results = 'hide'}
+# Explication du T_2
+
+Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford.Par soucis de performance on décidera pour la suite d'appliquer le test du T_2 considéré comme l'un des plus puissants parmis les [[tests d'adéquations lisses pour la loi de Newcomb-Benford]{.ul}](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf)[.]{.ul}
+
+Avant de rentrer dans le vif du sujet nous allons donc tout d'abord faire un point sur les tests pour la loi de newcomb-benford.
+
+Fanny ..
+
+Passons alors à une brève introduction du $T_2$.
+
+\textcolor{red}{Théorème}
+
+:   Soit $X_1,\dots,X_n$ des copies indépendantes d'une variable aléatoire X de densité $f(.)$ par rapport à une mesure $v$. Soit $\{h_0(.) := 1,h_k(.),k=1,2,...\}$ une suite de fonctions orthonormales par rapport à $f(.)$; plus précisément, $\int{h_k(x)h_{k'}(x)f(x)dv(x)=\delta_{kk'}}$, la fonction delta de Kronecker. Soit $U_k=n^{-1/2}\sum_{i=1}^nh_k(X_i)$ et pour un entier $K\ge1$, soir $T_k=\sum_{k=1}^KU^2_k$. Alors sous $H_0$, $T_K\stackrel{L}{\to}\chi^2_K$, la loi khi-deux à K degrés de liberté, et un test de niveau asymptotique $\alpha$ rejette $H_0$ si la valeur observée de $T_K$ dépasse $x^2_{K,1-\alpha}$, le quantile d'ordre $1-\alpha$ de cette loi $\chi_K^2$.
+
+# introduction sur notre base de donnée ( expliquer les selections )
+
+source : <https://github.com/CSSEGISandData/COVID-19>
+
+# Explication des procédés d'analyse
+
+Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 189 pays.
+
+(On considère aussi le monde , l'union européenne et l'europe).
+
+# Analyse des données observées ( *p_value significative ou non* )
+
+Après analyse, on observe qu'on rejette $H_0 :$ l'échantillon suit une loi de Newcomb-Benford contre $H_1 :$ l'échantillon ne suis pas une loi de Newcomb-Benford pour 74 pays ce qui explique que globalement au niveau mondial on rejette $H_0$. On remarque alors qu'on ne rejette pas $H_0$ pour les 115 autres pays avec un risque d'erreur $\alpha=5\%$.
+
+Cette étude nous permet de lever un drapeau d'alerte face aux pays qui ne passent pas le test comme nous pouvons le voir ci-dessous.
+
+```{r echo=F}
+library(kableExtra)
+ben <-read.csv("benfh1.csv",sep=(","),header=T)
+ben <- ben[,-1]
+ben1 <- ben[1:39,]
+ben2 <- ben[40:78,]
+ben2[39,] <- c("","","")
+kable(cbind(ben1,ben2))%>%
+  footnote(number = c("Pays : nom des différents pays;","T_2 : valeur de la statistique du T_2;"," p_value : p_value associée."))
+```
+
+$$
+Figure~1
+$$
+
+Parmi eux on retrouve notamment Cuba, le Qatar, la Russie, le Japon ou encore la Chine.
+
+```{r echo=F}
+par(mfrow=c(2,3))
+benf(b[b$location=="Russia",])
+benf(b[b$location=="China",])
+benf(b[b$location=="Qatar",])
+benf(b[b$location=="France",])
+benf(b[b$location=="Ukraine",])
+benf(b[b$location=="Romania",])
+```
+
+```{r eval=FALSE, warning=FALSE, cache=TRUE, include=FALSE}
+# visualisation graphique de la distribution comparé à benford
+name <- distinct(b,b$location)
+x <- as.vector(name$`b$location`)
+for(i in 1:length(x)){
+  bq <- b[b$location==x[i],]
+  benf(bq)
+} 
+```
+
+```{r eval=FALSE, cache=TRUE, include=FALSE}
+#Test T_2
+library(dplyr)
 w = givenames(b)
 pval = 0
 test = 0
 for(i in 1:length(w)){
   bq <- b[b$location==w[i],]
   T_k <- T2(bq)
-  pval[i] <- T_k[3,2]
-  test[i] <- T_k[2,2]
-}
-```
-```{r}
-mat <- matrix(c(w,test,pval),ncol=3)
-mat <- as.data.frame(mat)
-colnames(mat)<- c("Pays", "T_2", "p_value")
-View(mat)
-write.csv(mat,"Benfordvague6.csv")
-```
-
-```{r}
-#_____________________________ comparaison des tests ______________________________
-library(benford.analysis)
-library(BenfordTests)
-# chi2
-ch <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
-  else{
-  z <- chisq.benftest(x)
-  return(z)
-  }
-}
-# Smirnov
-ks <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
-  else{
-  y <- ks.benftest(x)
-  return(y)
-  }
-}
-
-# distance euclidienne
-edist <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
-  else{
-  z <- edist.benftest(x)
-  return(z)
-  }
-}
-
-#Hotelling
-joindigit <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
-  else{
-  z <- jointdigit.benftest(x)
-  return(z)
-  }
-}
-
-# test de corrélation entre la distribution étudiée et celle de benford
-jpsq <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
-  else{
-  z <- jpsq.benftest(x)
-  return(z)
-  }
-}
-
-# Chebyshev
-mdist <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
-  else{
-  z <- mdist.benftest(x)
-  return(z)
-  }
-}
-# test d'adéquation basé sur l'écart des moyennes de la distribution
-md <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
-  else{
-  z <- meandigit.benftest(x)
-  return(z)
-  }
-}
-
-# variante de Freedman du test de Watson
-wa <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
-  else{
-  z <- usq.benftest(x)
-  return(z)
-  }
-}
-#test de l'arc de mentisse
-ma <- function(df){
-  x<-vec(df)
-  if(length(x)==0){
-    return()
-  }
-  else{
-    cp <-benford(x,number.of.digits = 1)
-    cf <- marc(cp)
-    return(cf)
-  }
+  pval[i] <- as.numeric(T_k[3,2])
+  test[i] <- as.numeric(T_k[2,2])
 }
 ```
 
-```{r}
-library(dplyr)
-puiss <- function(df){
-  name <- distinct(df,df$location)
-  x <- as.vector(name$`df$location`)
-  a <- rep(0,length(x))
-  b <- rep(0,length(x))
-  c <- rep(0,length(x))
-  d <- rep(0,length(x))
-  e <- rep(0,length(x))
-  f <- rep(0,length(x))
-  g <- rep(0,length(x))
-  h <- rep(0,length(x))
-  j <- rep(0,length(x))
-  for(i in 1:length(x)){
-    bq <- df[df$location==x[i],]
-    z<-vec(bq)
-    if(length(z != 0)){
-    ch <- ch(bq)
-    ks <- ks(bq)
-    edist <- edist(bq)
-    jd <- joindigit(bq)
-    jpsq <- jpsq(bq)
-    mdist <- mdist(bq)
-    md <- md(bq)
-    wa <- wa(bq)
-    ma <- ma(bq)
-    if(ch$p.value<=0.05){a[i] <- 1}
-    if(ks$p.value <=0.05){b[i] <- 1}
-    if(edist$p.value <=0.05){c[i] <- 1}
-    if(jd$p.value <=0.05){d[i] <- 1}
-    if(jpsq$p.value <=0.05){e[i] <- 1}
-    if(mdist$p.value <=0.05){f[i] <- 1}
-    if(md$p.value <=0.05){g[i] <- 1}
-    if(wa$p.value <=0.05){h[i] <- 1}
-    if(ma$p.value <=0.05){j[i] <- 1}
-    }
-  } 
-  w <- c(mean(a),mean(b),mean(c),mean(d),mean(e),mean(f),mean(g),mean(h),mean(j))
-  p <- c("chi2","kolmogorov.smirnov","euclidian distance","hoyelling","Joenssen's JP square","Chebyshev","Judge-Schechter","Probability Mass function")
-  if(which.max(w)==1){ print("chi2")}
-  if(which.max(w)==2){ print("kolmogorov.smirnov")}
-  if(which.max(w)==3){ print("euclidian distance")}
-  if(which.max(w)==4){print("hoyelling")}
-  if(which.max(w)==5){print("Joenssen's JP square")}
-  if(which.max(w)==6){print("Chebyshev")}
-  if(which.max(w)==7){print("Judge-Schechter")}
-  if(which.max(w)==8){print("Probability Mass function")}
-  if(which.max(w)==9){print("Mantissa arc Test")}
-  print(a)
-}
+```{r eval=FALSE, include=FALSE}
+#initialisation
+v6 <- read.csv("Benfordvague6.csv")
+v6 =v6[,-1]
 ```
 
-```{r}
-library("benford.analysis")
-name <- distinct(b,b$location)
-x <- as.vector(name$`b$location`)
-z <- length(as.vector(name$`b$location`))
-for(i in 1:z){
-  bq <- b[b$location==x[i],]
-  w<- vec(bq)
-  if(length(w)!=0){plot(benford(w,number.of.digits = 1),main=x[i])}
-} 
+```{r eval=FALSE, include=FALSE}
+#On regarde qui passe le test
+benfo <- v6[v6$p_value<=0.05,] # pays qui ne suivent pas une benford.
+rownames(benfo) <- NULL
+benfn <- v6[v6$p_value>0.05,] # pays qui suivent une benford.
+rownames(benfn) <- NULL
 ```
 
-```{r}
+```{r eval=FALSE, include=FALSE}
+#modelisation benford
+barplot(benlaw(digits), names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, .35),col="blue")
+text(x=barres[,1], y=nb*1.105,labels = x)
+```
+
+```{r eval=FALSE, , warning=FALSE, include=FALSE}
+#proposition fannny
 library(BenfordSmoothTest)
-
-```
-
-```{r}
-b <- b[b$continent=="Europe"]
-name <- distinct(b,b$location)
-y <- as.vector(name$`b$location`)
-for(i in 1:length(y)){
-  if(x[i]==1){
-    print(y[i])
+library(BenfordTests)
+T_2 <- rep(0,100)
+KS <- rep(0,100)
+Chi_2 <- rep(0,100)
+for(i in 1:100){
+  x <- sample(x= 1:9, size = 100 , replace = T, prob = benlaw(digits) )
+  if(length(x)==0|any(1==x)==F| any(2==x)==F | any(3==x)==F | any(4==x)==F | any(5==x)==F| any(6==x)==F | any(7==x)==F | any(8==x)==F | any(9==x)==F){
   }
-} 
-
-```
-```{r}
-for(i in 1:length(y)){
-  if(x[i]==0){
-    print(y[i])
+  else{
+  if(ks.benftest(x)$p.value <= 0.05){ KS[i]=1}
+  if(chisq.benftest(x)$p.value <= 0.05){ Chi_2[i]=1}
+  if(as.numeric(BenfordSmooth.test(x)[3,2]) <= 0.05){ T_2[i]=1}
   }
-} 
+}
 ```
