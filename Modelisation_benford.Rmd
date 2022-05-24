@@ -199,11 +199,13 @@ rownames(benfo) <- NULL
 ```
 
 ```{r}
-benfn <- tab[as.numeric(tab$P_value)<=0.05,] # pays qui ne suivent pas une benford.
-rownames(benfo) <- NULL
+benfn <- tab[as.numeric(tab$P_value)>0.05,] # pays qui ne suivent pas une benford.
+rownames(benfn) <- NULL
+
 ```
 
 ```{r}
+write.csv(benfn,"h0.csv")
 write.csv(benfo,"rejh0.csv")
 write.csv(tab,"covidtab.csv")
 ```
@@ -222,27 +224,17 @@ benfn <- v6[v6$p_value>0.05,] # pays qui suivent une benford.
 rownames(benfn) <- NULL
 ```
 
-```{r eval=FALSE, include=FALSE}
+```{r }
 #modelisation benford
-barplot(benlaw(digits), names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, .35),col="blue")
-text(x=barres[,1], y=nb*1.105,labels = x)
+barres <-barplot(benlaw(digits), names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, .35),col="blue")
+text(x=barres[,1], y=benlaw(digits)*1.105,labels = x)
 ```
 
-```{r eval=FALSE, , warning=FALSE, include=FALSE}
-#proposition fannny
-library(BenfordSmoothTest)
+```{r}
 library(BenfordTests)
-T_2 <- rep(0,100)
-KS <- rep(0,100)
-Chi_2 <- rep(0,100)
-for(i in 1:100){
-  x <- sample(x= 1:9, size = 100 , replace = T, prob = benlaw(digits) )
-  if(length(x)==0|any(1==x)==F| any(2==x)==F | any(3==x)==F | any(4==x)==F | any(5==x)==F| any(6==x)==F | any(7==x)==F | any(8==x)==F | any(9==x)==F){
-  }
-  else{
-  if(ks.benftest(x)$p.value <= 0.05){ KS[i]=1}
-  if(chisq.benftest(x)$p.value <= 0.05){ Chi_2[i]=1}
-  if(as.numeric(BenfordSmooth.test(x)[3,2]) <= 0.05){ T_2[i]=1}
-  }
+twodigits <- function(df){
+  x<-vec(df)
+  w <-signifd(x = x, digits = 2)
+  return(w)
 }
 ```
