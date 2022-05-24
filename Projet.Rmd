@@ -1,0 +1,442 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+**A) Test deux chiffres significatifs.**
+
+Pour 1\<= k \<= 4.
+
+**I/ Fonctions h(k) orthonormales :**
+
+```{r}
+Mu = rep(0,8)
+
+for (k in c(1:8)) { # Calcul de Mu(k) :
+  
+  S = 0
+  for (y in c(10:99)) {
+    
+    S = S + (y^k)*log(1 + 1/y)/log(10) 
+    
+  }
+  
+  Mu[k] = S
+}
+```
+
+```{r}
+
+for (k in c(1:4)) { # Calcul de M(k)^(-1) :
+  
+  A = matrix(1, ncol=k, nrow=k)
+  
+  for (i in c(0:(k-1)) ) {
+    for (j in c(0:(k-1)) ) {
+      
+      if ( (i != 0) || (j != 0) ) {
+        A[i+1, j+1] = Mu[i+j]
+      }
+      
+    }
+  }
+  
+  if (k == 1) { M1_ = solve(A) }
+  if (k == 2) { M2_ = solve(A) }
+  if (k == 3) { M3_ = solve(A) }
+  if (k == 4) { M4_ = solve(A) }
+  
+}
+
+M_ = list(M1_, M2_, M3_, M4_)
+```
+
+```{r}
+c_ = rep(0,4)
+
+for (k in c(1:4)) { # Calcul de h(k) :
+  
+  Mu2 = matrix(0, nrow= k, ncol= 1)
+  
+  for (i in c(1:k)) {
+    Mu2[i, 1] = Mu[ k-1+i ]
+  }
+  
+  c_[k] = 1/(sqrt( Mu[2*k] - ( t(Mu2) %*% M_[[k]]  %*% Mu2 ) )) # 1/sqrt(c(k))
+  
+  A = -1*c_[k] * M_[[k]] %*% Mu2
+  
+  L = rep(0, k+1)
+  for (i in c(1:k)) {
+    L[i] = A[i]
+  }
+  L[k+1] = c_[k]
+  
+  print(L) # Les coéfficients de h(k)
+  
+}
+```
+
+-   On obtient les polynômes h(k) suivants :
+
+h1(x) = -1.54751771 + 0.04010177 \*x
+
+h2(x) = 2.795867953 - 0.167441591 \*x + 0.001736457 \*x\^2
+
+h3(x) = -5.187810e+00 + 4.869054e-01 \*x - 1.155519e-02 \*x\^2 + 7.630402e-05 \*x\^3
+
+h4(x) = 9.725235e+00 - 1.237520e+00 \*x + 4.769440e-02 \*x\^2 - 6.950207e-04 \*x\^3 + 3.371880e-06 \*x\^4
+
+**II/ Statistique T(k) :**
+
+```{r}
+# Fonctions h(k) :
+
+h = function (k, x) {
+  
+  if (k == 1) {
+    return( -1.54751771 + 0.04010177 *x )
+  }
+  
+  if (k == 2) {
+    return( 2.795867953 - 0.167441591 *x + 0.001736457 *x^2 )
+  }
+  
+  if (k == 3) {
+    return( -5.187810e+00  + 4.869054e-01 *x - 1.155519e-02 *x^2  + 7.630402e-05 *x^3 )
+  }
+  
+  if (k == 4) {
+    return( 9.725235e+00 - 1.237520e+00 *x + 4.769440e-02 *x^2 - 6.950207e-04 *x^3  + 3.371880e-06 *x^4 )
+  }
+  
+}
+```
+
+```{r}
+# Statistique T(k) :      ( 1<= k <= 4)
+
+T = function (k, data) {
+  
+  n = length(data)
+  
+  T_ = 0 # la statistique T(k)
+  for (l in c(1:k)) {
+    
+    U = 0 # U(l)
+    for (i in c(1:n)) {
+      
+      U = U + h(l, data[i])
+      
+    }
+    U = U*(1/sqrt(n))
+    
+    T_ = T_ + U^2
+    
+  }
+  
+  return(T_)
+}
+```
+
+**III/ Calcul de la p.value :**
+
+```{r}
+pvalue = function(t, n, k, d, w) { # d et w pour Monte-Carlo
+  
+   if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) { ### 1) approximation Monte-Carlo ###
+     
+     M = 0 # Moyenne empirique = p.value
+     L = rep(0, w) # Liste des Y(l)
+     
+     proba = rep(0, 90) # vecteur des probas sous H0 pour sample
+     for (i in c(1:90)) {
+       
+       proba[i] = log(1 + 1/(i+9) )/log(10)
+       
+     }
+     
+     for (l in c(1:w)) {
+       
+       data = rep(0, n)
+       for (i in c(1:n)) { # Génération des Xi sous H0 de taille n
+         
+         data[i] = sample(x= c(10:99), size=1, prob= proba )
+         
+       }
+       
+       a = T(k, data)
+       
+       if (a > t) {
+         M = M+1
+         L[l] = 1
+       }
+       
+     }
+     M = M/w
+     
+     S = 0 # Variance empirique
+     for (l in c(1:w)) {
+       
+       S = S + (L[l] - M)^2
+       
+     }
+     S = S/w
+     
+     e = 1.96*sqrt(S/w) # erreur d'approximation (à 95%)
+     
+     
+     return( c(M, e) )
+     
+     
+   } else { ### 2) approximation Khi2 ###
+     
+     M = 1 - pchisq(t, df=k)
+     
+     return( c(M, 0) )
+     
+   } 
+  
+}
+```
+
+**IV / Fonction globale :**
+
+```{r}
+# 1 <= k <= 4.
+# data : sous forme de vecteur c(...).
+# d = 1 : force le calcul de la p.value par Monte-Carlo.
+# d = 2 : force le calcul de la p.value par approximation Khi2
+# Si n <= 100 alors d=1 par défault, et si n > 100 alors d=2 par défault.
+# w = taille de l'échantillon pour Monte-Carlo.
+# texte = FALSE : n'affiche pas de texte, et return c(Tk, p.value, erreur M-C).
+
+Test.lisse = function (k, data, d=0, w=10000, texte=TRUE) {
+  
+  t = T(k, data) # Valeur de la statistique T(k)
+  
+  n = length(data)
+  A = pvalue(t, n, k, d, w) # On récupère la p.value associé
+  
+  if ( texte == TRUE ) {
+    
+    cat("\n")
+    cat("k =", k, "\n")
+    cat("Statistique Tk =", t, "\n \n")
+  
+    if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) {
+      cat("Approximation de la p.value par Monte-Carlo :", "\n \n")
+      cat("--> p.value =", A[1], "\n")
+      cat("Erreur d'approximation en valeur absolue (à 95%) <=", A[2])
+    
+    } else {
+      cat("Approximation asymptotique de la p.value par une Khi2(k) :", "\n \n")
+      cat("--> p.value =", A[1])
+    }
+    cat("\n")
+  
+  } else {
+    
+    return( c(t, A[1], A[2]) )
+    
+  }
+  
+}
+```
+
+**TEST :**
+
+```{r}
+##### TEST #####
+
+data = c(11, 12, 50, 51, 53, 56, 96, 99, 12, 24, 26, 27)
+#data = seq(1:101)
+
+#T(4, data)
+
+Test.lisse(4, data, texte=F)
+
+################
+```
+
+```{r}
+proba = rep(0, 90) # vecteur des probas sous H0 pour sample
+for (i in c(1:90)) {
+       
+  proba[i] = log(1 + 1/(i+9) )/log(10)
+       
+}
+data = sample(x= c(10:99), size=20, prob= proba , replace=TRUE)
+
+
+Test.lisse(1, data)
+Test.lisse(2, data)
+Test.lisse(3, data)
+Test.lisse(4, data)
+```
+
+**B) Analyse du Test (ecdf + puissance).**
+
+**I/ Justificatif du choix n \> 100 pour la Khi2(k) :**
+
+Echantillon de 10 000 T(k)\_n sous H0 pour l'ecdf empirique de la loi.
+
+On constate que pour n \> 100, l'ecdf est quasiment égale à la fonction de répartition théorique d'une Khi2(k).
+
+```{r}
+q = 1
+B = matrix(0, nrow=8, ncol=w)
+
+for (k in c(1:4)) {
+  
+  w = 10000
+  A = matrix(0, nrow = 2, ncol = w)
+
+  z = 0
+  for (n in c(101:102)) {
+
+    L = rep(0, w) # Liste des T(k)
+
+    proba = rep(0, 90) # vecteur des probas sous H0 pour sample
+    for (i in c(1:90)) {
+    proba[i] = log(1 + 1/(i+9) )/log(10)
+    }
+
+    for (l in c(1:w)) {
+       
+      data = rep(0, n)
+      for (i in c(1:n)) { # Génération des Xi sous H0 de taille n
+         
+        data[i] = sample(x= c(10:99), size=1, prob= proba )
+         
+      }
+       
+      L[l] = T(k, data)
+    }
+  
+    z = z+1
+    A[z,] = L
+    
+    print(q) # q = 8 au total.
+    q = q+1
+  }
+  
+  B[c( (1+ (k-1)*2):(k*2) ),] = A
+}
+```
+
+-   T1 :
+
+```{r}
+par(mfrow=c(1,2))
+
+curve(pchisq(x,df=1), add=T, xlim=c(0,6))
+lines(ecdf(B[1,]), col="blue")
+legend(1, 0.3, legend=c("T1 n=101 sous H0", "Khi2(1)"), col=c("blue", "black"), lty=1, cex=0.8)
+
+curve(pchisq(x,df=1), add=T, xlim=c(0,6))
+lines(ecdf(B[2,]), col="red")
+legend(1, 0.3, legend=c("T1 n=102 sous H0", "Khi2(1)"), col=c("red", "black"), lty=1, cex=0.8)
+```
+
+-   T2 :
+
+```{r}
+par(mfrow=c(1,2))
+
+curve(pchisq(x,df=2), add=T, xlim=c(0,8))
+lines(ecdf(B[3,]), col="blue")
+legend(1.5, 0.3, legend=c("T2 n=101 sous H0", "Khi2(2)"), col=c("blue", "black"), lty=1, cex=0.8)
+
+curve(pchisq(x,df=2), add=T, xlim=c(0,8))
+lines(ecdf(B[4,]), col="red")
+legend(1.5, 0.3, legend=c("T2 n=102 sous H0", "Khi2(2)"), col=c("red", "black"), lty=1, cex=0.8)
+```
+
+-   T3 :
+
+```{r}
+par(mfrow=c(1,2))
+
+curve(pchisq(x,df=3), add=T, xlim=c(0,10))
+lines(ecdf(B[5,]), col="blue")
+legend(1.8, 0.3, legend=c("T3 n=101 sous H0", "Khi2(3)"), col=c("blue", "black"), lty=1, cex=0.8)
+
+curve(pchisq(x,df=3), add=T, xlim=c(0,10))
+lines(ecdf(B[6,]), col="red")
+legend(1.8, 0.3, legend=c("T3 n=102 sous H0", "Khi2(3)"), col=c("red", "black"), lty=1, cex=0.8)
+```
+
+-   T4 :
+
+```{r}
+par(mfrow=c(1,2))
+
+curve(pchisq(x,df=4), add=T, xlim=c(0,14))
+lines(ecdf(B[7,]), col="blue")
+legend(2.6, 0.3, legend=c("T4 n=101 sous H0", "Khi2(4)"), col=c("blue", "black"), lty=1, cex=0.8)
+
+curve(pchisq(x,df=4), add=T, xlim=c(0,14))
+lines(ecdf(B[8,]), col="red")
+legend(2.6, 0.3, legend=c("T4 n=102 sous H0", "Khi2(4)"), col=c("red", "black"), lty=1, cex=0.8)
+```
+
+-   ######\# AUTRE ########\#
+
+```{r}
+q = 1
+B = matrix(0, nrow=4, ncol=w)
+
+for (k in c(1:4)) {
+  
+  w = 10000
+  A = matrix(0, nrow = 1, ncol = w)
+
+  z = 0
+  for (n in c(50)) {
+
+    L = rep(0, w) # Liste des T(k)
+
+    proba = rep(0, 90) # vecteur des probas sous H0 pour sample
+    for (i in c(1:90)) {
+    proba[i] = log(1 + 1/(i+9) )/log(10)
+    }
+
+    for (l in c(1:w)) {
+       
+      data = rep(0, n)
+      for (i in c(1:n)) { # Génération des Xi sous H0 de taille n
+         
+        data[i] = sample(x= c(10:99), size=1, prob= proba )
+         
+      }
+       
+      L[l] = T(k, data)
+    }
+  
+    z = z+1
+    A[z,] = L
+    
+    print(q) # q = 4 au total.
+    q = q+1
+  }
+  
+  B[c( (1+ (k-1)*1):(k*1) ),] = A
+}
+```
+
+```{r}
+curve(pchisq(x,df=1), add=T, xlim=c(0,14))
+lines(ecdf(B[1,]), col="blue")
+
+curve(pchisq(x,df=2), add=T, xlim=c(0,14))
+lines(ecdf(B[2,]), col="blue")
+
+curve(pchisq(x,df=3), add=T, xlim=c(0,14))
+lines(ecdf(B[3,]), col="blue")
+
+curve(pchisq(x,df=4), add=T, xlim=c(0,14))
+lines(ecdf(B[4,]), col="blue")
+```
+
+**II/ Comparaison des puissances avec d'autres Tests :**
