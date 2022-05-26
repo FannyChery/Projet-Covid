@@ -780,6 +780,44 @@ benf2d(b[b$location=="China",])
 
 ## [Annexe :]{.ul}
 
+w = givenames(b)
+
+pval = 0
+
+test = 0
+
+for(i in 1:length(w)){
+
+bq \<- b[b\$location==w[i],]
+
+T_k \<- twodigitst(bq,2)
+
+pval[i] \<- T_k[2]
+
+test[i] \<- T_k[1]
+
+}
+
+pvaladj = p.adjust(pval,method="BY")
+
+tab \<- as.data.frame(matrix(c(w,test,pvaladj),ncol=3))
+
+colnames(tab) = c("Pays","T_2","P_value")
+
+benfo \<- tab[as.numeric(tab\$P_value)\<=0.05,] \# pays qui ne suivent pas une benford.
+
+rownames(benfo) \<- NULL
+
+benfn \<- tab[as.numeric(tab\$P_value)\>0.05,] \# pays qui ne suivent pas une benford.
+
+rownames(benfn) \<- NULL
+
+write.csv(benfn,"twdh0.csv")
+
+write.csv(benfo,"twdh1.csv")
+
+write.csv(tab,"twd.csv")
+
 ```{r results='hide',eval=FALSE}
 #---------------------------- Test lisse first digit -------------------------
 library(dplyr)
@@ -1124,7 +1162,6 @@ for(i in 1:length(x)){
 w = givenames(b)
 pval = 0
 test = 0
-pval2 = 0
 for(i in 1:length(w)){
   bq <- b[b$location==w[i],]
   T_k <- T2(bq)
@@ -1134,9 +1171,9 @@ for(i in 1:length(w)){
 pvaladj = p.adjust(pval,method="BY")
 tab <- as.data.frame(matrix(c(w,test,pvaladj),ncol=3))
 colnames(tab) = c("Pays","T_2","P_value")
-benfo <- tab[as.numeric(tab$P_value1)<=0.05,] # pays qui ne suivent pas une benford.
+benfo <- tab[as.numeric(tab$P_value)<=0.05,] # pays qui ne suivent pas une benford.
 rownames(benfo) <- NULL
-benfn <- tab[as.numeric(tab$P_value1)>0.05,] # pays qui ne suivent pas une benford.
+benfn <- tab[as.numeric(tab$P_value)>0.05,] # pays qui ne suivent pas une benford.
 rownames(benfn) <- NULL
 write.csv(benfn,"h0.csv")
 write.csv(benfo,"h1.csv")
@@ -1153,7 +1190,7 @@ for(i in 1:length(w)){
   test[i] <- T_k[1]
 }
 pvaladj = p.adjust(pval,method="BY")
-tab <- as.data.frame(matrix(c(w,test,pvaladj),ncol=3))
+tab <- as.data.frame(matrix(c(w,test,round(pvaladj,3)),ncol=3))
 colnames(tab) = c("Pays","T_2","P_value")
 benfo <- tab[as.numeric(tab$P_value)<=0.05,] # pays qui ne suivent pas une benford.
 rownames(benfo) <- NULL
