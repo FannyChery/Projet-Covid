@@ -441,10 +441,11 @@ ben <- ben[,-1]
 ben[34,] <- c(" "," "," ") 
 ben1 <- ben[1:17,]
 ben2 <- ben[18:34,]
-kable(cbind(ben1,ben2))%>%
-  footnote(number = c("Pays : nom des différents pays;","T_2 : valeur de la statistique du T_2;"," p_value : p_value ajustée associée."))
-
+kable(cbind(ben1,ben2) ) %>% kable_styling(latex_options = c("striped", "hold_position"))
+#create environnement
 ```
+
+\newpage
 
 $$
 \\
@@ -519,8 +520,8 @@ library(kableExtra)
 bentwd <-read.csv("twdh1.csv",sep=(","))
 bentwd<- bentwd[,-1]
 bentwd[42,]= c(" "," "," ")
-ben1 <- ben[1:21,]
-ben2 <- ben[22:42,]
+ben1 <- bentwd[1:21,]
+ben2 <- bentwd[22:42,]
 kable(cbind(ben1,ben2))%>%
   footnote(number = c("Pays : nom des différents pays;","T_2 : valeur de la statistique du T_2;"," p_value : p_value ajustée associée."))
 
@@ -572,11 +573,11 @@ testopt <- function(df){
 
 ```
 
-```{r}
+```{r eval=FALSE}
 # Rodriguez
 library(BenfordTests)
-
-Q = seq(from=-5, to=5, length=100)
+w=10000
+Q = seq(from=-5, to=5, length=30)
 Q[length(Q)+1] = 0
 Q[length(Q)+1] = -1
 
@@ -654,7 +655,7 @@ for (n in c(50,100,150)) {
     C[z, ] = c(M[1], e[1], gamma)
     z = z+1
   
-    cat("\n", v/3.06, "%")
+    cat("\n", v/0.96, "%")
     v = v+1
     
   } # Fin de la boucle sur gamma.
@@ -673,10 +674,11 @@ for (n in c(50,100,150)) {
 }
 ```
 
-```{r}
+```{r eval=FALSE}
 library(BenfordTests)
 
-Q = seq(from=-5, to=5, length=100)
+w = 10000
+Q = seq(from=-5, to=5, length=30)
 Q[length(Q)+1] = 0
 Q[length(Q)+1] = 0
 
@@ -750,7 +752,7 @@ for (n in c(50,100,150)) {
     C[z, ] = c(M[1], e[1], gamma)
     z = z+1
   
-    cat("\n", v/3.06, "%")
+    cat("\n", v/0.96, "%")
     v = v+1
     
   } # Fin de la boucle sur gamma.
@@ -1169,7 +1171,7 @@ for(i in 1:length(w)){
   test[i] <- as.numeric(T_k[2,2])
 }
 pvaladj = p.adjust(pval,method="BY")
-tab <- as.data.frame(matrix(c(w,test,pvaladj),ncol=3))
+tab <- as.data.frame(matrix(c(w,round(test,3),round(pvaladj,3)),ncol=3))
 colnames(tab) = c("Pays","T_2","P_value")
 benfo <- tab[as.numeric(tab$P_value)<=0.05,] # pays qui ne suivent pas une benford.
 rownames(benfo) <- NULL
@@ -1190,7 +1192,7 @@ for(i in 1:length(w)){
   test[i] <- T_k[1]
 }
 pvaladj = p.adjust(pval,method="BY")
-tab <- as.data.frame(matrix(c(w,test,round(pvaladj,3)),ncol=3))
+tab <- as.data.frame(matrix(c(w,round(test,3),round(pvaladj,3)),ncol=3))
 colnames(tab) = c("Pays","T_2","P_value")
 benfo <- tab[as.numeric(tab$P_value)<=0.05,] # pays qui ne suivent pas une benford.
 rownames(benfo) <- NULL
