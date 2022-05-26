@@ -1130,15 +1130,13 @@ for(i in 1:length(w)){
   T_k <- T2(bq)
   pval[i] <- as.numeric(T_k[3,2])
   test[i] <- as.numeric(T_k[2,2])
-  pval2[i] <- as.numeric(usq.benftest(vec(bq))$p.value)
 }
 pvaladj = p.adjust(pval,method="BY")
-pvaladj2 = p.adjust(pval2,method="BY")
-tab <- as.data.frame(matrix(c(w,test,pvaladj,pvaladj2),ncol=4))
-colnames(tab) = c("Pays","T_2","P_value1","P_value2")
-benfo <- tab[as.numeric(tab$P_value1)<=0.025|as.numeric(tab$P_value2)<=0.025,] # pays qui ne suivent pas une benford.
+tab <- as.data.frame(matrix(c(w,test,pvaladj),ncol=3))
+colnames(tab) = c("Pays","T_2","P_value")
+benfo <- tab[as.numeric(tab$P_value1)<=0.05,] # pays qui ne suivent pas une benford.
 rownames(benfo) <- NULL
-benfn <- tab[as.numeric(tab$P_value1)>=0.025 & as.numeric(tab$P_value2)>=0.025 ,] # pays qui ne suivent pas une benford.
+benfn <- tab[as.numeric(tab$P_value1)>0.05,] # pays qui ne suivent pas une benford.
 rownames(benfn) <- NULL
 write.csv(benfn,"h0.csv")
 write.csv(benfo,"h1.csv")
