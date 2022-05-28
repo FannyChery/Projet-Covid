@@ -1,6 +1,14 @@
 "","Pays","T_2","P_value"
 "1","Afghanistan","1.599","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "2","Africa","14.371","0.032"
+=======
+"2","Africa","14.371","0.0330138879072314"
+>>>>>>> Stashed changes
+=======
+"2","Africa","14.371","0.0330138879072314"
+>>>>>>> Stashed changes
 "3","Albania","4.921","1"
 "4","Algeria","2.609","1"
 "5","Andorra","4.773","1"
@@ -8,6 +16,8 @@
 "7","Anguilla","0.32","1"
 "8","Antigua and Barbuda","0.146","1"
 "9","Argentina","0.146","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "10","Armenia","10.703","0.134"
 "11","Aruba","0.308","1"
 "12","Asia","99.288","0"
@@ -19,28 +29,69 @@
 "18","Bangladesh","0.916","1"
 "19","Barbados","2.554","1"
 "20","Belarus","19.117","0.006"
+=======
+=======
+>>>>>>> Stashed changes
+"10","Armenia","10.703","0.1336145407801"
+"11","Aruba","0.308","1"
+"12","Asia","99.288","0"
+"13","Australia","16.357","0.0142143128489468"
+"14","Austria","14.602","0.0298500569827884"
+"15","Azerbaijan","8.743","0.268650512845095"
+"16","Bahamas","1.518","1"
+"17","Bahrain","10.094","0.167090697979457"
+"18","Bangladesh","0.916","1"
+"19","Barbados","2.554","1"
+"20","Belarus","19.117","0.00581494616547826"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "21","Belgium","4.993","1"
 "22","Belize","0.499","1"
 "23","Benin","1.063","1"
 "24","Bermuda","0.231","1"
 "25","Bhutan","4.029","1"
 "26","Bolivia","3.386","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "27","Bonaire Sint Eustatius and Saba","8.213","0.34"
+=======
+"27","Bonaire Sint Eustatius and Saba","8.213","0.340455719043324"
+>>>>>>> Stashed changes
+=======
+"27","Bonaire Sint Eustatius and Saba","8.213","0.340455719043324"
+>>>>>>> Stashed changes
 "28","Bosnia and Herzegovina","0.012","1"
 "29","Botswana","2.45","1"
 "30","Brazil","1.498","1"
 "31","British Virgin Islands","1.036","1"
 "32","Brunei","2.121","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "33","Bulgaria","6.433","0.666"
 "34","Burkina Faso","3.034","1"
 "35","Burundi","1.25","1"
 "36","Cambodia","12.878","0.054"
+=======
+=======
+>>>>>>> Stashed changes
+"33","Bulgaria","6.433","0.666226689244794"
+"34","Burkina Faso","3.034","1"
+"35","Burundi","1.25","1"
+"36","Cambodia","12.878","0.0538647644802196"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "37","Cameroon","1.766","1"
 "38","Canada","3.568","1"
 "39","Cape Verde","2.861","1"
 "40","Cayman Islands","4.113","1"
 "41","Central African Republic","0.237","1"
 "42","Chad","3.111","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "43","Chile","9.327","0.219"
 "44","China","7.659","0.414"
 "45","Colombia","10.34","0.155"
@@ -70,25 +121,86 @@
 "69","Falkland Islands","6.476","0.643"
 "70","Fiji","2.103","1"
 "71","Finland","11.423","0.098"
+=======
+=======
+>>>>>>> Stashed changes
+"43","Chile","9.327","0.218641975821982"
+"44","China","7.659","0.420614439302927"
+"45","Colombia","10.34","0.155147712585313"
+"46","Comoros","6.494","0.586340405019058"
+"47","Congo","1.979","1"
+"48","Cook Islands","17.467","0.0176453538814513"
+"49","Costa Rica","3.946","1"
+"50","Croatia","7.417","0.46091999752835"
+"51","Cuba","39.368","0"
+"52","Curacao","2.041","1"
+"53","Cyprus","16.007","0.0142143128489468"
+"54","Czechia","8.062","0.361449669587506"
+"55","Democratic Republic of Congo","0.757","1"
+"56","Denmark","8.889","0.253689346270187"
+"57","Djibouti","16.094","0.038766307769855"
+"58","Dominica","2.476","1"
+"59","Dominican Republic","0.162","1"
+"60","Ecuador","7.15","0.485758691272705"
+"61","Egypt","81.358","0"
+"62","El Salvador","1.761","1"
+"63","Equatorial Guinea","0.715","1"
+"64","Eritrea","11.361","0.0988540848131303"
+"65","Estonia","18.337","0.00581494616547826"
+"66","Eswatini","5.881","0.813812224797535"
+"67","Ethiopia","11.719","0.0883318012755983"
+"68","Faeroe Islands","8.91","0.222192153480906"
+"69","Falkland Islands","6.476","0.627376931497353"
+"70","Fiji","2.103","1"
+"71","Finland","11.423","0.0981779282822608"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "72","France","0.498","1"
 "73","French Polynesia","2.449","1"
 "74","Gabon","0.925","1"
 "75","Gambia","0.265","1"
 "76","Georgia","1.13","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "77","Germany","5.62","0.896"
 "78","Ghana","6.149","0.736"
 "79","Gibraltar","15.726","0.017"
 "80","Greece","16.425","0.013"
+=======
+=======
+>>>>>>> Stashed changes
+"77","Germany","5.62","0.906037023712871"
+"78","Ghana","6.149","0.729194249150973"
+"79","Gibraltar","15.726","0.0176453538814513"
+"80","Greece","16.425","0.0142143128489468"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "81","Greenland","2.612","1"
 "82","Grenada","2.216","1"
 "83","Guatemala","3.755","1"
 "84","Guinea","2.786","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "85","Guinea-Bissau","7.49","0.414"
 "86","Guyana","9.24","0.226"
+=======
+"85","Guinea-Bissau","7.49","0.446796162087792"
+"86","Guyana","9.24","0.222192153480906"
+>>>>>>> Stashed changes
+=======
+"85","Guinea-Bissau","7.49","0.446796162087792"
+"86","Guyana","9.24","0.222192153480906"
+>>>>>>> Stashed changes
 "87","Haiti","0.629","1"
 "88","Honduras","1.334","1"
 "89","Hong Kong","2.122","1"
 "90","Hungary","1.511","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "91","Iceland","12.349","0.064"
 "92","India","3.445","1"
 "93","Indonesia","1.135","1"
@@ -97,14 +209,41 @@
 "96","Ireland","21.69","0"
 "97","Isle of Man","2.302","1"
 "98","Israel","6.331","0.692"
+=======
+=======
+>>>>>>> Stashed changes
+"91","Iceland","12.349","0.0590440687571638"
+"92","India","3.445","1"
+"93","Indonesia","1.135","1"
+"94","Iran","24.989","0"
+"95","Iraq","9.375","0.217952797017185"
+"96","Ireland","21.69","0"
+"97","Isle of Man","2.302","1"
+"98","Israel","6.331","0.692127694875643"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "99","Italy","3.645","1"
 "100","Jamaica","2.573","1"
 "101","Japan","33.564","0"
 "102","Jordan","1.412","1"
 "103","Kazakhstan","4.912","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "104","Kenya","9.038","0.24"
 "105","Kiribati","6.385","0.652"
 "106","Kosovo","6.05","0.758"
+=======
+"104","Kenya","9.038","0.240417946634773"
+"105","Kiribati","6.385","0.666226689244794"
+"106","Kosovo","6.05","0.758212248796262"
+>>>>>>> Stashed changes
+=======
+"104","Kenya","9.038","0.240417946634773"
+"105","Kiribati","6.385","0.666226689244794"
+"106","Kosovo","6.05","0.758212248796262"
+>>>>>>> Stashed changes
 "107","Kuwait","24.557","0"
 "108","Kyrgyzstan","1.525","1"
 "109","Laos","2.36","1"
@@ -116,6 +255,8 @@
 "115","Liechtenstein","3.543","1"
 "116","Lithuania","1.085","1"
 "117","Low income","0.421","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "118","Luxembourg","7.209","0.494"
 "119","Madagascar","0.007","1"
 "120","Malawi","3.885","1"
@@ -134,11 +275,38 @@
 "133","Morocco","17.035","0.01"
 "134","Mozambique","2.451","1"
 "135","Myanmar","19.548","0.006"
+=======
+=======
+>>>>>>> Stashed changes
+"118","Luxembourg","7.209","0.493697119514126"
+"119","Madagascar","0.007","1"
+"120","Malawi","3.885","1"
+"121","Malaysia","21.142","0"
+"122","Maldives","12.581","0.0607661874292478"
+"123","Mali","0.207","1"
+"124","Malta","5.491","0.944026432657642"
+"125","Mauritania","1.435","1"
+"126","Mauritius","0.037","1"
+"127","Mexico","0.689","1"
+"128","Moldova","16.864","0.0106607346367101"
+"129","Monaco","5.745","0.925252596841912"
+"130","Mongolia","8.426","0.310384667455692"
+"131","Montenegro","6.489","0.665229841330713"
+"132","Montserrat","8.068","0.3677953449665"
+"133","Morocco","17.035","0.0106607346367101"
+"134","Mozambique","2.451","1"
+"135","Myanmar","19.548","0.00581494616547826"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "136","Namibia","1.402","1"
 "137","Nepal","1.682","1"
 "138","Netherlands","3.558","1"
 "139","New Caledonia","1.92","1"
 "140","New Zealand","5.151","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "141","Nicaragua","6.559","0.645"
 "142","Niger","4.132","1"
 "143","Nigeria","0.807","1"
@@ -151,12 +319,41 @@
 "150","Palau","9.095","0.218"
 "151","Palestine","2.191","1"
 "152","Panama","10.474","0.147"
+=======
+=======
+>>>>>>> Stashed changes
+"141","Nicaragua","6.559","0.636186542644756"
+"142","Niger","4.132","1"
+"143","Nigeria","0.807","1"
+"144","North America","2.79","1"
+"145","North Macedonia","9.672","0.200672651985132"
+"146","Norway","0.545","1"
+"147","Oceania","31.464","0"
+"148","Oman","1.621","1"
+"149","Pakistan","9.476","0.212410108988036"
+"150","Palau","9.095","0.21157457971317"
+"151","Palestine","2.191","1"
+"152","Panama","10.474","0.147396244107558"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "153","Papua New Guinea","3.836","1"
 "154","Paraguay","1.241","1"
 "155","Peru","0.566","1"
 "156","Philippines","3.937","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "157","Poland","18.842","0.006"
 "158","Portugal","6.203","0.726"
+=======
+"157","Poland","18.842","0.00581494616547826"
+"158","Portugal","6.203","0.728708443521959"
+>>>>>>> Stashed changes
+=======
+"157","Poland","18.842","0.00581494616547826"
+"158","Portugal","6.203","0.728708443521959"
+>>>>>>> Stashed changes
 "159","Qatar","22.296","0"
 "160","Romania","2.334","1"
 "161","Russia","24.994","0"
@@ -164,10 +361,23 @@
 "163","Saint Kitts and Nevis","2.961","1"
 "164","Saint Lucia","0.502","1"
 "165","Saint Pierre and Miquelon","2.991","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "166","Saint Vincent and the Grenadines","8.019","0.368"
 "167","Samoa","0.981","1"
 "168","San Marino","1.639","1"
 "169","Sao Tome and Principe","9.418","0.216"
+=======
+=======
+>>>>>>> Stashed changes
+"166","Saint Vincent and the Grenadines","8.019","0.385754582546804"
+"167","Samoa","0.981","1"
+"168","San Marino","1.639","1"
+"169","Sao Tome and Principe","9.418","0.200672651985132"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "170","Saudi Arabia","0.537","1"
 "171","Senegal","0.378","1"
 "172","Serbia","52.819","0"
@@ -175,6 +385,8 @@
 "174","Sierra Leone","2.598","1"
 "175","Singapore","0.873","1"
 "176","Slovakia","3.415","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "177","Slovenia","7.191","0.494"
 "178","Solomon Islands","0.628","1"
 "179","Somalia","1.297","1"
@@ -190,6 +402,28 @@
 "189","Switzerland","2.149","1"
 "190","Syria","14.114","0.035"
 "191","Taiwan","18.496","0.006"
+=======
+=======
+>>>>>>> Stashed changes
+"177","Slovenia","7.191","0.493697119514126"
+"178","Solomon Islands","0.628","1"
+"179","Somalia","1.297","1"
+"180","South Africa","13.119","0.0511715262562087"
+"181","South America","4.335","1"
+"182","South Korea","13.121","0.0511715262562087"
+"183","South Sudan","0.421","1"
+"184","Spain","2.165","1"
+"185","Sri Lanka","12.911","0.0538647644802196"
+"186","Sudan","2.165","1"
+"187","Suriname","1.576","1"
+"188","Sweden","5.79","0.825445453299556"
+"189","Switzerland","2.149","1"
+"190","Syria","14.114","0.0359799793988967"
+"191","Taiwan","18.496","0.00581494616547826"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "192","Tajikistan","2.58","1"
 "193","Tanzania","0.664","1"
 "194","Thailand","0.948","1"
@@ -198,17 +432,41 @@
 "197","Tonga","1.519","1"
 "198","Trinidad and Tobago","41.511","0"
 "199","Tunisia","0.248","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "200","Turkey","12.823","0.054"
 "201","Turks and Caicos Islands","3.674","1"
 "202","Uganda","4.38","1"
 "203","Ukraine","1.83","1"
 "204","United Arab Emirates","11.662","0.088"
+=======
+=======
+>>>>>>> Stashed changes
+"200","Turkey","12.823","0.0538647644802196"
+"201","Turks and Caicos Islands","3.674","1"
+"202","Uganda","4.38","1"
+"203","Ukraine","1.83","1"
+"204","United Arab Emirates","11.662","0.0883318012755983"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 "205","United Kingdom","28.201","0"
 "206","United States","3.034","1"
 "207","Upper middle income","3.76","1"
 "208","Uruguay","4.307","1"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 "209","Uzbekistan","10.269","0.157"
 "210","Vanuatu","6.146","0.726"
+=======
+"209","Uzbekistan","10.269","0.157245835891475"
+"210","Vanuatu","6.146","0.751779212899856"
+>>>>>>> Stashed changes
+=======
+"209","Uzbekistan","10.269","0.157245835891475"
+"210","Vanuatu","6.146","0.751779212899856"
+>>>>>>> Stashed changes
 "211","Venezuela","1.206","1"
 "212","Vietnam","56.115","0"
 "213","Yemen","0.271","1"

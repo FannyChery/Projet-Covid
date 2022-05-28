@@ -1,0 +1,383 @@
+---
+title: "Détection de données frauduleuses avec la loi de Benford - Newcomb"
+author: "Lenny Lucea - Mathieu Valdeyron - Fanny Chery"
+output:
+  pdf_document: default
+  html_document: default
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Détection de données frauduleuses avec la loi de Benford - Newcomb
+
+\renewcommand*\contentsname{Table des matières}
+\tableofcontents
+
+\newpage
+
+## I - Introduction
+
+Aujourd'hui connu sous le nom de loi de Benford, la loi de probabilité
+Benford - Newcomb a été découverte deux fois. Une première fois en
+$1881$ par Simon Newcomb $(1835-1909)$, mathématicien, statisticien et
+astronome américain d'origine canadienne du $19^{\text{ème}}$ siècle,
+puis par Frank Benford $(1883-1948)$ en $1938$ qui est un ingénieur
+physicien américain. Simon Newcomb remarqua en $1881$ une détérioration
+des tables de logarithmes bien plus importante pour les pages des
+nombres commençant par 1 pour les pages des nombres commençant par 9.
+Suite à quelques travaux dessus, il découvrit cette loi de probabilité
+et il publia un article sur ce sujet dans le "Jounal of Mathematics" qui
+passa inaperçu. Mais $57$ ans plus tard, Franck Benford remarqua la même
+usure sur les pages des tables de logarithmes , et redécouvrit cette loi
+de probabilité qui aujourd'hui porte son nom.
+
+La loi de Benford - Newcomb est une loi qui porte sur l'apparition des
+chiffres dans la nature, plus précisément l'apparition du premier
+chiffres significatif, c'est à dire qu'elle donne la probabilité d'un
+chiffres de 1 à 9 soit le premier chiffre significatif d'un nombre. Le
+premier chiffre significatif d'un nombre et le premier chiffre partant
+de gauche qui est différent de $0$, par exemple le premier chiffre
+significatif de $3759$ est $3$, celui de $0,0821$ et $8$. Maintenant que
+nous avons compris ce qu'est le premier chiffre significatif d'un
+nombre, passons à la loi de Benford - Newcomb qui nous donne la
+répartition de l'apparition de ces chiffres.
+
+Contre-intuitivement cette loi n'est pas une loi uniforme sur $[1,9]$
+sur l'échelle additive, nous pourrions logiquement penser que la
+probabilité que $d \in \{1,2, \cdots, 9\}$ soit le premier chiffre
+significatif d'un nombre $X$ est égale à $\frac{1}{9}\approx0.111$. Et
+bien non, c'est ce qu'on découvert Newcomb et Benford avec cette loi de
+probabilité, cette dernière est bien une loi uniforme sur $[1,9]$ mais
+sur l'échelle logarithmique, $\textit{ie}$ multiplicative, ce qui donne
+que la probabilité que le premier chiffre significatif soit $d$ est égale à $log_{10}\left(1+\frac{1}{d}\right)$.
+
+La distribution de cette loi de probabilité qui modélise l'apparition
+naturelle ces chiffes dans la nature, est aujourd'hui utilisée pour les données du génome, électorales, macroéconomiques; la détection de fraudes fiscales ou de données frauduleuses en économie, en sciences, etc .. ou encore pour la prédiction des numéros au Loto.
+
+## II - Loi de Benford - Newcomb
+
+Posons quelles notations : soit $r$ une nombre réel, on note $\{r\}$ sa partie fractionnaire, et $[r]$ sa partie entière. Nous avons donc $\{r\}=r-[r]$.
+
+### Histoire mathématique de la loi de Benford
+
+Partons de la loi de l'étalement uniforme de la partie fractionnaire d'un nombre réel, qui indique que les nombres d'une série dont on enlève ce qui précède la virgule ($8.235$ devient $0.235$; $143.488$ devient $0.488$) se répartissent à peu près uniformément dans l'intervalle $[0,1]$.
+
+En voici l'énoncé plus explicite : si l’on choisit au 
+hasard des nombres réels sur une plage large de plusieurs unités (par exemple entre $1$ et $20$), et que la loi donnant la probabilité de tomber sur une des valeurs possibles est assez régulière, alors la partie fractionnaire des nombres qu’on trouvera sera, à peu de chose près, uniformément répartie entre $0$ et $1$.
+
+Plus généralement, si l'on se donne deux nombres $\textit{a}$ et $\textit{b}$ compris entre $0$ et $1$ tel que $\textit{a}<\textit{b}$, alors la proportion de réel dont la partie fractionnaire est compris entre $\textit{a}$ et $\textit{b}$ vaut $\textit{a}-\textit{b}$, ie la longueur de l'intervalle $[\textit{a},\textit{b}]$.
+
+L’explication de cette loi est que, sauf cas particuliers, les parties fractionnaires des nombres ne seront pas concentrées sur la même zone de l’intervalle $[0,1]$. Et si cas échéant, les irrégularités possibles de densité sur les $20$  intervalles possibles entre deux entiers consécutifs se compenseront plus ou moins, ce qui uniformisera la série des parties fractionnaires, que nous pouvons voir comme une  sorte de moyenne de ce qui se passe sur chacun des 20 intervalles entre deux entiers.
+
+**Evidence de la loi de Benford **
+
+La loi de l'étalement uniforme permet de déduire la loi de Benford. Grâce à cette loi d’étalement à la fois intuitive et formalisable, nous allons obtenir une justification naturelle et simple de la loi de Benford. L’idée consiste simplement à appliquer un logarithme décimal à la loi précédente et à creuser un peu.
+
+Reprenons l'énoncé précédent et appliquons le non pas aux nombres $r$ de la série considérée, mais à leur logarithme décimal, $log_{10}(r)$. Si l'on choisit des nombres réels $r$ au hasard sur une large plage couvrant plusieurs ordres de grandeur (par exemple entre $1$ et $10^{20}$), et que la loi qui indique la probabilité de tomber sur une des valeurs possibles est assez **régulière** et **étalée**, alors les parties fractionnaires des logarithmes décimaux des nombres, c'est à dire les $\{log_{10}(r)\}$, seront, à peu de chose près, uniformément réparties entre $0$ et $1$. Pour aller plus loin, ou pour plus d'informations sur les notions de **régularité** et d'**étalement** : https://journals.openedition.org/msh/10363?file=1.
+
+Ce que nous venons d'énoncer est la loi de Benford (ou plus exactement une loi dénommée «loi de Benford continue»). En effet, affirmer que $c$ est le premier chiffre significatif du nombre $r$ équivaut à énoncer que $log_{10}(c)\le \{log_{10}(r) \} \le log_{10}(c+1)$.
+
+En effet, soit $r$ un réel, il se décompose de manière unique comme $r=q*10^{\alpha}$ avec $q \in \{1,2, \cdots ,9\}$ et $\alpha \in \mathbb{Z}$. Notons $c=[q]$ la partie entière de $q$.
+Nous avons donc $log_{10}(r)=log_{10}(q*10^{\alpha})=log_{10}(q)+log_{10}(10^{\alpha})=log_{10}(q)+ \alpha$ avec $\alpha \in \mathbb{Z}$.
+
+Par croissance de la fonction $log_{10}$, nous obtenons $1\le q < 10 \Rightarrow 0 \le log_{10}(q)<1$ et donc $\{log_{10}(r)\}=log_{10}(q)$.
+De plus, par définition $[q] \le q < [q]+1 \Leftrightarrow c \le q <c+1$ et par croissance du $log_{10}$ nous obtenons $log_{10}(c) \le log_{10}(q) < log_{10}(c+1)$.
+
+Les parties fractionnaires des images par $log_{10}$ des nombres $r$ dont le premier chiffres significatifs est $c$ occupent donc dans l'intervalle $[0,1]$ un intervalle de longueur $log_{10}(c+1)-log_{10}(c)$. Cela signifie, si l'on admet l'uniforme répartition, que leur proportion est $log_{10}(c+1)-log_{10}(c)=log_{10}(\frac{c+1}{c})=log_{10}(1+\frac{1}{c})$. C'est exactement ce qu'exprime la loi de Benford formulée au sujet du premier chiffre significatif en base décimale.
+
+### Loi de Benford continue
+
+Nous obtenons la mantisse d'un réel $x$ strictement positif en déplaçant la
+virgule après le premier chiffre significatif. Donc la mantisse d'un nombre appartient à l'intervalle $[0,10[$ et est obtenue à partie de la formule $mantisse(x)=10^{log 10}$ (rappel : $\{.\}$ désigne la partie fractionnaire du nombre $x$).
+
+Par exemple : la mantisse du nombre $0.0581$ est $5.81$, et celle du nombre $326.41$ est $3.2641$.
+
+La loi de Benford continue est donnée par la définition suivante : Une série de nombres réels en écriture décimale suit la loi de Benford continue si pour tout $[a,b[ \subset [1,10[$, la fréquence des nombre de la série dont la mantisse appartient à $[a,b[$ vaut $log(b)-log(a)$.
+
+Sa fonction de répartition est définie par :
+$$
+F(d)=log(1+\frac{1}{d})
+$$
+De plus, la loi de Benford est invariante par changement d’échelle ou d'unité.
+
+### Loi de Benford discrète (ou simple)
+
+$\newline$
+
+Tout ceci se généralise bien sûr en base quelconque.
+Nous choisissons, communément la base $c=10$ comme base de référence pour le logarithme. Nous avons choisit la base $10$ pour le logarithme dans la suite.
+
+#### Loi de Benford sur le premier chiffre significatif
+
+$\newline$
+
+Mathématiquement la loi de Benford - Newcomb, que nous allons noter LNB, est donnée par la formule suivante :
+
+Nous notons $PCS$ le premier chiffre significatif d'un nombre.
+
+Soit $X$ une variable aléatoire continue et positive, alors $D=PCS(X)$ a
+pour probabilité :
+
+$$
+\mathbb{P}(D=d)=log_{10}\left(1+\frac{1}{d}\right)~~\forall d\in \{1,2, \cdots , 9\} 
+$$
+
+Cette formule nous donne le tableau de probabilité suivant :
+
+```{=tex}
+\begin{center}
+\begin{tabular}{*{10}{|c|}}
+   \hline
+   d= & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ \\
+  \hline
+    $\mathbb{P}(D=d)$ & $0.301$ & $0.176$ & $0.125$ & $0.097$ & $0.079$ & $0.067$ & $0.058$ & $0.051$ & $0.046$\\
+  \hline
+\end{tabular}\\
+
+\textbf{Tableau de probabilité d'appartion du premier chiffre significatif}\\
+\end{center}
+```
+
+Voici une représentation graphique de la loi de Benford discrète :
+
+\begin{center}
+\includegraphics[width = 16cm]{proba_benford.png}
+\end{center}
+
+#### Loi de Benford sur le premier deuxième significatif
+
+$\newline$
+
+Sur le même principe nous construisons la loi de Benford sur le second
+chiffre significatif, tout en notant que le support de cette loi n'est
+plus $d\in\{1,2,\cdots,9\}$, mais $d \in \{0,1, \cdots,9\}$.
+
+Ce qui nous donne le tableau de probabilité suivante :
+
+```{=tex}
+\begin{center}
+\begin{tabular}{*{11}{|c|}}
+   \hline
+  d= & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ \\
+  \hline
+    $\mathbb{P}(D=d)$ & $0.12$ & $0.114$ & $0.109$ & $0.104$ & $0.10$ & $0.097$ & $°.093$ & $0.09$ & $0.088$ & $0.085$ \\
+  \hline
+\end{tabular}\\
+
+\textbf{Tableau de probabilité d'appartion du second chiffre significatif}\\
+\end{center}
+```
+
+#### Loi de Benford sur une bloc de $k$ chiffres
+
+$\newline$
+
+En utilisant le loi de Benford continue ou la loi de Benford en base
+$10^k$, nous obtenons que la probabilité benfordienne que l'écriture
+décimale d'un nombre réel commence par $d \in [\![10^{k-1},10^{k}[\![$ vaut :
+$$log(d+1)-log(d)=log\left(1+\frac{1}{d}\right)$$ **Exemple**
+
+La probabilité qu'un nombre commence par $314$, comme
+$3,14159 \cdots, 314285,7 \cdots~\text{ou}~ 0,00314465\cdots$ vaut
+$log(314+1)-log(314)=log\left(1+\frac{1}{314}\right)\approx 0.00138 = 0.138\%$ avec ici, $n=314$ et $k=3$.
+
+## III - Les différents test
+
+Nous allons dans cette partie définir les différents tests que nous
+allons utiliser dans la suite de cette analyse. 
+
+Tout d'abord définissons ce qu'est un test lisse, un test d'ajustement.
+
+
+**Test d'ajustement**
+
+$\newline$
+
+On appelle test d'ajustement tout test servant à tester des hypothèses de type 19. C'est un test qui vise à vérifier si les données observées sont compatibles avec un modèle théorique.
+
+On appelle les hypothèses de type 19 un problème de la forme suivante (https://www.universalis.fr/encyclopedie/tests-d-hypotheses-statistiques/8-tests-d-ajustement/#:~:text=On%20appelle%20test%20d'ajustement,et%20d'une%20hypoth%C3%A8se%20simple.):
+
+Soit $(x_1,x_2, \cdots, x_N$ un échantillon de variables aléatoires indépendantes identiquement distribuées de fonction de répartition $F$ inconnue. Nous testons l'hypothèse (19) $\mathcal{H}_0$ : $F = F_0$, contre $\mathcal{H}_1$ : $F \ne F_0$, où $F_0$ est la fonction de répartition de la loi testée choisie.
+
+Nous pouvons modifier l'énoncé dans le cas de données discrètes, avec une fonction de répartition d'une loi discrète et les fréquences d'apparition des valeurs du support de cette loi discrète. 
+
+
+
+**Test lisse**
+
+
+
+
+
+#### Test du $\chi^2$
+
+$\newline$
+
+Le test du $\chi^2$ à été proposé par le statisticien Karl Pearson en 1900. Ce test du $\chi^2$ nous permet de vérifier si un échantillon d'une variable aléatoire $X$ nous donne des observations comparables à une loi de probabilité
+$\mathbb{P}$, ici la loi de Benford. C'est à dire, il nous permet de vérifier si les fréquences observées dans un échantillon correspondent aux fréquences attendues données par la loi de probabilité choisie.
+
+Le test du $\chi^2$ se défini comme ceci :
+
+Soit un échantillon de données $(x_1, x_2, \cdots, x_N)$ d'une variable
+aléatoire $X$ qui prend un nombre fini $J$ de valeurs
+$(v_1,v_2, \cdots, v_J)$. Nous voulons tester la loi $\mathbb{P}$ avec
+$\forall j \in \{1,\cdots,J\}$, $\mathbb{P}(Y=v_j)=p_j$.
+
+Nous testons donc : 
+
+- $\mathcal{H}_0$ : l'échantillon $(x_1, x_2, \cdots, x_N)$
+suit la loi de $\mathbb{P}$ 
+
+- $\mathcal{H}_1$ : l'échantillon $(x_1, x_2, \cdots, x_N)$ ne suivent pas la loi de $\mathbb{P}$ 
+
+Plus précisément nous testons $\mathcal{H}_0$ : La probabilité que $X$ prenne la valeur $v_j$ vaut $p_j$, pour $j\in \{1,\cdots,J\}$, avec $\sum\limits_{j=1}^Jp_j=1$.
+
+On appelle $\hat p_j$ la probabilité empirique que $X$ prenne la valeur $v_j$. C'est à dire le nombre d'observations $x_i$ qui prennent la valeur $v_j$ dans l'échantillon divisé par le nombre total $N$ d'observations :
+
+$$
+\hat p_j = \frac{1}{N}\sum\limits_{i=1}^N \mathbf{1}_{\{x_i=v_j\}}
+$$
+
+Nous pouvons alors définir la statistique de test du $\chi^2$ : $$
+T = \sum\limits_{j=1}^J\frac{(N\hat p_j-Np_j)^2}{Np_j}=\sum\limits_{j=1}^J\frac{(nj-Np_j)^2}{Np_j}
+$$ avec $n_j=N \hat p_j= \sum\limits_{i=1}^N\mathbf{1}_{\{x_i=v_j\}}$
+
+Sous $\mathcal{H}_0$, c'est à dire l'hypothèse nulle, cette statistique suit une loi du $\chi^2$ à $(J-1)$ degrés de liberté.
+
+Et nous pouvons donc construire un test de niveau $\alpha$ en rejetant l'hypothèse nulle lorsque la statistique de test est plus grande que le quantile d'ordre $1– \alpha$ de la loi du $\chi^2$ à $(J – 1)$ degrés de liberté :
+
+$T \geq F^{-1}_{\chi^2(J-1)}(1- \alpha)$ avec
+$F^{-1}_{\chi^2(J-1)}(1-\alpha)$ le quantile d'ordre $(1-\alpha)$ de la loi du $\chi^2$ à $(J-1)$ degrés de liberté.
+
+
+
+**Pour la loi de probabilité de Benford avec un risque d'erreur à $\alpha=0.05$ **
+
+Le test du $\chi^2$ pour la loi de probabilité de Benford s'écrit sous la forme : 
+
+Soit $(x_1, x_2, \cdots ,x_N)$ un échantillon de données d'une variable aléatoire $X$, dans notre cas le premier chiffres significatif des données du Covid, qui prend un nombre fini $J=9$ de valeurs $(v_1=1, v_2=2, \cdots, v_9=9)$.
+
+Nous voulons donc tester : 
+
+- $\mathcal{H}_0$ : l'échantillon $(x_1, x_2, \cdots ,x_N)$ suit la loi de Benford
+
+- $\mathcal{H}_1$ : l'échantillon $(x_1, x_2, \cdots ,x_N)$ ne suit pas la loi de Benford
+
+
+Nous avons la probabilité théorique qu'une variable aléatoire suivant la loi de Benford prenne la valeur $v_j$ vaut $p_j$, nous avons vu le tableau des probabilité plus haut. Et la probabilité que $X$ prennent la valeur $v_j$ qui vaut $\hat p_j$.
+
+Nous obtenons la statistique de test du $\chi^2$ qui vaut :
+
+$$
+T = \sum\limits_{j=1}^9\frac{(N\hat p_j-Np_j)^2}{Np_j}=N\sum\limits_{j=1}^9\frac{(\hat p_j-p_j)^2}{p_j}
+$$
+Sous $\mathcal{H}_0$ , c'est à dire l’hypothèse nulle, cette statistique suit une loi du $\chi^2$ à $J-1=8$ degrés de liberté.
+
+Nous obtenons donc un test à $\alpha=0.05$, ie à $5\%$, en rejetant l'hypothèse nulle lorsque $T\ge F^{-1}_{\chi^2(8)}(0.95)= 2.73$.
+
+
+#### Test de Kolmogorov-Smirnov
+
+$\newline$
+
+Ce test porte le nom du mathématicien russe Andréi Nikoláyevich Kolmogorov qui établit l'axiomatique des probabilités en 1933.
+
+Sa principale différence avec le test du $\chi^2$ est qu'il est fondé sur les fonctions de répartition plutôt que sur les densités.
+
+Le test de Kolmogorov-Smirnov est un test d'ajustement, qui compare la distribution observée d'un échantillon à une distribution théorique choisie. Ce test mesure l'**écart maximum** qui existe entre la fonction de répartition empirique et la fonction de répartition théorique de la loi probabilité choisie. Il s'adapte aux échelles ordinales ce qui est un avantage, mais son principal défaut est de ne pas être très efficace dans les queues de distribution. 
+
+Le test de Kolmogorov-Smirnov se défini comme ceci :
+
+Soit $(X_1,X_2, \cdots,X_N)$ un échantillon d'une variable aléatoire $X$ de loi inconnue $\mathbb{P}$. Nous voulons tester si la loi de $\mathbb{P}$ a pour fonction de répartition $F$, avec $F$ la fonction de répartition d'une loi de probabilité choisie. 
+
+
+De plus, notons $\hat F:\mathbb{R} \longrightarrow [0,1]$, la fonction de répartition empirique de l'échantillon $(X_1,X_2, \cdots,X_N)$. Commençons par trier par ordre croissant les valeurs des $X_i$ de l'échantillon, traditionnellement appelé les $\textit{statistiques d'ordre}$ de l'échantillon.
+
+La fonction de répartition empirique est définie par (https://mistis.inrialpes.fr/software/SMEL/cours/ts/node7.html):
+
+$$
+\hat F(x)=\left\{
+    \begin{array}{lll}
+        0 &~~si~~x<X_{(1)} \\
+        \frac{i}{N} &~~si~~X_{(i)}\le x\le X_{(i+1)} \\
+        1 &~~si~~x>X_{(N)}
+    \end{array}
+\right.
+$$
+
+Nous estimons donc $F(x) =\mathbb{P}(X \le x)$ au moyen de la proportion $\hat F(x)$ d’éléments de l’échantillon qui sont inférieurs ou égaux à x.
+
+Nous testons donc :
+
+- $\mathcal{H}_0$ : la loi $\mathbb{P}$ a la même fonction de répartition $F$ qu'une loi continue donnée 
+
+- $\mathcal{H}_1$ : la loi $\mathbb{P}$ n'a pas pour fonction de répartition $F$
+
+Nous mesurons l'adéquation de la fonction de répartition empirique à la fonction $F$ par la distance de Kolmogorov-Smirnov, qui est la distance de la norme uniforme entre fonctions de répartitions. Pour la calculer, il suffit d'évaluer la différence entre $\hat F$ et $F$ aux points $X_{(i)}$.
+
+$$
+D_{KS}(F,\hat F)=\underset{i =1,\cdots,N}{\text{max}}\left\{\lvert F(X_{(i)})-\hat F(X_{(i)})\rvert,\lvert F(X_{(i)})- \hat F(X_{(i-1)})\rvert\right\}\\
+\underset{i =1,\cdots,N}{\text{max}}\left\{|F(X_{(i)})-\frac{i}{N}|,|F(X_{(i)})- \frac{i-1}{N}|\right\}\\
+$$
+
+
+Voici une représentation du calcul de la distance de Kolmogorov-Smirnov. Graphiquement, c’est le plus grand écart vertical en valeur absolue entre la valeur empirique et la valeur théorique.
+
+\begin{center}
+\includegraphics[width = 16cm]{distance KS.png}
+\end{center}
+https://bdesgraupes.pagesperso-orange.fr/UPX/L2/MethStats_seance_11_doc.pdf
+
+Sous l'hypothèse $\mathcal{H}_0$, la fonction de répartition $\hat F$ est très proche de $F$, et la loi de la variable de décision $D_{KS}(F,\hat F)$ ne dépend pas de $F$. Nous comparons la valeur obtenue à une valeur critique $D_{\alpha}(N)$ fournie par les tables de Kolmogorov-Smirnov, le test est unilatéral. Si $D_{KS} > D_{\alpha}(N)$, nous rejetons $\mathcal{H}_0$ avec un risque $\alpha$.
+
+$\newline$
+
+**Remarque**
+
+Le test de Kolmogorov-Smirnov est préférer au test du $\chi^2$ lorsque le caractère observée prennent des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
+
+
+#### Test du $T^2$
+
+
+
+
+## IV - Tests sur le premier chiffre significatif sur les données Covid des différents pays du monde
+
+## V - Tests sur le second chiffre significatif sur les données Covid des différents pays du monde
+
+## VI - Conclusion
+
+## ANNEXE 
+
+- pour histoire mathématique de la loi de benford : 
+
+https://www.cristal.univ-lille.fr/profil/jdelahay/pls:2018:299.pdf
+
+https://journals.openedition.org/msh/10363?file=1
+
+- pour la loi de benford : 
+
+https://journals.openedition.org/msh/10363?file=1
+
+- pour le test du chi-deux :
+
+https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2
+
+- Pour le test de kolmogorov :
+
+https://mistis.inrialpes.fr/software/SMEL/cours/ts/node7.html
+
+http://www.jybaudot.fr/Inferentielle/kolmogorov.html
+
+https://fr.wikipedia.org/wiki/Test_de_Kolmogorov-Smirnov
+
+https://bdesgraupes.pagesperso-orange.fr/UPX/L2/MethStats_seance_11_doc.pdf
+
+- pour la def d'un test d'ajustement :
+https://www.universalis.fr/encyclopedie/tests-d-hypotheses-statistiques/8-tests-d-ajustement/#:~:text=On%20appelle%20test%20d'ajustement,et%20d'une%20hypoth%C3%A8se%20simple.

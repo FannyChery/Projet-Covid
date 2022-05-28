@@ -1,10 +1,18 @@
 ---
 title: "Projet fraudes covid"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+author: "LUCEA Lenny - VALDEYRON Mathieu - CHERY Fanny"
+=======
 author: "LUCEA Lenny, VALDEYRON Mathieu, CHERY Fanny"
+>>>>>>> Stashed changes
+=======
+author: "LUCEA Lenny, VALDEYRON Mathieu, CHERY Fanny"
+>>>>>>> Stashed changes
 date: "`r Sys.Date()`"
 output: 
   pdf_document:
-    
+    extra_dependencies: ["bbm", "threeparttable", "dsfont","zref-user"]
     df_print: kable
 ---
 
@@ -14,6 +22,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r warning=FALSE, include=FALSE, results='hide'}
 #---------------------------- Test lisse first digit -------------------------
+<<<<<<< Updated upstream
 library(dplyr)
 library(tidyr)
 library(data.table)
@@ -357,6 +366,1291 @@ legend(x="topright", legend=c("Benford distribution","data distribution"),
 }
 ```
 
+------------------------------------------------------------------------
+
+\renewcommand{\contentsname}{Sommaire}
+
+\tableofcontents
+
+------------------------------------------------------------------------
+
+\newpage
+
+## **I - Introduction**
+
+$$
+\\
+$$
+
+Aujourd'hui connu sous le nom de loi de Benford, la loi de probabilité Benford - Newcomb a été découverte deux fois. Une première fois en $1881$ par Simon Newcomb $(1835-1909)$, mathématicien, statisticien et astronome américain d'origine canadienne du $19^{\text{ème}}$ siècle, puis par Frank Benford $(1883-1948)$ en $1938$ qui est un ingénieur physicien américain. Simon Newcomb remarqua en $1881$ une détérioration des tables de logarithmes bien plus importante pour les pages des nombres commençant par 1 pour les pages des nombres commençant par 9. Suite à quelques travaux dessus, il découvrit cette loi de probabilité et il publia un article sur ce sujet dans le "Journal of Mathematics" qui passa inaperçu. Mais $57$ ans plus tard, Franck Benford remarqua la même usure sur les pages des tables de logarithmes , et redécouvrit cette loi de probabilité qui aujourd'hui porte son nom.
+
+La loi de Benford - Newcomb est une loi qui porte sur l'apparition des chiffres dans la nature, plus précisément l'apparition du premier chiffres significatif, c'est-à-dire qu'elle donne la probabilité d'un chiffres de 1 à 9 soit le premier chiffre significatif d'un nombre. Le premier chiffre significatif d'un nombre est le premier chiffre partant de gauche qui est différent de $0$, par exemple le premier chiffre significatif de $3759$ est $3$, celui de $0,0821$ et $8$. Maintenant que nous avons compris ce qu'est le premier chiffre significatif d'un nombre, passons à la loi de Benford - Newcomb qui nous donne la répartition de l'apparition de ces chiffres.
+
+Contre-intuitivement cette loi n'est pas une loi uniforme sur $[1,9]$ sur l'échelle additive, nous pourrions logiquement penser que la probabilité que $d \in \{1,2, \cdots, 9\}$ soit le premier chiffre significatif d'un nombre $X$ est égale à $\frac{1}{9}\approx0.111$. Et bien non, c'est ce qu'on découvert Newcomb et Benford avec cette loi de probabilité, cette dernière est bien une loi uniforme sur $[1,9]$ mais sur l'échelle logarithmique, $\textit{ie}$ multiplicative, ce qui donne que la probabilité que le premier chiffre significatif soit $d$ est égale à $log_{10}\left(1+\frac{1}{d}\right)$.
+
+La distribution de cette loi de probabilité qui modélise l'apparition naturelle ces chiffes dans la nature, est aujourd'hui utilisée pour les données du génome, électorales, macroéconomiques; la détection de fraudes fiscales ou de données frauduleuses en économie, en sciences, etc .. ou encore pour la prédiction des numéros au Loto.
+
+$$
+\\
+$$
+
+## **II - Loi de Benford - Newcomb**
+
+$$
+\\
+$$
+
+Posons quelles notations : soit $r$ une nombre réel, on note $\{r\}$ sa partie fractionnaire, et $[r]$ sa partie entière. Nous avons donc $\{r\}=r-[r]$.
+
+\medskip
+
+### II.1 - Histoire mathématique de la loi de Benford
+
+\medskip
+
+Partons de la loi de l'étalement uniforme de la partie fractionnaire d'un nombre réel, qui indique que les nombres d'une série dont on enlève ce qui précède la virgule ($8.235$ devient $0.235$; $143.488$ devient $0.488$) se répartissent à peu près uniformément dans l'intervalle $[0,1]$.
+
+En voici l'énoncé plus explicite : si l'on choisit au hasard des nombres réels sur une plage large de plusieurs unités (par exemple entre $1$ et $20$), et que la loi donnant la probabilité de tomber sur une des valeurs possibles est assez régulière, alors la partie fractionnaire des nombres qu'on trouvera sera, à peu de chose près, uniformément répartie entre $0$ et $1$.
+
+Plus généralement, si l'on se donne deux nombres $\textit{a}$ et $\textit{b}$ compris entre $0$ et $1$ tel que $\textit{a}<\textit{b}$, alors la proportion de réel dont la partie fractionnaire est compris entre $\textit{a}$ et $\textit{b}$ vaut $\textit{a}-\textit{b}$, ie la longueur de l'intervalle $[\textit{a},\textit{b}]$.
+
+L'explication de cette loi est que, sauf cas particuliers, les parties fractionnaires des nombres ne seront pas concentrées sur la même zone de l'intervalle $[0,1]$. Et si cas échéant, les irrégularités possibles de densité sur les $20$ intervalles possibles entre deux entiers consécutifs se compenseront plus ou moins, ce qui uniformisera la série des parties fractionnaires, que nous pouvons voir comme une sorte de moyenne de ce qui se passe sur chacun des 20 intervalles entre deux entiers.
+
+\medskip
+
+**Évidence de la loi de Benford**
+
+\medskip
+
+La loi de l'étalement uniforme permet de déduire la loi de Benford. Grâce à cette loi d'étalement à la fois intuitive et formalisable, nous allons obtenir une justification naturelle et simple de la loi de Benford. L'idée consiste simplement à appliquer un logarithme décimal à la loi précédente et à creuser un peu.
+
+Reprenons l'énoncé précédent et appliquons le non pas aux nombres $r$ de la série considérée, mais à leur logarithme décimal, $log_{10}(r)$. Si l'on choisit des nombres réels $r$ au hasard sur une large plage couvrant plusieurs ordres de grandeur (par exemple entre $1$ et $10^{20}$), et que la loi qui indique la probabilité de tomber sur une des valeurs possibles est assez **régulière** et **étalée**, alors les parties fractionnaires des logarithmes décimaux des nombres, c'est à dire les $\{log_{10}(r)\}$, seront, à peu de chose près, uniformément réparties entre $0$ et $1$. Pour aller plus loin, ou pour plus d'informations sur les notions de [[**régularité et d'étalement**]{.ul}](https://journals.openedition.org/msh/10363?file=1) :
+
+Ce que nous venons d'énoncer est la loi de Benford (ou plus exactement une loi dénommée «loi de Benford continue»). En effet, affirmer que $c$ est le premier chiffre significatif du nombre $r$ équivaut à énoncer que $log_{10}(c)\le \{log_{10}(r) \} \le log_{10}(c+1)$.
+
+En effet, soit $r$ un réel, il se décompose de manière unique comme $r=q*10^{\alpha}$ avec $q \in \{1,2, \cdots ,9\}$ et $\alpha \in \mathbb{Z}$. Notons $c=[q]$ la partie entière de $q$. Nous avons donc $log_{10}(r)=log_{10}(q*10^{\alpha})=log_{10}(q)+log_{10}(10^{\alpha})=log_{10}(q)+ \alpha$ avec $\alpha \in \mathbb{Z}$.
+
+Par croissance de la fonction $log_{10}$, nous obtenons $1\le q < 10 \Rightarrow 0 \le log_{10}(q)<1$ et donc $\{log_{10}(r)\}=log_{10}(q)$. De plus, par définition $[q] \le q < [q]+1 \Leftrightarrow c \le q <c+1$ et par croissance du $log_{10}$ nous obtenons $log_{10}(c) \le log_{10}(q) < log_{10}(c+1)$.
+
+Les parties fractionnaires des images par $log_{10}$ des nombres $r$ dont le premier chiffres significatifs est $c$ occupent donc dans l'intervalle $[0,1]$ un intervalle de longueur $log_{10}(c+1)-log_{10}(c)$. Cela signifie, si l'on admet l'uniforme répartition, que leur proportion est $log_{10}(c+1)-log_{10}(c)=log_{10}(\frac{c+1}{c})=log_{10}(1+\frac{1}{c})$. C'est exactement ce qu'exprime la loi de Benford formulée au sujet du premier chiffre significatif en base décimale.
+
+\medskip
+
+### II.2 - Loi de Benford continue
+
+\medskip
+
+Nous obtenons la mantisse d'un réel $x$ strictement positif en déplaçant la virgule après le premier chiffre significatif. Donc la mantisse d'un nombre appartient à l'intervalle $[0,10[$ et est obtenue à partie de la formule $mantisse(x)=10^{log_{10}}$ (rappel : $\{.\}$ désigne la partie fractionnaire du nombre $x$).
+
+\smallskip
+
+Exemple :
+
+:   La mantisse du nombre $0.0581$ est $5.81$, et celle du nombre $326.41$ est $3.2641$.
+
+\smallskip
+
+La loi de Benford continue est donnée par la définition suivante : Une série de nombres réels en écriture décimale suit la loi de Benford continue si pour tout $[a,b[ \subset [1,10[$, la fréquence des nombre de la série dont la mantisse appartient à $[a,b[$ vaut $log(b)-log(a)$.
+
+Sa fonction de répartition est définie par :
+
+\medskip
+
+$$
+F_x(d)=\mathds{1}_{[1;10[}log_{10}(d)+\mathds{1}_{[10;+\infty[}
+$$
+
+\medskip
+
+De plus, la loi de Benford est invariante par changement d'échelle ou d'unité.
+
+\medskip
+
+### II.3 - Loi de Benford discrète (ou simple)
+
+\medskip
+
+Tout ceci se généralise bien sûr en base quelconque. Nous choisissons, communément la base $c=10$ comme base de référence pour le logarithme. Nous avons choisit la base $10$ pour le logarithme dans la suite.
+
+\smallskip
+
+### II.3.1 - Loi de Benford sur le premier chiffre significatif
+
+\medskip
+
+Mathématiquement la loi de Benford - Newcomb, que nous allons noter LNB, est donnée par la formule suivante :
+
+Nous notons $PCS$ le premier chiffre significatif d'un nombre.
+
+Soit $X$ une variable aléatoire continue et positive, alors $D=PCS(X)$ a pour probabilité :
+
+\medskip
+
+$$
+\mathbb{P}(D=d)=log_{10}\left(1+\frac{1}{d}\right)~~\forall d\in \{1,2, \cdots , 9\} 
+$$
+
+\medskip
+
+Cette formule nous donne le tableau de probabilité suivant :
+
+\bigskip
+
+```{=tex}
+\begin{figure}[h!] 
+\begin{center}
+\begin{tabular}{*{10}{|c|}}
+   \hline
+   d= & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ \\
+  \hline
+    $\mathbb{P}(D=d)$ & $0.301$ & $0.176$ & $0.125$ & $0.097$ & $0.079$ & $0.067$ & $0.058$ & $0.051$ & $0.046$\\
+  \hline
+\end{tabular}
+
+
+\end{center}
+\caption{\textbf{Tableau de probabilité d'appartion du premier chiffre significatif}}
+\end{figure}
+```
+\bigskip
+
+Ci-dessous , nous pouvons observer une représentation graphique de la loi de Benford discrète :
+
+\bigskip
+
+```{=tex}
+\begin{figure}[h!] \label{fig:Benford1}
+\begin{center}
+
+\includegraphics[width = 12cm]{benlaw1.png}
+
+\end{center}
+\caption{\textbf{Répartition théorique selon la loi de Benford}}
+\end{figure}
+```
+\bigskip
+
+### II.3.2 - Loi de Benford sur les deux premiers chiffres significatif
+
+\medskip
+
+Sur le même principe nous construisons la loi de Benford sur le second chiffre significatif, tout en notant que le support de cette loi n'est plus $d\in\{1,2,\cdots,9\}$, mais $d \in \{0,1, \cdots,9\}$.
+
+Ce qui nous donne le tableau de probabilité suivante :
+
+\bigskip
+
+```{=tex}
+\begin{figure}[h!]
+\begin{center}
+\begin{tabular}{*{11}{|c|}}
+   \hline
+  d= & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ \\
+  \hline
+    $\mathbb{P}(D=d)$ & $0.12$ & $0.114$ & $0.109$ & $0.104$ & $0.10$ & $0.097$ & $°.093$ & $0.09$ & $0.088$ & $0.085$ \\
+  \hline
+\end{tabular}
+
+
+\end{center}
+\caption{\textbf{Tableau de probabilité d'appartion du second chiffre significatif}}
+\end{figure}
+```
+\bigskip
+
+Nous obtenons alors la représentation graphique suivante :
+
+\bigskip
+
+```{=tex}
+\begin{figure}[h!] 
+
+\begin{center}
+
+\includegraphics[width = 12cm]{benlaw2.png}
+
+\end{center}
+
+\caption{\textbf{Répartition théorique selon la loi de benford}}
+\label{fig:b2}
+
+\end{figure}
+```
+\bigskip
+
+### II.3.3 - Loi de Benford sur une bloc de $k$ chiffres
+
+\medskip
+
+En utilisant le loi de Benford continue ou la loi de Benford en base $10^k$, nous obtenons que la probabilité benfordienne que l'écriture décimale d'un nombre réel commence par $d \in [\![10^{k-1},10^{k}[\![$ vaut :
+
+\medskip
+
+$$log(d+1)-log(d)=log\left(1+\frac{1}{d}\right)$$
+
+\medskip
+
+Exemple :
+
+:   La probabilité qu'un nombre commence par $314$, comme $3,14159 \cdots, 314285,7 \cdots~\text{ou}~ 0,00314465\cdots$ vaut $log(314+1)-log(314)=log\left(1+\frac{1}{314}\right)\approx 0.00138 = 0.138\%$ avec ici, $n=314$ et $k=3$.
+
+$$
+\\
+$$
+
+## **III - Les différents test**
+
+$$
+\\
+$$
+
+Nous allons dans cette partie définir les différents tests que nous allons utiliser dans la suite de cette analyse.
+
+Tout d'abord définissons ce qu'est un test lisse, un test d'ajustement.
+
+\medskip
+
+### III.1 - Test d'ajustement
+
+\medskip
+
+On appelle test d'ajustement tout test servant à tester des hypothèses de type 19. C'est un test qui vise à vérifier si les données observées sont compatibles avec un modèle théorique.
+
+On appelle les [hypothèses de type 19](https://www.universalis.fr/encyclopedie/tests-d-hypotheses-statistiques/8-tests-d-ajustement/#) un problème de la forme suivante :
+
+$\;$Soit $(x_1,x_2, \cdots, x_N$ un échantillon de variables aléatoires indépendantes identiquement distribuées de fonction de répartition $F$ inconnue. Nous testons l'hypothèse (19) $\mathcal{H}_0$ : $F = F_0$, contre $\mathcal{H}_1$ : $F \ne F_0$, où $F_0$ est la fonction de répartition de la loi testée choisie.
+
+Nous pouvons modifier l'énoncé dans le cas de données discrètes, avec une fonction de répartition d'une loi discrète et les fréquences d'apparition des valeurs du support de cette loi discrète.
+
+\medskip
+
+### III.2 - Test lisse
+
+\smallskip
+
+### III.2.1 - Test du $\chi^2$
+
+\medskip
+
+Le test du $\chi^2$ à été proposé par le statisticien Karl Pearson en 1900. Ce test du $\chi^2$ nous permet de vérifier si un échantillon d'une variable aléatoire $X$ nous donne des observations comparables à une loi de probabilité $\mathbb{P}$, ici la loi de Benford. C'est à dire, il nous permet de vérifier si les fréquences observées dans un échantillon correspondent aux fréquences attendues données par la loi de probabilité choisie.
+
+Le test du $\chi^2$ se défini comme ceci :
+
+Soit un échantillon de données $(x_1, x_2, \cdots, x_N)$ d'une variable aléatoire $X$ qui prend un nombre fini $J$ de valeurs $(v_1,v_2, \cdots, v_J)$. Nous voulons tester la loi $\mathbb{P}$ avec $\forall j \in \{1,\cdots,J\}$, $\mathbb{P}(Y=v_j)=p_j$.
+
+Nous testons donc :
+
+\medskip
+
+-   $\mathcal{H}_0$ : l'échantillon $(x_1, x_2, \cdots, x_N)$ suit la loi de $\mathbb{P}$
+
+-   $\mathcal{H}_1$ : l'échantillon $(x_1, x_2, \cdots, x_N)$ ne suivent pas la loi de $\mathbb{P}$
+
+\medskip
+
+Plus précisément nous testons $\mathcal{H}_0$ : La probabilité que $X$ prenne la valeur $v_j$ vaut $p_j$, pour $j\in \{1,\cdots,J\}$, avec $\sum\limits_{j=1}^Jp_j=1$.
+
+On appelle $\hat p_j$ la probabilité empirique que $X$ prenne la valeur $v_j$. C'est à dire le nombre d'observations $x_i$ qui prennent la valeur $v_j$ dans l'échantillon divisé par le nombre total $N$ d'observations :
+
+\medskip
+
+$$
+\hat p_j = \frac{1}{N}\sum\limits_{i=1}^N \mathds{1}_{\{x_i=v_j\}}
+$$
+
+\medskip
+
+Nous pouvons alors définir la statistique de test du $\chi^2$ :
+
+\medskip
+
+$$
+T = \sum\limits_{j=1}^J\frac{(N\hat p_j-Np_j)^2}{Np_j}=\sum\limits_{j=1}^J\frac{(nj-Np_j)^2}{Np_j}, ~avec ~n_j=N \hat p_j= \sum\limits_{i=1}^N\mathds{1}_{\{x_i=v_j\}}
+$$
+
+\medskip
+
+Sous $\mathcal{H}_0$, c'est à dire l'hypothèse nulle, cette statistique suit une loi du $\chi^2$ à $(J-1)$ degrés de liberté.
+
+Et nous pouvons donc construire un test de niveau $\alpha$ en rejetant l'hypothèse nulle lorsque la statistique de test est plus grande que le quantile d'ordre $1– \alpha$ de la loi du $\chi^2$ à $(J – 1)$ degrés de liberté :
+
+$T \geq F^{-1}_{\chi^2(J-1)}(1- \alpha)$ avec $F^{-1}_{\chi^2(J-1)}(1-\alpha)$ le quantile d'ordre $(1-\alpha)$ de la loi du $\chi^2$ à $(J-1)$ degrés de liberté.
+
+**Pour la loi de probabilité de Benford avec un risque d'erreur à** $\alpha=0.05$
+
+Le test du $\chi^2$ pour la loi de probabilité de Benford s'écrit sous la forme :
+
+Soit $(x_1, x_2, \cdots ,x_N)$ un échantillon de données d'une variable aléatoire $X$, dans notre cas le premier chiffres significatif des données du Covid, qui prend un nombre fini $J=9$ de valeurs $(v_1=1, v_2=2, \cdots, v_9=9)$.
+
+Nous voulons donc tester :
+
+\medskip
+
+-   $\mathcal{H}_0$ : l'échantillon $(x_1, x_2, \cdots ,x_N)$ suit la loi de Benford
+
+-   $\mathcal{H}_1$ : l'échantillon $(x_1, x_2, \cdots ,x_N)$ ne suit pas la loi de Benford
+
+\medskip
+
+Nous avons la probabilité théorique qu'une variable aléatoire suivant la loi de Benford prenne la valeur $v_j$ vaut $p_j$, nous avons vu le tableau des probabilité plus haut. Et la probabilité que $X$ prennent la valeur $v_j$ qui vaut $\hat p_j$.
+
+Nous obtenons la statistique de test du $\chi^2$ qui vaut :
+
+\medskip
+
+$$
+T = \sum\limits_{j=1}^9\frac{(N\hat p_j-Np_j)^2}{Np_j}=N\sum\limits_{j=1}^9\frac{(\hat p_j-p_j)^2}{p_j}
+$$
+
+\medskip
+
+Sous $\mathcal{H}_0$ , c'est à dire l'hypothèse nulle, cette statistique suit une loi du $\chi^2$ à $J-1=8$ degrés de liberté.
+
+Nous obtenons donc un test à $\alpha=0.05$, ie à $5\%$, en rejetant l'hypothèse nulle lorsque $T\ge F^{-1}_{\chi^2(8)}(0.95)= 2.73$.
+
+\medskip
+
+### III.2.2 - Test de Kolmogorov-Smirnov
+
+\medskip
+
+Ce test porte le nom du mathématicien russe Andréi Nikoláyevich Kolmogorov qui établit l'axiomatique des probabilités en 1933.
+
+Sa principale différence avec le test du $\chi^2$ est qu'il est fondé sur les fonctions de répartition plutôt que sur les densités.
+
+Le test de Kolmogorov-Smirnov est un test d'ajustement, qui compare la distribution observée d'un échantillon à une distribution théorique choisie. Ce test mesure l'**écart maximum** qui existe entre la fonction de répartition empirique et la fonction de répartition théorique de la loi probabilité choisie. Il s'adapte aux échelles ordinales ce qui est un avantage, mais son principal défaut est de ne pas être très efficace dans les queues de distribution.
+
+Le test de Kolmogorov-Smirnov se défini comme ceci :
+
+Soit $(X_1,X_2, \cdots,X_N)$ un échantillon d'une variable aléatoire $X$ de loi inconnue $\mathbb{P}$. Nous voulons tester si la loi de $\mathbb{P}$ a pour fonction de répartition $F$, avec $F$ la fonction de répartition d'une loi de probabilité choisie.
+
+De plus, notons $\hat F:\mathbb{R} \longrightarrow [0,1]$, la fonction de répartition empirique de l'échantillon $(X_1,X_2, \cdots,X_N)$. Commençons par trier par ordre croissant les valeurs des $X_i$ de l'échantillon, traditionnellement appelé les $\textit{statistiques d'ordre}$ de l'échantillon.
+
+La [fonction de répartition empirique](https://mistis.inrialpes.fr/software/SMEL/cours/ts/node7.html) est définie par :
+
+\medskip
+
+$$
+\hat F(x)=\left\{
+    \begin{array}{lll}
+        0 &~~si~~x<X_{(1)} \\
+        \frac{i}{N} &~~si~~X_{(i)}\le x\le X_{(i+1)} \\
+        1 &~~si~~x>X_{(N)}
+    \end{array}
+\right.
+$$
+
+\medskip
+
+Nous estimons donc $F(x) =\mathbb{P}(X \le x)$ au moyen de la proportion $\hat F(x)$ d'éléments de l'échantillon qui sont inférieurs ou égaux à x.
+
+Nous testons donc :
+
+\medskip
+
+-   $\mathcal{H}_0$ : la loi $\mathbb{P}$ a la même fonction de répartition $F$ qu'une loi continue donnée
+
+-   $\mathcal{H}_1$ : la loi $\mathbb{P}$ n'a pas pour fonction de répartition $F$
+
+\medskip
+
+Nous mesurons l'adéquation de la fonction de répartition empirique à la fonction $F$ par la distance de Kolmogorov-Smirnov, qui est la distance de la norme uniforme entre fonctions de répartitions. Pour la calculer, il suffit d'évaluer la différence entre $\hat F$ et $F$ aux points $X_{(i)}$.
+
+\medskip
+
+$$
+D_{KS}(F,\hat F)=\underset{i =1,\cdots,N}{\text{max}}\left\{\lvert F(X_{(i)})-\hat F(X_{(i)})\rvert,\lvert F(X_{(i)})- \hat F(X_{(i-1)})\rvert\right\}\\
+\underset{i =1,\cdots,N}{\text{max}}\left\{|F(X_{(i)})-\frac{i}{N}|,|F(X_{(i)})- \frac{i-1}{N}|\right\}\\
+$$
+
+\medskip
+
+Voici une représentation du calcul de la [distance de Kolmogorov-Smirnov](https://bdesgraupes.pagesperso-orange.fr/UPX/L2/MethStats_seance_11_doc.pdf). Graphiquement, c'est le plus grand écart vertical en valeur absolue entre la valeur empirique et la valeur théorique.
+
+\bigskip
+
+```{=tex}
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width = 8cm]{DistanceKS.png}
+\end{center}
+\caption{\textbf{Distance de Kolmogorov-Smirnov}}
+\end{figure}
+```
+\bigskip
+
+<<<<<<< Updated upstream
+Sous l'hypothèse $\mathcal{H}_0$, la fonction de répartition $\hat F$ est très proche de $F$, et la loi de la variable de décision $D_{KS}(F,\hat F)$ ne dépend pas de $F$. Nous comparons la valeur obtenue à une valeur critique $D_{\alpha}(N)$ fournie par les tables de Kolmogorov-Smirnov, le test est unilatéral. Si $D_{KS} > D_{\alpha}(N)$, nous rejetons $\mathcal{H}_0$ avec un risque $\alpha$.
+
+\medskip
+
+\textcolor{blue}{Remarque :}
+
+:   Le test de Kolmogorov-Smirnov est préférer au test du $\chi^2$ lorsque le caractère observée prennent des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
+
+\medskip
+
+### III.2.3 - Test du [$T_k$](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf)
+
+\medskip
+
+\textcolor{red}{Théorème :}
+
+:   Soit $X_1,\dots,X_n$ des copies indépendantes d'une variable aléatoire X de densité $f(.)$ par rapport à une mesure $v$. Soit $\{h_0(.) := 1,h_k(.),k=1,2,...\}$ une suite de fonctions orthonormales par rapport à $f(.)$; plus précisément, $\int{h_k(x)h_{k'}(x)f(x)dv(x)=\delta_{kk'}}$, la fonction delta de Kronecker. Soit $U_k=n^{-1/2}\sum_{i=1}^nh_k(X_i)$ et pour un entier $K\ge1$, soir $T_k=\sum_{k=1}^KU^2_k$. Alors sous $H_0$, $T_K\stackrel{L}{\to}\chi^2_K$, la loi khi-deux à K degrés de liberté, et un test de niveau asymptotique $\alpha$ rejette $H_0$ si la valeur observée de $T_K$ dépasse $x^2_{K,1-\alpha}$, le quantile d'ordre $1-\alpha$ de cette loi $\chi_K^2$.
+
+\medskip
+
+## **IV - Tests sur le premier chiffre significatif sur les données Covid des différents pays du monde**
+
+$$
+\\
+$$
+
+Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford. Par soucis de performance on décidera pour la suite d'appliquer le test du $T_2$ considéré comme l'un des plus puissants parmi les [[tests d'adéquations lisses pour la loi de Newcomb-Benford]{.ul}](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf).
+
+Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 215 pays (pour plus d'informations sur les données veuillez consulter le github du [CSSE](https://github.com/CSSEGISandData/COVID-19) basé notamment sur les données de l'OMS, de l'ECDC etc ...). Puis, dans un second temps nous procéderons à l'estimation des p-values "ajustées" à l'aide de la méthode de correction de Benjamini, Hochberg & Yekutieli.
+
+En effet, lorsque des comparaisons multiples sont réalisées, le risque de se tromper n'est plus contrôlé.
+
+Dans notre situation il semble donc nécessaire d'ajuster les p-values obtenues pour chacun des multiples tests, afin que le risque de se tromper pour l'ensemble de ces tests, soit à nouveau contrôlé, à niveau $5\%$.
+
+\medskip
+
+### IV.1 - Analyse des données
+
+\medskip
+
+Après analyse, on observe qu'on rejette $H_0 :$ *l'échantillon suit une loi de Newcomb-Benford contre* $H_1 :$ *l'échantillon ne suis pas une loi de Newcomb-Benford* pour 33 pays. On remarque alors qu'on ne rejette pas $H_0$ pour les 182 autres pays avec un risque d'erreur $\alpha=5\%$.
+
+Cette étude nous permet de lever un drapeau d'alerte face aux pays qui ne passent pas le test.
+
+\newpage
+
+Nous listerons ces pays dans le tableau ci-dessous indiquant pour chaque pays la statistique du test du $T_2$ (T_2) et la p-value ajustée associée (P_value).
+
+\bigskip
+
+```{=tex}
+\begin{figure}[h!] 
+
+\begin{center}
+
+\includegraphics[width = 12cm]{h1.png}
+
+\end{center}
+
+\caption{\textbf{Liste des pays pour lesquels on rejette $H_0$}}
+
+\end{figure}
+```
+\bigskip
+
+Parmi eux on retrouve notamment Cuba, le Qatar, la Russie, le Japon, le Royaume-Uni ou encore Taiwan.
+
+Ci-dessous nous décidons alors de représenter la distribution des premiers chiffres significatifs allant de 1 à 9 des données quotidiennes sur les nouveaux cas provenant de ces pays qui ne sont manifestement pas conformes à la loi de Newcomb-Benford.
+
+\bigskip
+
+```{=tex}
+\begin{figure}[h!] 
+
+\begin{center}
+
+\includegraphics[width = 12cm]{disbenf.png}
+
+\end{center}
+
+\caption{\textbf{Distribution des premiers chiffres significatifs}}
+
+\end{figure}
+```
+\bigskip
+
+On remarque facilement une différence significative avec la distributions des premiers chiffres significatifs allant de 1 à 9 des données quotidiennes sur les nouveaux cas provenant des pays pour lesquels on ne rejette pas l'hypothèse selon laquelle ils seraient conforme à la loi de Benford :
+
+\bigskip
+
+```{=tex}
+\begin{figure}[h!] 
+
+\begin{center}
+
+\includegraphics[width = 12cm]{benfh0.png}
+
+\end{center}
+
+\caption{\textbf{Distribution des premiers chiffres significatifs}}
+
+\end{figure}
+```
+\bigskip
+
+Voir tableau complet en annexe à la figure ($\ref{fig:1dgt}$).
+
+Nous observons effectivement des discordances non négligeables entre les répartitions théoriques des premiers chiffres siginificatifs suivant la loi de Newcomb-Benford et la répartition des premiers chiffres significatifs des échantillons observés. Ceci nous réconforte dans l'hypothèse de rejet de $H_0$.
+
+Nous observons tout de même la présence de pays pour lesquels nous ne pouvons pas conclure.
+
+Il serait intéressant de se questionner sur la véracité des données de nouveaux cas de COVID-19 des pays comme le Vatican ou encore Wallis et Futuna qui n'ont répertorié aucun cas depuis décembre 2021.
+
+## **V - Tests sur le second chiffre significatif sur les données Covid des différents pays du monde**
+
+\medskip
+
+Après cette première analyse, nous décidons d'approfondir la recherche en analysant les deux premiers chiffres significatifs afin de repérer d'autres potentiels fraudeurs.
+
+intro mathieu
+
+Après analyse nous obtenons alors la table suivante représentative des individus pour lesquels on rejette $H_0$ (voir tableau complet figure ( [$\ref{fig:2dgt}$]{.ul}) en annexe):
+
+\newpage
+
+```{=tex}
+\begin{figure}[h!] 
+
+\begin{center}
+
+\includegraphics[width = 16cm]{tab2D.png}
+
+\end{center}
+
+\caption{\textbf{Distribution des deux premiers chiffres significatifs}}
+
+\end{figure}
+```
+\bigskip
+
+On remarque que pour nos deux analyses on retrouves 31 pays identiques dont la Russie, le Qatar ou encore le Royaume-Uni ce qui permet de confirmer le doute.
+
+Par cette méthode on découvre également d'autre suspects que nous n'avions pas réussi à repérer précédemment qui sont :
+
+\medskip
+
+-   \includegraphics[width = 0.5cm]{cambo.png} [Le Cambodge](https://fr.wikipedia.org/wiki/Cambodge)
+
+-   \includegraphics[width = 0.5cm]{como.png} [Les Comores](https://fr.wikipedia.org/wiki/Comores_(pays))
+
+-   \includegraphics[width = 0.5cm]{eri.png} [L'Érythrée](https://fr.wikipedia.org/wiki/Érythrée)
+
+-   \includegraphics[width = 0.5cm]{malou.png} [Les îles Malouines](https://fr.wikipedia.org/wiki/Îles_Malouines)
+
+-   \includegraphics[width = 0.5cm]{gui.png} [La République de Guinée-Bissau](https://fr.wikipedia.org/wiki/Guinée-Bissau)
+
+-   \includegraphics[width = 0.5cm]{maldi.png} [Les Maldives](https://fr.wikipedia.org/wiki/Maldives)
+
+-   \includegraphics[width = 0.5cm]{mont.png} [Montserrat](https://fr.wikipedia.org/wiki/Montserrat_(Antilles))
+
+-   \includegraphics[width = 0.5cm]{tome.png} [Sao Tomé-et-principe](https://fr.wikipedia.org/wiki/Sao_Tomé-et-Principe)
+
+-   \includegraphics[width = 0.5cm]{cor.png} [La Corée du Sud](https://fr.wikipedia.org/wiki/Corée_du_Sud)
+
+-   \includegraphics[width = 0.5cm]{sri.png} [Le Sri Lanka](https://fr.wikipedia.org/wiki/Sri_Lanka)
+
+\medskip
+
+On ne peut que constater que pour ce test on ne rejette pas $H_0$ ni pour la Grèce ni pour la Syrie qui étaient considérés comme suspects en vue des résultats des tests sur le premier chiffre significatif.
+
+Nous décidons alors de pousser l'analyse sur ces deux pays afin d'essayer de comprendre la cause.
+
+On décide alors d'observer la distribution de leurs deux premiers chiffres significatifs par rapport à la distribution théorique de Benford (vue sur la figure ($\ref{fig:b2}$)).
+
+\bigskip
+
+```{=tex}
+\begin{figure}[h!] 
+
+\begin{center}
+
+\includegraphics[width = 12cm]{benrep2.png}
+
+\end{center}
+
+\caption{\textbf{Comparaison  distribution échantillon  et Benford}}
+
+\end{figure}
+```
+\bigskip
+
+Après observations approfondies on se rend compte que ceci peut être la résultante d'un manque de données car en effet notamment pour la Syrie on observe la présence de certaines fréquences très éloignées des fréquences théoriques associées à la distribution théorique de Benford.
+
+Il serait donc quand même préférable de mener une enquête.
+
+## **VI - Conclusion :**
+
+\newpage
+
+## Annexe :
+
+**Tableau complet de l'application du** $T_2$ **au premier chiffre significatif :**
+
+```{r echo=F}
+library(kableExtra)
+bentwd <-read.csv("tabadj.csv",sep=(","))
+bentwd<- bentwd[,-1]
+bentwd[216,]= c(" "," "," ")
+ben1 <- bentwd[1:48,]
+ben2 <- bentwd[49:96,]
+kable(cbind(ben1,ben2))%>% kable_styling(latex_options = c("striped", "HOLD_position"))
+```
+
+\newpage
+
+```{r echo= F}
+ben3 <- bentwd[97:142,]
+ben4 <- bentwd[143:188,]
+rownames(ben3) <- NULL
+rownames(ben4) <- NULL
+kable(cbind(ben3,ben4))%>% kable_styling(latex_options = c("striped", "HOLD_position"))
+```
+
+\newpage
+
+```{r echo = F}
+ben5 <- bentwd[189:202,]
+ben6 <- bentwd[203:216,]
+rownames(ben5) <- NULL
+rownames(ben6) <- NULL
+kable(cbind(ben5,ben6))%>% kable_styling(latex_options = c("striped", "HOLD_header"))
+```
+
+```{=tex}
+\begin{figure}[h!] 
+
+\begin{center}
+\end{center}
+
+\caption{\textbf{Tableau analyse premier chiffre significatif}}
+\label{fig:1dgt}
+\end{figure}
+```
+\newpage
+
+**Tableau complet de l'application du** $T_2$ **aux deux premiers chiffres significatif :**
+
+\medskip
+
+```{r echo=F}
+bent <-read.csv("twd.csv",sep=(","))
+bent<- bent[,-1]
+bent[216,]= c(" "," "," ")
+ben1 <- bent[1:48,]
+ben2 <- bent[49:96,]
+kable(cbind(ben1,ben2))%>% kable_styling(latex_options = c("striped", "HOLD_position"))
+
+```
+
+\newpage
+
+```{r echo=F}
+ben3 <- bent[97:146,]
+ben4 <- bent[147:196,]
+rownames(ben3) <- NULL
+rownames(ben4) <- NULL
+kable(cbind(ben3,ben4))%>% kable_styling(latex_options = c("striped", "HOLD_position"))
+```
+
+\newpage
+
+```{r echo=F}
+ben5 <- bent[197:206,]
+ben6 <- bent[207:216,]
+rownames(ben5) <- NULL
+rownames(ben6) <- NULL
+kable(cbind(ben5,ben6))%>% kable_styling(latex_options = c("striped", "HOLD_header"))
+```
+
+```{=tex}
+\begin{figure}[h!] 
+
+\begin{center}
+\end{center}
+
+\caption{\textbf{Tableau analyse premier chiffre significatif}}
+\label{fig:2dgt}
+\end{figure}
+```
+\bigskip
+
+```{r results='hide',eval=FALSE}
+=======
+```{r warning=FALSE, include=FALSE, results='hide'}
+>>>>>>> Stashed changes
+#---------------------------- Test lisse first digit -------------------------
+library(dplyr)
+library(tidyr)
+library(data.table)
+library(BenfordSmoothTest)
+library(BenfordTests)
+library(kableExtra)
+
+#------------------------ Importation des données ----------------------------
+b <-read.csv("covid6.csv",sep=",")
+b <- data.table(b)
+b <- b[b$date > "2021-12-01",]
+drop_na(b)
+b <- b[b$location!="World",]
+b <- b[b$location!="Europe",]
+b <- b[b$location!="European Union",]
+b <- b[b$location!="Lower middle income"]
+b <- b[b$location!="High income"]
+
+# on commence à partir de septembre 2021 on s'intéresses aux données récentes.
+
+#----------------------------------------------------------------------------
+#------------------------------- Fonction graphes ---------------------------
+library(tidyr)
+library(dplyr)
+vec <- function(df){
+  x <- c(df$new_cases)
+  x <- x[x!=0]
+  j=1
+  for(i in 1:length(x)){
+  if(is.na(x[j])){
+    x <- x[-j]
+  }
+  else{
+    j <- j +1
+  }
+  }
+  return(x)
+}
+benf <- function(dd){
+x <- vec(dd)
+benlaw <- function(d) log10(1 + 1 / d)
+digits <- 1:9
+firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
+pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
+df <- pctFirstDigit(x)
+if(length(firstDigit(x))<=10){
+    return()
+}
+else{
+baseBarplot <- barplot(df$Freq[1:9], names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, max(df$Freq[1:9],0.35)),col="blue",main=dd$location[1])
+lines(x = baseBarplot[,1], y = benlaw(digits), col = "red", lwd = 4, 
+      type = "b", pch = 23, cex = 1.5, bg = "red")
+legend(x="topright", legend=c("Benford distribution","data distribution"),
+       col=c("red","blue"), lty=1,lwd=4, cex=0.8)
+}
+}
+#-----------------------------------------------------------------------------
+
+#------------- Fonction nom de pays pouvant passer le test -------------------
+# Récupère les noms des pays ayant minimum 5 données
+library(BenfordTests)
+givenames <- function(df){
+  name <- distinct(df,df$location)
+  w <- 0
+  x <- as.vector(name$`df$location`)
+  t=0
+  for(i in 1:length(x)){
+    d <- df[df$location==x[i],]
+    v <- vec(d)
+    dx <- firstDigit(v)
+    if(length(dx)<=10){
+      t=t
+    }
+    else{
+      t=t+1
+      w[t]=x[i]
+    }
+  }
+  return(w)
+}
+#-----------------------------------------------------------------------------
+#--------------------------- Test du T_2 first digit -------------------------
+# fonction T_2
+library(BenfordSmoothTest)
+T2 <- function(df){
+  x <- vec(df)
+  benf <- BenfordSmooth.test(x)
+  return(benf)
+}
+#----------------------------------------------------------------------------
+#---------------------------- Test lisse bloc de deux ------------------------
+Mu = rep(0,8)
+<<<<<<< Updated upstream
+
+for (k in c(1:8)) { # Calcul de Mu(k) :
+  
+  S = 0
+  for (y in c(10:99)) {
+    
+    S = S + (y^k)*log(1 + 1/y)/log(10) 
+    
+  }
+  
+  Mu[k] = S
+}
+
+for (k in c(1:4)) { # Calcul de M(k)^(-1) :
+  
+  A = matrix(1, ncol=k, nrow=k)
+  
+  for (i in c(0:(k-1)) ) {
+    for (j in c(0:(k-1)) ) {
+      
+      if ( (i != 0) || (j != 0) ) {
+        A[i+1, j+1] = Mu[i+j]
+      }
+      
+    }
+  }
+  
+  if (k == 1) { M1_ = solve(A) }
+  if (k == 2) { M2_ = solve(A) }
+  if (k == 3) { M3_ = solve(A) }
+  if (k == 4) { M4_ = solve(A) }
+  
+}
+
+M_ = list(M1_, M2_, M3_, M4_)
+
+c_ = rep(0,4)
+
+for (k in c(1:4)) { # Calcul de h(k) :
+  
+  Mu2 = matrix(0, nrow= k, ncol= 1)
+  
+  for (i in c(1:k)) {
+    Mu2[i, 1] = Mu[ k-1+i ]
+  }
+  
+  c_[k] = 1/(sqrt( Mu[2*k] - ( t(Mu2) %*% M_[[k]]  %*% Mu2 ) )) # 1/sqrt(c(k))
+  
+  A = -1*c_[k] * M_[[k]] %*% Mu2
+  
+  L = rep(0, k+1)
+  for (i in c(1:k)) {
+    L[i] = A[i]
+  }
+  L[k+1] = c_[k]
+  
+  print(L) # Les coéfficients de h(k)
+  
+}
+
+# Fonctions h(k) :
+
+h = function (k, x) {
+  
+  if (k == 1) {
+    return( -1.54751771 + 0.04010177 *x )
+  }
+  
+  if (k == 2) {
+    return( 2.795867953 - 0.167441591 *x + 0.001736457 *x^2 )
+  }
+  
+  if (k == 3) {
+    return( -5.187810e+00  + 4.869054e-01 *x - 1.155519e-02 *x^2  + 7.630402e-05 *x^3 )
+  }
+  
+  if (k == 4) {
+    return( 9.725235e+00 - 1.237520e+00 *x + 4.769440e-02 *x^2 - 6.950207e-04 *x^3  + 3.371880e-06 *x^4 )
+  }
+  
+}
+
+# Statistique T(k) :      ( 1<= k <= 4)
+
+T = function (k, data) {
+  
+  n = length(data)
+  
+  T_ = 0 # la statistique T(k)
+  for (l in c(1:k)) {
+    
+    U = 0 # U(l)
+    for (i in c(1:n)) {
+      
+      U = U + h(l, data[i])
+      
+    }
+    U = U*(1/sqrt(n))
+    
+    T_ = T_ + U^2
+    
+  }
+  
+  return(T_)
+}
+
+pvalue = function(t, n, k, d, w) { # d et w pour Monte-Carlo
+  
+   if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) { ### 1) approximation Monte-Carlo ###
+     
+     M = 0 # Moyenne empirique = p.value
+     L = rep(0, w) # Liste des Y(l)
+     
+     proba = rep(0, 90) # vecteur des probas sous H0 pour sample
+     for (i in c(1:90)) {
+       
+       proba[i] = log(1 + 1/(i+9) )/log(10)
+       
+     }
+     
+     for (l in c(1:w)) {
+       
+       data = rep(0, n)
+       for (i in c(1:n)) { # Génération des Xi sous H0 de taille n
+         
+         data[i] = sample(x= c(10:99), size=1, prob= proba )
+         
+       }
+       
+       a = T(k, data)
+       
+       if (a >= t) {
+         M = M+1
+         L[l] = 1
+       }
+       
+     }
+     M = M/w
+     
+     S = 0 # Variance empirique
+     for (l in c(1:w)) {
+       
+       S = S + (L[l] - M)^2
+       
+     }
+     S = S/w
+     
+     e = 1.96*sqrt(S/w) # erreur d'approximation (à 95%)
+     
+     
+     return( c(M, e) )
+     
+     
+   } else { ### 2) approximation Khi2 ###
+     
+     M = 1 - pchisq(t, df=k)
+     
+     return( c(M, 0) )
+     
+   } 
+  
+}
+
+# 1 <= k <= 4.
+# data : sous forme de vecteur c(…).
+# d = 1 : force le calcul de la p.value par Monte-Carlo.
+# d = 2 : force le calcul de la p.value par approximation Khi2
+# Si n <= 100 alors d=1 par défault, et si n > 100 alors d=2 par défault.
+# w = taille de l'échantillon pour Monte-Carlo.
+# texte = FALSE : n'affiche pas de texte, et return c(Tk, p.value, erreur M-C).
+
+Test.lisse = function (k, data, d=0, w=10000, texte=TRUE) {
+  
+  t = T(k, data) # Valeur de la statistique T(k)
+  
+  n = length(data)
+  A = pvalue(t, n, k, d, w) # On récupère la p.value associé
+  
+  if ( texte == TRUE ) {
+    
+    cat("\n")
+    cat("k =", k, "\n")
+    cat("Statistique Tk =", t, "\n \n")
+  
+    if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) {
+      cat("Approximation de la p.value par Monte-Carlo :", "\n \n")
+      cat("--> p.value =", A[1], "\n")
+      cat("Erreur d'approximation en valeur absolue (à 95%) <=", A[2])
+    
+    } else {
+      cat("Approximation asymptotique de la p.value par une Khi2(k) :", "\n \n")
+      cat("--> p.value =", A[1])
+    }
+    cat("\n")
+  
+  } else {
+    
+    return( c(t,A[1], A[2]) )
+    
+  }
+  
+}
+#----------------------------- Test appliqué aux données --------------------
+twodigitst <- function(df,k){
+  x<-vec(df)
+  w <-signifd(x = x, digits = 2)
+  if(length(w)<=50){
+    y<-Test.lisse(k,w,texte=F,d=1)
+  }
+  else{
+    y<-Test.lisse(k,w,texte=F,d=2)
+  }
+  
+  return(y)
+}
+twodigitst2 <- function(df,k){
+  x<-vec(df)
+  w <-signifd(x = x, digits = 2)
+  y<-Test.lisse(k,w,texte=F,d=2)
+  
+  return(y)
+}
+#------------------------------------------------------------------------------------
+#------------------------------ Fonction p_adjust -----------------------------------
+p_adjusted <- function(w,k){
+  
+  n <- givenames(w)
+  pval = 0
+  for( i in 1:length(n)){
+
+=======
+
+for (k in c(1:8)) { # Calcul de Mu(k) :
+  
+  S = 0
+  for (y in c(10:99)) {
+    
+    S = S + (y^k)*log(1 + 1/y)/log(10) 
+    
+  }
+  
+  Mu[k] = S
+}
+
+for (k in c(1:4)) { # Calcul de M(k)^(-1) :
+  
+  A = matrix(1, ncol=k, nrow=k)
+  
+  for (i in c(0:(k-1)) ) {
+    for (j in c(0:(k-1)) ) {
+      
+      if ( (i != 0) || (j != 0) ) {
+        A[i+1, j+1] = Mu[i+j]
+      }
+      
+    }
+  }
+  
+  if (k == 1) { M1_ = solve(A) }
+  if (k == 2) { M2_ = solve(A) }
+  if (k == 3) { M3_ = solve(A) }
+  if (k == 4) { M4_ = solve(A) }
+  
+}
+
+M_ = list(M1_, M2_, M3_, M4_)
+
+c_ = rep(0,4)
+
+for (k in c(1:4)) { # Calcul de h(k) :
+  
+  Mu2 = matrix(0, nrow= k, ncol= 1)
+  
+  for (i in c(1:k)) {
+    Mu2[i, 1] = Mu[ k-1+i ]
+  }
+  
+  c_[k] = 1/(sqrt( Mu[2*k] - ( t(Mu2) %*% M_[[k]]  %*% Mu2 ) )) # 1/sqrt(c(k))
+  
+  A = -1*c_[k] * M_[[k]] %*% Mu2
+  
+  L = rep(0, k+1)
+  for (i in c(1:k)) {
+    L[i] = A[i]
+  }
+  L[k+1] = c_[k]
+  
+  print(L) # Les coéfficients de h(k)
+  
+}
+
+# Fonctions h(k) :
+
+h = function (k, x) {
+  
+  if (k == 1) {
+    return( -1.54751771 + 0.04010177 *x )
+  }
+  
+  if (k == 2) {
+    return( 2.795867953 - 0.167441591 *x + 0.001736457 *x^2 )
+  }
+  
+  if (k == 3) {
+    return( -5.187810e+00  + 4.869054e-01 *x - 1.155519e-02 *x^2  + 7.630402e-05 *x^3 )
+  }
+  
+  if (k == 4) {
+    return( 9.725235e+00 - 1.237520e+00 *x + 4.769440e-02 *x^2 - 6.950207e-04 *x^3  + 3.371880e-06 *x^4 )
+  }
+  
+}
+
+# Statistique T(k) :      ( 1<= k <= 4)
+
+T = function (k, data) {
+  
+  n = length(data)
+  
+  T_ = 0 # la statistique T(k)
+  for (l in c(1:k)) {
+    
+    U = 0 # U(l)
+    for (i in c(1:n)) {
+      
+      U = U + h(l, data[i])
+      
+    }
+    U = U*(1/sqrt(n))
+    
+    T_ = T_ + U^2
+    
+  }
+  
+  return(T_)
+}
+
+pvalue = function(t, n, k, d, w) { # d et w pour Monte-Carlo
+  
+   if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) { ### 1) approximation Monte-Carlo ###
+     
+     M = 0 # Moyenne empirique = p.value
+     L = rep(0, w) # Liste des Y(l)
+     
+     proba = rep(0, 90) # vecteur des probas sous H0 pour sample
+     for (i in c(1:90)) {
+       
+       proba[i] = log(1 + 1/(i+9) )/log(10)
+       
+     }
+     
+     for (l in c(1:w)) {
+       
+       data = rep(0, n)
+       for (i in c(1:n)) { # Génération des Xi sous H0 de taille n
+         
+         data[i] = sample(x= c(10:99), size=1, prob= proba )
+         
+       }
+       
+       a = T(k, data)
+       
+       if (a >= t) {
+         M = M+1
+         L[l] = 1
+       }
+       
+     }
+     M = M/w
+     
+     S = 0 # Variance empirique
+     for (l in c(1:w)) {
+       
+       S = S + (L[l] - M)^2
+       
+     }
+     S = S/w
+     
+     e = 1.96*sqrt(S/w) # erreur d'approximation (à 95%)
+     
+     
+     return( c(M, e) )
+     
+     
+   } else { ### 2) approximation Khi2 ###
+     
+     M = 1 - pchisq(t, df=k)
+     
+     return( c(M, 0) )
+     
+   } 
+  
+}
+
+# 1 <= k <= 4.
+# data : sous forme de vecteur c(…).
+# d = 1 : force le calcul de la p.value par Monte-Carlo.
+# d = 2 : force le calcul de la p.value par approximation Khi2
+# Si n <= 100 alors d=1 par défault, et si n > 100 alors d=2 par défault.
+# w = taille de l'échantillon pour Monte-Carlo.
+# texte = FALSE : n'affiche pas de texte, et return c(Tk, p.value, erreur M-C).
+
+Test.lisse = function (k, data, d=0, w=10000, texte=TRUE) {
+  
+  t = T(k, data) # Valeur de la statistique T(k)
+  
+  n = length(data)
+  A = pvalue(t, n, k, d, w) # On récupère la p.value associé
+  
+  if ( texte == TRUE ) {
+    
+    cat("\n")
+    cat("k =", k, "\n")
+    cat("Statistique Tk =", t, "\n \n")
+  
+    if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) {
+      cat("Approximation de la p.value par Monte-Carlo :", "\n \n")
+      cat("--> p.value =", A[1], "\n")
+      cat("Erreur d'approximation en valeur absolue (à 95%) <=", A[2])
+    
+    } else {
+      cat("Approximation asymptotique de la p.value par une Khi2(k) :", "\n \n")
+      cat("--> p.value =", A[1])
+    }
+    cat("\n")
+  
+  } else {
+    
+    return( c(t,A[1], A[2]) )
+    
+  }
+  
+}
+#----------------------------- Test appliqué aux données --------------------
+twodigitst <- function(df,k){
+  x =vec(df)
+  z = signifd(x, digits = 2)
+  if(length(z)<= 50){
+    y<-Test.lisse(k,z,texte=F,d=1)
+  }
+  else{
+    y<-Test.lisse(k,z,texte=F,d=2)
+  }
+  
+  return(y)
+}
+#------------------------------------------------------------------------------------
+#------------------------------ Fonction p_adjust -----------------------------------
+p_adjusted <- function(w,k){
+  
+  n <- givenames(w)
+  pval = 0
+  for( i in 1:length(n)){
+
+    bq <- w[w$location==n[i],]
+    Tk = twodigitst(bq,k)
+    pval[i]= Tk[2]
+  }
+  padj <- p.adjust(pval,method="holm")
+  return(padj)
+}
+#------------------------------------------------------------------------------------
+#---------------------- graphe two digits -----------------
+benf2d <- function(dd){
+x <- vec(dd)
+benlaw2 <- function(d) log10(1 + 1 / d)
+digits2 <- 10:99
+twtDigit <- function(x) substr(gsub('[0.]', '', x), 1, 2)
+pcttwtDigit <- function(x) data.frame(table(twtDigit(x)) / length(x))
+df <- pcttwtDigit(x)
+if(length(twtDigit(x))<=10){
+    return()
+}
+else{
+baseBarplot <- barplot(df$Freq[10:99], names.arg = digits2, xlab = "First-Two Digits",ylab="frequency",col="blue",main=dd$location[1],ylim=c(0,0.05))
+lines(x = baseBarplot[,1], y = benlaw2(digits2), col = "red", lwd = 1, pch = 23, cex = 1.5, bg = "red")
+legend(x="topright", legend=c("Benford distribution","data distribution"),
+       col=c("red","blue"), lty=1,lwd=4, cex=0.8)
+}
+}
+```
+
 \renewcommand{\contentsname}{Sommaire}
 
 \tableofcontents
@@ -441,11 +1735,10 @@ ben <- ben[,-1]
 ben[34,] <- c(" "," "," ") 
 ben1 <- ben[1:17,]
 ben2 <- ben[18:34,]
-kable(cbind(ben1,ben2) ) %>% kable_styling(latex_options = c("striped", "hold_position"))
-#create environnement
-```
+kable(cbind(ben1,ben2))%>%
+  footnote(number = c("Pays : nom des différents pays;","T_2 : valeur de la statistique du T_2;"," p_value : p_value ajustée associée."))
 
-\newpage
+```
 
 $$
 \\
@@ -491,6 +1784,16 @@ $$
 
 Après cette première analyse, nous décidons d'approfondir la recherche en analysant les deux premiers chiffres significatifs afin de repérer d'autres potentiels fraudeurs.
 
+La loi de Benford pour les deux premiers chiffres significatifs s'exprime sous la forme suivante :
+
+$$
+P(I_1I_2)=log_{10}(1+1/I_1I_1)
+$$
+
+avec $I_1I_2$ représentant les deux premiers chiffres significatifs et $I_1I_2~\in~\{10,\dots,99\}$.
+
+La loi de Benford pour les deux premiers chiffres significatifs se modélise donc de la façon suivante :
+
 $$
 \\
 $$
@@ -509,7 +1812,7 @@ $$
 \\
 $$
 
-Nous obtenons alors parmi les individus
+Après cette nouvelle étude, nous retrouvons de nouveau 26 pays suspects présentant des données douteuses que nous pouvons observer dans le tableau ci-dessous.
 
 $$
 \\
@@ -517,11 +1820,10 @@ $$
 
 ```{r tb2,fig.cap="Tableau 2",echo=F}
 library(kableExtra)
-bentwd <-read.csv("twdh1.csv",sep=(","))
-bentwd<- bentwd[,-1]
-bentwd[42,]= c(" "," "," ")
-ben1 <- bentwd[1:21,]
-ben2 <- bentwd[22:42,]
+ben <-read.csv("twdh1.csv",sep=(","))
+ben <- ben[,-1]
+ben1 <- ben[1:13,]
+ben2 <- ben[14:26,]
 kable(cbind(ben1,ben2))%>%
   footnote(number = c("Pays : nom des différents pays;","T_2 : valeur de la statistique du T_2;"," p_value : p_value ajustée associée."))
 
@@ -554,222 +1856,25 @@ $$
 \\
 $$
 
+Cependant nous remarquons que certains pays ont disparu de la liste :
+
 $$
 \\
 $$
 
-```{r}
-#T_2 U^2
-testopt <- function(df){
-  w= 0
-  x=twodigitst2(df,2)
-  y=usq.benftest(vec(df),digits = 2)
-  if(x[2]<=0.025|y$p.value<=0.025){
-    w = 1
-  }
-  return(w)
-}
+-   Biélorussie
 
+-   Les îles Cook
 
-```
+-   Le Maroc
 
-```{r eval=FALSE}
-# Rodriguez
-library(BenfordTests)
-w=10000
-Q = seq(from=-5, to=5, length=30)
-Q[length(Q)+1] = 0
-Q[length(Q)+1] = -1
+-   La Birmanie
 
-ER50 = matrix(0, nrow= 102, ncol= 3)
-ER100 = matrix(0, nrow= 102, ncol= 3)
-ER150 = matrix(0, nrow= 102, ncol= 3)
+-   Taiwan
 
-v = 1
-for (n in c(50,100,150)) {
-
-  C = matrix(0, nrow= 102, ncol= 3)
-
-  z = 1
-  for (gamma in Q) { # On parcout plusieurs gamma pour les différents tests.
-  
-    M = rep(0, 6) # Moyenne empirique = "puissance"
-    L = matrix(0, nrow=6, ncol=w) # Liste des Y(l)
-     
-    proba = rep(0, 90) # vecteur des probas H1 : Rodriguez(gamma) pour sample
-    for (i in c(1:90)) {
-       
-      if (gamma == -1) {
-        proba[i] = log(1 + 1/(i+9))/log(10)
-      }
-    
-      if (gamma == 0) {
-        proba[i] = (1/810)*( 9+19*log(10)+9*(i+9)*log(i+9) - 9*(i+10)*log(i+10) )
-      }
-    
-      if ( (gamma != 0) && (gamma != -1) ) {
-        proba[i] = (gamma+1)/(90*gamma) - ( (i+10)^(gamma+1) - (i+9)^(gamma+1) )/( gamma*( 100^(gamma+1) - 10^(gamma+1) ) )
-      }
-    
-    }
-     
-    for (l in c(1:w)) {
-       
-      data = rep(0, n)
-      for (i in c(1:n)) { # Génération des Xi sous Rodriguez(gamma) de taille n
-           
-        data[i] = sample(x= c(10:99), size=1, prob= proba )
-           
-      }
-        
-      p = rep(0, 6) # Vecteur des p.values.
-      
-      p[1] = testopt(data)
-        
-      for (k in c(1:6)) {
-          
-        if (p[k] == 1 ) {
-          M[k] = M[k] + 1
-          L[k, l] = 1
-        }
-          
-      }
-         
-      }
-    M = M/w  
-  
-    S = rep(0, 6) # Variance empirique
-    for (l in c(1:w)) {
-      for (k in c(1:6)) {
-        S[k] = S[k] + (L[k,l] - M[k])^2
-      }
-    }
-    S = S/w
-      
-    e = rep(0, 6)
-    for (k in c(1:6)) {
-      e[k] = 1.96*sqrt(S[k]/w) # erreur d'approximation (à 95%)
-    }
-    
-      
-    C[z, ] = c(M[1], e[1], gamma)
-    z = z+1
-  
-    cat("\n", v/0.96, "%")
-    v = v+1
-    
-  } # Fin de la boucle sur gamma.
-  
-  
-  if (n == 50) {
-    ER50 = C
-  }
-  if (n == 100) {
-    ER100 = C
-  }
-  if (n == 150) {
-    ER150 = C
-  }
-  
-}
-```
-
-```{r eval=FALSE}
-library(BenfordTests)
-
-w = 10000
-Q = seq(from=-5, to=5, length=30)
-Q[length(Q)+1] = 0
-Q[length(Q)+1] = 0
-
-EP50 = matrix(0, nrow= 102, ncol= 3)
-EP100 = matrix(0, nrow= 102, ncol= 3)
-EP150 = matrix(0, nrow= 102, ncol= 3)
-
-v = 1
-for (n in c(50,100,150)) {
-
-  C = matrix(0, nrow= 102, ncol= 3)
-
-  z = 1
-  for (gamma in Q) { # On parcout plusieurs gamma pour les différents tests.
-  
-    M = rep(0, 6) # Moyenne empirique = "puissance"
-    L = matrix(0, nrow=6, ncol=w) # Liste des Y(l)
-     
-    proba = rep(0, 90) # vecteur des probas H1 : Pietronero(gamma) pour sample
-    for (i in c(1:90)) {
-       
-      if (gamma == 0) {
-        proba[i] = log(1 + 1/(i+9))/log(10)
-      }
-    
-      if (gamma != 0) {
-        proba[i] = ( (i+9)^(-gamma) - (i+10)^(-gamma) )/( 10^(-gamma) - 100^(-gamma) )
-      }
-    
-    }
-     
-    for (l in c(1:w)) {
-       
-      data = rep(0, n)
-      for (i in c(1:n)) { # Génération des Xi sous Pietronero(gamma) de taille n
-           
-        data[i] = sample(x= c(10:99), size=1, prob= proba )
-           
-      }
-        
-      p = rep(0, 6) # Vecteur des p.values.
-      
-      p[1] = testopt(data)
-        
-      for (k in c(1:6)) {
-          
-        if (p[k] == 1 ) {
-          M[k] = M[k] + 1
-          L[k, l] = 1
-        }
-          
-      }
-         
-      }
-    M = M/w  
-  
-    S = rep(0, 6) # Variance empirique
-    for (l in c(1:w)) {
-      for (k in c(1:6)) {
-        S[k] = S[k] + (L[k,l] - M[k])^2
-      }
-    }
-    S = S/w
-      
-    e = rep(0, 6)
-    for (k in c(1:6)) {
-      e[k] = 1.96*sqrt(S[k]/w) # erreur d'approximation (à 95%)
-    }
-    
-      
-    C[z, ] = c(M[1], e[1], gamma)
-    z = z+1
-  
-    cat("\n", v/0.96, "%")
-    v = v+1
-    
-  } # Fin de la boucle sur gamma.
-  
-  
-  if (n == 50) {
-    EP50 = C
-  }
-  if (n == 100) {
-    EP100 = C
-  }
-  if (n == 150) {
-    EP150 = C
-  }
-  
-}
-```
+$$
+\\
+$$
 
 Nous pouvons alors nous questionner sur la raison pour laquelle on ne rejette pas $H_0$ cette fois-ci.
 
@@ -782,43 +1887,814 @@ benf2d(b[b$location=="China",])
 
 ## [Annexe :]{.ul}
 
-w = givenames(b)
+```{r results='hide',eval=FALSE}
+#---------------------------- Test lisse first digit -------------------------
+=======
+>>>>>>> Stashed changes
+library(dplyr)
+library(tidyr)
+library(data.table)
+library(BenfordSmoothTest)
+library(BenfordTests)
+library(kableExtra)
 
-pval = 0
+#------------------------ Importation des données ----------------------------
+b <-read.csv("covid6.csv",sep=",")
+b <- data.table(b)
+b <- b[b$date > "2021-12-01",]
+drop_na(b)
+b <- b[b$location!="World",]
+b <- b[b$location!="Europe",]
+b <- b[b$location!="European Union",]
+b <- b[b$location!="Lower middle income"]
+b <- b[b$location!="High income"]
 
-test = 0
+# on commence à partir de septembre 2021 on s'intéresses aux données récentes.
 
-for(i in 1:length(w)){
+#----------------------------------------------------------------------------
+#------------------------------- Fonction graphes ---------------------------
+library(tidyr)
+library(dplyr)
+vec <- function(df){
+  x <- c(df$new_cases)
+  x <- x[x!=0]
+  j=1
+  for(i in 1:length(x)){
+  if(is.na(x[j])){
+    x <- x[-j]
+  }
+  else{
+    j <- j +1
+  }
+  }
+  return(x)
+}
+benf <- function(dd){
+x <- vec(dd)
+benlaw <- function(d) log10(1 + 1 / d)
+digits <- 1:9
+firstDigit <- function(x) substr(gsub('[0.]', '', x), 1, 1)
+pctFirstDigit <- function(x) data.frame(table(firstDigit(x)) / length(x))
+df <- pctFirstDigit(x)
+if(length(firstDigit(x))<=10){
+    return()
+}
+else{
+baseBarplot <- barplot(df$Freq[1:9], names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, max(df$Freq[1:9],0.35)),col="blue",main=dd$location[1])
+lines(x = baseBarplot[,1], y = benlaw(digits), col = "red", lwd = 4, 
+      type = "b", pch = 23, cex = 1.5, bg = "red")
+legend(x="topright", legend=c("Benford distribution","data distribution"),
+       col=c("red","blue"), lty=1,lwd=4, cex=0.8)
+}
+}
+#-----------------------------------------------------------------------------
 
-bq \<- b[b\$location==w[i],]
+#------------- Fonction nom de pays pouvant passer le test -------------------
+# Récupère les noms des pays ayant minimum 5 données
+library(BenfordTests)
+givenames <- function(df){
+  name <- distinct(df,df$location)
+  w <- 0
+  x <- as.vector(name$`df$location`)
+  t=0
+  for(i in 1:length(x)){
+    d <- df[df$location==x[i],]
+    v <- vec(d)
+    dx <- firstDigit(v)
+    if(length(dx)<=10){
+      t=t
+    }
+    else{
+      t=t+1
+      w[t]=x[i]
+    }
+  }
+  return(w)
+}
+#-----------------------------------------------------------------------------
+#--------------------------- Test du T_2 first digit -------------------------
+# fonction T_2
+library(BenfordSmoothTest)
+T2 <- function(df){
+  x <- vec(df)
+  benf <- BenfordSmooth.test(x)
+  return(benf)
+}
+#----------------------------------------------------------------------------
+#---------------------------- Test lisse bloc de deux ------------------------
+Mu = rep(0,8)
+<<<<<<< Updated upstream
 
-T_k \<- twodigitst(bq,2)
-
-pval[i] \<- T_k[2]
-
-test[i] \<- T_k[1]
-
+for (k in c(1:8)) { # Calcul de Mu(k) :
+  
+  S = 0
+  for (y in c(10:99)) {
+    
+    S = S + (y^k)*log(1 + 1/y)/log(10) 
+    
+  }
+  
+  Mu[k] = S
 }
 
-pvaladj = p.adjust(pval,method="BY")
+for (k in c(1:4)) { # Calcul de M(k)^(-1) :
+  
+  A = matrix(1, ncol=k, nrow=k)
+  
+  for (i in c(0:(k-1)) ) {
+    for (j in c(0:(k-1)) ) {
+      
+      if ( (i != 0) || (j != 0) ) {
+        A[i+1, j+1] = Mu[i+j]
+      }
+      
+    }
+  }
+  
+  if (k == 1) { M1_ = solve(A) }
+  if (k == 2) { M2_ = solve(A) }
+  if (k == 3) { M3_ = solve(A) }
+  if (k == 4) { M4_ = solve(A) }
+  
+}
 
-tab \<- as.data.frame(matrix(c(w,test,pvaladj),ncol=3))
+M_ = list(M1_, M2_, M3_, M4_)
 
-colnames(tab) = c("Pays","T_2","P_value")
+c_ = rep(0,4)
 
-benfo \<- tab[as.numeric(tab\$P_value)\<=0.05,] \# pays qui ne suivent pas une benford.
+for (k in c(1:4)) { # Calcul de h(k) :
+  
+  Mu2 = matrix(0, nrow= k, ncol= 1)
+  
+  for (i in c(1:k)) {
+    Mu2[i, 1] = Mu[ k-1+i ]
+  }
+  
+  c_[k] = 1/(sqrt( Mu[2*k] - ( t(Mu2) %*% M_[[k]]  %*% Mu2 ) )) # 1/sqrt(c(k))
+  
+  A = -1*c_[k] * M_[[k]] %*% Mu2
+  
+  L = rep(0, k+1)
+  for (i in c(1:k)) {
+    L[i] = A[i]
+  }
+  L[k+1] = c_[k]
+  
+  print(L) # Les coéfficients de h(k)
+  
+}
 
-rownames(benfo) \<- NULL
+# Fonctions h(k) :
 
-benfn \<- tab[as.numeric(tab\$P_value)\>0.05,] \# pays qui ne suivent pas une benford.
+h = function (k, x) {
+  
+  if (k == 1) {
+    return( -1.54751771 + 0.04010177 *x )
+  }
+  
+  if (k == 2) {
+    return( 2.795867953 - 0.167441591 *x + 0.001736457 *x^2 )
+  }
+  
+  if (k == 3) {
+    return( -5.187810e+00  + 4.869054e-01 *x - 1.155519e-02 *x^2  + 7.630402e-05 *x^3 )
+  }
+  
+  if (k == 4) {
+    return( 9.725235e+00 - 1.237520e+00 *x + 4.769440e-02 *x^2 - 6.950207e-04 *x^3  + 3.371880e-06 *x^4 )
+  }
+  
+}
 
-rownames(benfn) \<- NULL
+# Statistique T(k) :      ( 1<= k <= 4)
 
-write.csv(benfn,"twdh0.csv")
+T = function (k, data) {
+  
+  n = length(data)
+  
+  T_ = 0 # la statistique T(k)
+  for (l in c(1:k)) {
+    
+    U = 0 # U(l)
+    for (i in c(1:n)) {
+      
+      U = U + h(l, data[i])
+      
+    }
+    U = U*(1/sqrt(n))
+    
+    T_ = T_ + U^2
+    
+  }
+  
+  return(T_)
+}
 
-write.csv(benfo,"twdh1.csv")
+pvalue = function(t, n, k, d, w) { # d et w pour Monte-Carlo
+  
+   if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) { ### 1) approximation Monte-Carlo ###
+     
+     M = 0 # Moyenne empirique = p.value
+     L = rep(0, w) # Liste des Y(l)
+     
+     proba = rep(0, 90) # vecteur des probas sous H0 pour sample
+     for (i in c(1:90)) {
+       
+       proba[i] = log(1 + 1/(i+9) )/log(10)
+       
+     }
+     
+     for (l in c(1:w)) {
+       
+       data = rep(0, n)
+       for (i in c(1:n)) { # Génération des Xi sous H0 de taille n
+         
+         data[i] = sample(x= c(10:99), size=1, prob= proba )
+         
+       }
+       
+       a = T(k, data)
+       
+       if (a >= t) {
+         M = M+1
+         L[l] = 1
+       }
+       
+     }
+     M = M/w
+     
+     S = 0 # Variance empirique
+     for (l in c(1:w)) {
+       
+       S = S + (L[l] - M)^2
+       
+     }
+     S = S/w
+     
+     e = 1.96*sqrt(S/w) # erreur d'approximation (à 95%)
+     
+     
+     return( c(M, e) )
+     
+     
+   } else { ### 2) approximation Khi2 ###
+     
+     M = 1 - pchisq(t, df=k)
+     
+     return( c(M, 0) )
+     
+   } 
+  
+}
 
-write.csv(tab,"twd.csv")
+# 1 <= k <= 4.
+# data : sous forme de vecteur c(…).
+# d = 1 : force le calcul de la p.value par Monte-Carlo.
+# d = 2 : force le calcul de la p.value par approximation Khi2
+# Si n <= 100 alors d=1 par défault, et si n > 100 alors d=2 par défault.
+# w = taille de l'échantillon pour Monte-Carlo.
+# texte = FALSE : n'affiche pas de texte, et return c(Tk, p.value, erreur M-C).
+
+Test.lisse = function (k, data, d=0, w=10000, texte=TRUE) {
+  
+  t = T(k, data) # Valeur de la statistique T(k)
+  
+  n = length(data)
+  A = pvalue(t, n, k, d, w) # On récupère la p.value associé
+  
+  if ( texte == TRUE ) {
+    
+    cat("\n")
+    cat("k =", k, "\n")
+    cat("Statistique Tk =", t, "\n \n")
+  
+    if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) {
+      cat("Approximation de la p.value par Monte-Carlo :", "\n \n")
+      cat("--> p.value =", A[1], "\n")
+      cat("Erreur d'approximation en valeur absolue (à 95%) <=", A[2])
+    
+    } else {
+      cat("Approximation asymptotique de la p.value par une Khi2(k) :", "\n \n")
+      cat("--> p.value =", A[1])
+    }
+    cat("\n")
+  
+  } else {
+    
+    return( c(t,A[1], A[2]) )
+    
+  }
+  
+}
+#----------------------------- Test appliqué aux données --------------------
+twodigitst <- function(df,k){
+  x<-vec(df)
+  w <-signifd(x = x, digits = 2)
+  if(length(w)<=50){
+    y<-Test.lisse(k,w,texte=F,d=1)
+  }
+  else{
+    y<-Test.lisse(k,w,texte=F,d=2)
+  }
+  
+  return(y)
+}
+#------------------------------------------------------------------------------------
+#------------------------------ Fonction p_adjust -----------------------------------
+p_adjusted <- function(w,k){
+  
+  n <- givenames(w)
+  pval = 0
+  for( i in 1:length(n)){
+
+>>>>>>> Stashed changes
+=======
+
+for (k in c(1:8)) { # Calcul de Mu(k) :
+  
+  S = 0
+  for (y in c(10:99)) {
+    
+    S = S + (y^k)*log(1 + 1/y)/log(10) 
+    
+  }
+  
+  Mu[k] = S
+}
+
+for (k in c(1:4)) { # Calcul de M(k)^(-1) :
+  
+  A = matrix(1, ncol=k, nrow=k)
+  
+  for (i in c(0:(k-1)) ) {
+    for (j in c(0:(k-1)) ) {
+      
+      if ( (i != 0) || (j != 0) ) {
+        A[i+1, j+1] = Mu[i+j]
+      }
+      
+    }
+  }
+  
+  if (k == 1) { M1_ = solve(A) }
+  if (k == 2) { M2_ = solve(A) }
+  if (k == 3) { M3_ = solve(A) }
+  if (k == 4) { M4_ = solve(A) }
+  
+}
+
+M_ = list(M1_, M2_, M3_, M4_)
+
+c_ = rep(0,4)
+
+for (k in c(1:4)) { # Calcul de h(k) :
+  
+  Mu2 = matrix(0, nrow= k, ncol= 1)
+  
+  for (i in c(1:k)) {
+    Mu2[i, 1] = Mu[ k-1+i ]
+  }
+  
+  c_[k] = 1/(sqrt( Mu[2*k] - ( t(Mu2) %*% M_[[k]]  %*% Mu2 ) )) # 1/sqrt(c(k))
+  
+  A = -1*c_[k] * M_[[k]] %*% Mu2
+  
+  L = rep(0, k+1)
+  for (i in c(1:k)) {
+    L[i] = A[i]
+  }
+  L[k+1] = c_[k]
+  
+  print(L) # Les coéfficients de h(k)
+  
+}
+
+# Fonctions h(k) :
+
+h = function (k, x) {
+  
+  if (k == 1) {
+    return( -1.54751771 + 0.04010177 *x )
+  }
+  
+  if (k == 2) {
+    return( 2.795867953 - 0.167441591 *x + 0.001736457 *x^2 )
+  }
+  
+  if (k == 3) {
+    return( -5.187810e+00  + 4.869054e-01 *x - 1.155519e-02 *x^2  + 7.630402e-05 *x^3 )
+  }
+  
+  if (k == 4) {
+    return( 9.725235e+00 - 1.237520e+00 *x + 4.769440e-02 *x^2 - 6.950207e-04 *x^3  + 3.371880e-06 *x^4 )
+  }
+  
+}
+
+# Statistique T(k) :      ( 1<= k <= 4)
+
+T = function (k, data) {
+  
+  n = length(data)
+  
+  T_ = 0 # la statistique T(k)
+  for (l in c(1:k)) {
+    
+    U = 0 # U(l)
+    for (i in c(1:n)) {
+      
+      U = U + h(l, data[i])
+      
+    }
+    U = U*(1/sqrt(n))
+    
+    T_ = T_ + U^2
+    
+  }
+  
+  return(T_)
+}
+
+pvalue = function(t, n, k, d, w) { # d et w pour Monte-Carlo
+  
+   if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) { ### 1) approximation Monte-Carlo ###
+     
+     M = 0 # Moyenne empirique = p.value
+     L = rep(0, w) # Liste des Y(l)
+     
+     proba = rep(0, 90) # vecteur des probas sous H0 pour sample
+     for (i in c(1:90)) {
+       
+       proba[i] = log(1 + 1/(i+9) )/log(10)
+       
+     }
+     
+     for (l in c(1:w)) {
+       
+       data = rep(0, n)
+       for (i in c(1:n)) { # Génération des Xi sous H0 de taille n
+         
+         data[i] = sample(x= c(10:99), size=1, prob= proba )
+         
+       }
+       
+       a = T(k, data)
+       
+       if (a >= t) {
+         M = M+1
+         L[l] = 1
+       }
+       
+     }
+     M = M/w
+     
+     S = 0 # Variance empirique
+     for (l in c(1:w)) {
+       
+       S = S + (L[l] - M)^2
+       
+     }
+     S = S/w
+     
+     e = 1.96*sqrt(S/w) # erreur d'approximation (à 95%)
+     
+     
+     return( c(M, e) )
+     
+     
+   } else { ### 2) approximation Khi2 ###
+     
+     M = 1 - pchisq(t, df=k)
+     
+     return( c(M, 0) )
+     
+   } 
+  
+}
+
+# 1 <= k <= 4.
+# data : sous forme de vecteur c(…).
+# d = 1 : force le calcul de la p.value par Monte-Carlo.
+# d = 2 : force le calcul de la p.value par approximation Khi2
+# Si n <= 100 alors d=1 par défault, et si n > 100 alors d=2 par défault.
+# w = taille de l'échantillon pour Monte-Carlo.
+# texte = FALSE : n'affiche pas de texte, et return c(Tk, p.value, erreur M-C).
+
+Test.lisse = function (k, data, d=0, w=10000, texte=TRUE) {
+  
+  t = T(k, data) # Valeur de la statistique T(k)
+  
+  n = length(data)
+  A = pvalue(t, n, k, d, w) # On récupère la p.value associé
+  
+  if ( texte == TRUE ) {
+    
+    cat("\n")
+    cat("k =", k, "\n")
+    cat("Statistique Tk =", t, "\n \n")
+  
+    if ( ( (n <= 100) || (d == 1) ) && (d != 2) ) {
+      cat("Approximation de la p.value par Monte-Carlo :", "\n \n")
+      cat("--> p.value =", A[1], "\n")
+      cat("Erreur d'approximation en valeur absolue (à 95%) <=", A[2])
+    
+    } else {
+      cat("Approximation asymptotique de la p.value par une Khi2(k) :", "\n \n")
+      cat("--> p.value =", A[1])
+    }
+    cat("\n")
+  
+  } else {
+    
+    return( c(t,A[1], A[2]) )
+    
+  }
+  
+}
+#----------------------------- Test appliqué aux données --------------------
+twodigitst <- function(df,k){
+  x =vec(df)
+  z = signifd(x, digits = 2)
+  if(length(z)<= 50){
+    y<-Test.lisse(k,z,texte=F,d=1)
+  }
+  else{
+    y<-Test.lisse(k,z,texte=F,d=2)
+  }
+  
+  return(y)
+}
+#------------------------------------------------------------------------------------
+#------------------------------ Fonction p_adjust -----------------------------------
+p_adjusted <- function(w,k){
+  
+  n <- givenames(w)
+  pval = 0
+  for( i in 1:length(n)){
+
+    bq <- w[w$location==n[i],]
+    Tk = twodigitst(bq,k)
+    pval[i]= Tk[2]
+  }
+  padj <- p.adjust(pval,method="holm")
+  return(padj)
+}
+#------------------------------------------------------------------------------------
+#---------------------- graphe two digits -----------------
+benf2d <- function(dd){
+x <- vec(dd)
+benlaw2 <- function(d) log10(1 + 1 / d)
+digits2 <- 10:99
+twtDigit <- function(x) substr(gsub('[0.]', '', x), 1, 2)
+pcttwtDigit <- function(x) data.frame(table(twtDigit(x)) / length(x))
+df <- pcttwtDigit(x)
+if(length(twtDigit(x))<=10){
+    return()
+}
+else{
+baseBarplot <- barplot(df$Freq[10:99], names.arg = digits2, xlab = "First-Two Digits",ylab="frequency",col="blue",main=dd$location[1],ylim=c(0,0.05))
+lines(x = baseBarplot[,1], y = benlaw2(digits2), col = "red", lwd = 1, pch = 23, cex = 1.5, bg = "red")
+legend(x="topright", legend=c("Benford distribution","data distribution"),
+       col=c("red","blue"), lty=1,lwd=4, cex=0.8)
+}
+}
+```
+
+\renewcommand{\contentsname}{Sommaire}
+
+\tableofcontents
+
+\newpage
+
+## Explication du T_2
+
+$$
+\\
+$$
+
+Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford. Par soucis de performance on décidera pour la suite d'appliquer le test du T_2 considéré comme l'un des plus puissants parmis les [[tests d'adéquations lisses pour la loi de Newcomb-Benford]{.ul}](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf)[.]{.ul}
+
+Avant de rentrer dans le vif du sujet nous allons donc tout d'abord faire un point sur les tests pour la loi de newcomb-benford.
+
+Fanny ..
+
+```{r echo=F,fig.align = 'center'}
+#modélisation benford
+benlaw <- function(d) log10(1 + 1 / d)
+digits <- 1:9
+barres <-barplot(benlaw(digits), names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, .35),col="blue",main="Benford law")
+text(x=barres[,1], y=benlaw(digits)*1.105,labels = round(benlaw(digits),3))
+
+```
+
+$$
+\\
+$$
+
+Passons alors à une brève introduction sur les testes lisses $T_k$.
+
+$$\\$$
+
+\textcolor{red}{Théorème}
+
+:   Soit $X_1,\dots,X_n$ des copies indépendantes d'une variable aléatoire X de densité $f(.)$ par rapport à une mesure $v$. Soit $\{h_0(.) := 1,h_k(.),k=1,2,...\}$ une suite de fonctions orthonormales par rapport à $f(.)$; plus précisément, $\int{h_k(x)h_{k'}(x)f(x)dv(x)=\delta_{kk'}}$, la fonction delta de Kronecker. Soit $U_k=n^{-1/2}\sum_{i=1}^nh_k(X_i)$ et pour un entier $K\ge1$, soir $T_k=\sum_{k=1}^KU^2_k$. Alors sous $H_0$, $T_K\stackrel{L}{\to}\chi^2_K$, la loi khi-deux à K degrés de liberté, et un test de niveau asymptotique $\alpha$ rejette $H_0$ si la valeur observée de $T_K$ dépasse $x^2_{K,1-\alpha}$, le quantile d'ordre $1-\alpha$ de cette loi $\chi_K^2$.
+
+$$\\$$
+
+## Explication des procédés d'analyse
+
+$$
+\\
+$$
+
+Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 215 pays. Puis, dans un second temps nous procéderons à l'estimation des p-values "ajustées" à l'aide de la méthode de correction de Benjamini, Hochberg & Yekutieli.
+
+$$
+\\
+$$
+
+En effet, lorsque des comparaisons multiples sont réalisées, le risque de se tromper n'est plus contrôlé.
+
+Dans notre situation il semble donc nécessaire d'ajuster les p-values obtenues pour chacun des multiples tests, afin que le risque de se tromper pour l'ensemble de ces tests, soit à nouveau contrôlé, à niveau $5\%$.
+
+$$
+\\
+$$
+
+## Analyse des données observées ( *p_value significative ou non* )
+
+$$
+\\
+$$
+
+Après analyse, on observe qu'on rejette $H_0 :$ *l'échantillon suit une loi de Newcomb-Benford contre* $H_1 :$ *l'échantillon ne suis pas une loi de Newcomb-Benford* pour 33 pays. On remarque alors qu'on ne rejette pas $H_0$ pour les 182 autres pays avec un risque d'erreur $\alpha=5\%$.
+
+Cette étude nous permet de lever un drapeau d'alerte face aux pays qui ne passent pas le test.
+
+Nous listerons ces pays dans le tableau ci-dessous :
+
+$$
+\\
+$$
+
+```{r tb1,fig.cap="Tableau 1",echo=F}
+library(kableExtra)
+ben <-read.csv("h1.csv",sep=(","))
+ben <- ben[,-1]
+ben[34,] <- c(" "," "," ") 
+ben1 <- ben[1:17,]
+ben2 <- ben[18:34,]
+kable(cbind(ben1,ben2))%>%
+  footnote(number = c("Pays : nom des différents pays;","T_2 : valeur de la statistique du T_2;"," p_value : p_value ajustée associée."))
+
+```
+
+$$
+\\
+$$
+
+Parmi eux on retrouve notamment Cuba, le Qatar, la Russie, le Japon, le Royaume-Uni ou encore Taiwan.
+
+Ci-dessous nous décidons alors de représenter la distribution des premiers chiffres significatifs allant de 1 à 9 des données quotidiennes sur les nouveaux cas provenant des pays qui sont non conformes à la loi de Newcomb-Benford.
+
+$$
+\\
+$$
+
+```{r echo=F}
+par(mfrow=c(2,3))
+benf(b[b$location=="Russia",])
+benf(b[b$location=="China",])
+benf(b[b$location=="Qatar",])
+benf(b[b$location=="Greece",])
+benf(b[b$location=="Japan",])
+benf(b[b$location=="Cuba",])
+```
+
+$$
+\\
+$$
+
+Nous observons effectivement des discordances non négligeables entre les répartitions théoriques des premiers chiffres siginificatifs suivant la loi de Newcomb-Benford et la répartition des premiers chiffres significatifs des échantillons observés. Ceci nous réconforte dans l'hypothèse de rejet de $H_0$.
+
+$$\\$$Nous observons tout de même la présence de pays pour lesquels nous ne pouvons pas conclure.
+
+Il serait intéressant de se questionner sur la véracité des données de nouveaux cas de COVID-19 des pays comme le Vatican ou encore Wallis et Futuna qui n'ont répertorié aucun cas depuis décembre 2021.
+
+$$
+\\
+$$
+
+## Block de deux
+
+$$
+\\
+$$
+
+Après cette première analyse, nous décidons d'approfondir la recherche en analysant les deux premiers chiffres significatifs afin de repérer d'autres potentiels fraudeurs.
+
+La loi de Benford pour les deux premiers chiffres significatifs s'exprime sous la forme suivante :
+
+$$
+P(I_1I_2)=log_{10}(1+1/I_1I_1)
+$$
+
+avec $I_1I_2$ représentant les deux premiers chiffres significatifs et $I_1I_2~\in~\{10,\dots,99\}$.
+
+La loi de Benford pour les deux premiers chiffres significatifs se modélise donc de la façon suivante :
+
+$$
+\\
+$$
+
+```{r echo=F}
+benlaw2 <- function(d) log10(1 + 1 / d)
+digits2 <- 10:99
+baseBarplot <- barplot(benlaw2(digits2), names.arg = digits2, xlab = "First-Two Digits",ylab="frequency",col="blue",main="Benford law",ylim=c(0,0.05))
+lines(x = baseBarplot[,1], y = benlaw2(digits2), col = "red", lwd = 1, pch = 23, cex = 1.5, bg = "red")
+
+
+
+```
+
+$$
+\\
+$$
+
+Après cette nouvelle étude, nous retrouvons de nouveau 26 pays suspects présentant des données douteuses que nous pouvons observer dans le tableau ci-dessous.
+
+$$
+\\
+$$
+
+```{r tb2,fig.cap="Tableau 2",echo=F}
+library(kableExtra)
+ben <-read.csv("twdh1.csv",sep=(","))
+ben <- ben[,-1]
+ben1 <- ben[1:13,]
+ben2 <- ben[14:26,]
+kable(cbind(ben1,ben2))%>%
+  footnote(number = c("Pays : nom des différents pays;","T_2 : valeur de la statistique du T_2;"," p_value : p_value ajustée associée."))
+
+
+```
+
+$$
+\\
+$$
+
+On remarque que pour nos deux analyses on retrouves 21 pays identiques dont la Russie, le Qatar ou encore le Royaume-Uni ce qui permet de confirmer le doute.
+
+Par cette méthode on découvre également d'autre suspects que nous n'avions pas réussi à repérer précédemment qui sont :
+
+$$
+\\
+$$
+
+-   La République de Chypre
+
+-   L'Australie
+
+-   L'Érythrée
+
+-   Gibraltar
+
+-   São Tomé-et-Principe
+
+$$
+\\
+$$
+
+Cependant nous remarquons que certains pays ont disparu de la liste :
+
+$$
+\\
+$$
+
+-   Biélorussie
+
+-   Les îles Cook
+
+-   Le Maroc
+
+-   La Birmanie
+
+-   Taiwan
+
+$$
+\\
+$$
+
+Nous pouvons alors nous questionner sur la raison pour laquelle on ne rejette pas $H_0$ cette fois-ci.
+
+Afin d'y voir plus claire rien de mieux qu'une modélisation graphique.
+
+```{r echo=F}
+benf2d(b[b$location=="China",])
+
+```
+
+## [Annexe :]{.ul}
 
 ```{r results='hide',eval=FALSE}
 #---------------------------- Test lisse first digit -------------------------
@@ -1129,13 +3005,6 @@ twodigitst <- function(df,k){
   
   return(y)
 }
-twodigitst2 <- function(df,k){
-  x<-vec(df)
-  w <-signifd(x = x, digits = 2)
-  y<-Test.lisse(k,w,texte=F,d=2)
-  
-  return(y)
-}
 #------------------------------------------------------------------------------------
 #------------------------------ Fonction p_adjust -----------------------------------
 p_adjusted <- function(w,k){
@@ -1144,6 +3013,7 @@ p_adjusted <- function(w,k){
   pval = 0
   for( i in 1:length(n)){
 
+>>>>>>> Stashed changes
     bq <- w[w$location==n[i],]
     Tk = twodigitst(bq,k)
     pval[i]= Tk[2]
@@ -1171,7 +3041,15 @@ for(i in 1:length(w)){
   test[i] <- as.numeric(T_k[2,2])
 }
 pvaladj = p.adjust(pval,method="BY")
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 tab <- as.data.frame(matrix(c(w,round(test,3),round(pvaladj,3)),ncol=3))
+=======
+tab <- as.data.frame(matrix(c(w,test,pvaladj),ncol=3))
+>>>>>>> Stashed changes
+=======
+tab <- as.data.frame(matrix(c(w,test,pvaladj),ncol=3))
+>>>>>>> Stashed changes
 colnames(tab) = c("Pays","T_2","P_value")
 benfo <- tab[as.numeric(tab$P_value)<=0.05,] # pays qui ne suivent pas une benford.
 rownames(benfo) <- NULL
@@ -1182,6 +3060,34 @@ write.csv(benfo,"h1.csv")
 write.csv(tab,"tabadj.csv")
 #-----------------------------------------------------
 #---------------- tableau two digits -----------------
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+write.csv(benfn,"twdh0.csv")
+write.csv(benfo,"twdh1.csv")
+write.csv(tab,"twd.csv")
+
+#---------------------- graphes -------------------------------
+#----------------------- benford 1st digit ----------------------------
+#modélisation benford
+benlaw <- function(d) log10(1 + 1 / d)
+digits <- 1:9
+barres <-barplot(benlaw(digits), names.arg = digits, xlab = "First Digit",ylab="frequency", ylim = c(0, .35),col="blue",main="Benford law")
+text(x=barres[,1], y=benlaw(digits)*1.105,labels = round(benlaw(digits),3))
+
+#----------------------- benford 2 digits --------------------------------
+benlaw2 <- function(d) log10(1 + 1 / d)
+digits2 <- 10:99
+baseBarplot <- barplot(benlaw2(digits2), names.arg = digits2, xlab = "First-Two Digits",ylab="frequency",col="blue",main="Benford law",ylim=c(0,0.05))
+lines(x = baseBarplot[,1], y = benlaw2(digits2), col = "red", lwd = 1, pch = 23, cex = 1.5, bg = "red")
+
+#----------------------- tab 1st digit -----------------------------------
+```
+
+### [Sources :]{.ul}
+
+=======
+=======
+>>>>>>> Stashed changes
 w = givenames(b)
 pval = 0
 test = 0
@@ -1192,7 +3098,7 @@ for(i in 1:length(w)){
   test[i] <- T_k[1]
 }
 pvaladj = p.adjust(pval,method="BY")
-tab <- as.data.frame(matrix(c(w,round(test,3),round(pvaladj,3)),ncol=3))
+tab <- as.data.frame(matrix(c(w,test,pvaladj),ncol=3))
 colnames(tab) = c("Pays","T_2","P_value")
 benfo <- tab[as.numeric(tab$P_value)<=0.05,] # pays qui ne suivent pas une benford.
 rownames(benfo) <- NULL
@@ -1201,12 +3107,12 @@ rownames(benfn) <- NULL
 write.csv(benfn,"twdh0.csv")
 write.csv(benfo,"twdh1.csv")
 write.csv(tab,"twd.csv")
-
-#---------------------- Fonction new -------------------------------
-
-
 ```
 
 ### [Sources :]{.ul}
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 -   [\<https://github.com/CSSEGISandData/COVID-19\>](https://github.com/CSSEGISandData/COVID-19){.uri}
