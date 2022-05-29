@@ -6,6 +6,8 @@ output:
   pdf_document:
     extra_dependencies: ["bbm", "threeparttable", "dsfont","zref-user"]
     df_print: kable
+  toc: yes
+  bibliography: bibliography.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -776,7 +778,7 @@ Sous l'hypothèse $\mathcal{H}_0$, la fonction de répartition $\hat F$ est trè
 
 \textcolor{blue}{Remarque :}
 
-:   Le test de Kolmogorov-Smirnov est préférer au test du $\chi^2$ lorsque le caractère observée prennent des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
+:   Le test de Kolmogorov-Smirnov est préféré au test du $\chi^2$ lorsque le caractère observée prennent des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
 
 \medskip
 
@@ -883,9 +885,15 @@ Nous observons tout de même la présence de pays pour lesquels nous ne pouvons 
 
 Il serait intéressant de se questionner sur la véracité des données de nouveaux cas de COVID-19 des pays comme le Vatican ou encore Wallis et Futuna qui n'ont répertorié aucun cas depuis décembre 2021.
 
+$$
+\\
+$$
+
 ## **V - Tests sur le second chiffre significatif sur les données Covid des différents pays du monde**
 
-\medskip
+$$
+\\
+$$
 
 Après cette première analyse, nous décidons d'approfondir la recherche en analysant les deux premiers chiffres significatifs afin de repérer d'autres potentiels fraudeurs.
 
@@ -1462,4 +1470,4 @@ lines(x = baseBarplot[,1], y = benlaw2(digits2), col = "red", lwd = 1, pch = 23,
 
 ### [Sources :]{.ul}
 
--   [\<https://github.com/CSSEGISandData/COVID-19\>](https://github.com/CSSEGISandData/COVID-19){.uri}
+-   [Base de donnée](https://github.com/CSSEGISandData/COVID-19)

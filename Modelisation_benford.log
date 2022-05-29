@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  29 MAY 2022 12:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  29 MAY 2022 12:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -750,113 +750,113 @@ has been already used, duplicate ignored
                                                   
 l.780 \end{description}
                         <./DistanceKS.png>] [9]
-<h1.png, id=141, 588.1975pt x 373.395pt>
+<h1.png, id=143, 588.1975pt x 373.395pt>
 File: h1.png Graphic file (type png)
 <use h1.png>
-Package pdftex.def Info: h1.png  used on input line 869.
+Package pdftex.def Info: h1.png  used on input line 874.
 (pdftex.def)             Requested size: 341.43301pt x 216.74586pt.
-<disbenf.png, id=142, 777.90625pt x 519.9425pt>
+<disbenf.png, id=144, 777.90625pt x 519.9425pt>
 File: disbenf.png Graphic file (type png)
 <use disbenf.png>
-Package pdftex.def Info: disbenf.png  used on input line 893.
+Package pdftex.def Info: disbenf.png  used on input line 898.
 (pdftex.def)             Requested size: 341.43704pt x 228.21211pt.
 [10pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.908 
+l.913 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.908 
+l.913 
        <./h1.png> <./disbenf.png>]
-<benfh0.png, id=152, 778.91pt x 502.87875pt>
+<benfh0.png, id=154, 778.91pt x 502.87875pt>
 File: benfh0.png Graphic file (type png)
 <use benfh0.png>
-Package pdftex.def Info: benfh0.png  used on input line 915.
+Package pdftex.def Info: benfh0.png  used on input line 920.
 (pdftex.def)             Requested size: 341.42598pt x 220.43094pt.
 [11pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.957 \newpage
+l.968 \newpage
                <./benfh0.png>]
-<tab2D.png, id=164, 630.355pt x 456.70625pt>
+<tab2D.png, id=166, 630.355pt x 456.70625pt>
 File: tab2D.png Graphic file (type png)
 <use tab2D.png>
-Package pdftex.def Info: tab2D.png  used on input line 963.
+Package pdftex.def Info: tab2D.png  used on input line 974.
 (pdftex.def)             Requested size: 455.24992pt x 329.83871pt.
-<cambo.png, id=165, 575.14874pt x 370.38374pt>
+<cambo.png, id=167, 575.14874pt x 370.38374pt>
 File: cambo.png Graphic file (type png)
 <use cambo.png>
-Package pdftex.def Info: cambo.png  used on input line 984.
+Package pdftex.def Info: cambo.png  used on input line 995.
 (pdftex.def)             Requested size: 14.22597pt x 9.16122pt.
-<como.png, id=167, 576.1525pt x 345.29pt>
+<como.png, id=169, 576.1525pt x 345.29pt>
 File: como.png Graphic file (type png)
 <use como.png>
-Package pdftex.def Info: como.png  used on input line 987.
+Package pdftex.def Info: como.png  used on input line 998.
 (pdftex.def)             Requested size: 14.22443pt x 8.52473pt.
-<eri.png, id=169, 576.1525pt x 286.06876pt>
+<eri.png, id=171, 576.1525pt x 286.06876pt>
 File: eri.png Graphic file (type png)
 <use eri.png>
-Package pdftex.def Info: eri.png  used on input line 990.
+Package pdftex.def Info: eri.png  used on input line 1001.
 (pdftex.def)             Requested size: 14.22443pt x 7.06265pt.
-<malou.png, id=171, 577.15625pt x 290.08376pt>
+<malou.png, id=173, 577.15625pt x 290.08376pt>
 File: malou.png Graphic file (type png)
 <use malou.png>
-Package pdftex.def Info: malou.png  used on input line 993.
+Package pdftex.def Info: malou.png  used on input line 1004.
 (pdftex.def)             Requested size: 14.2228pt x 7.1485pt.
-<gui.png, id=173, 576.1525pt x 287.0725pt>
+<gui.png, id=175, 576.1525pt x 287.0725pt>
 File: gui.png Graphic file (type png)
 <use gui.png>
-Package pdftex.def Info: gui.png  used on input line 997.
+Package pdftex.def Info: gui.png  used on input line 1008.
 (pdftex.def)             Requested size: 14.22443pt x 7.08743pt.
-<maldi.png, id=175, 572.1375pt x 377.41pt>
+<maldi.png, id=177, 572.1375pt x 377.41pt>
 File: maldi.png Graphic file (type png)
 <use maldi.png>
-Package pdftex.def Info: maldi.png  used on input line 1001.
+Package pdftex.def Info: maldi.png  used on input line 1012.
 (pdftex.def)             Requested size: 14.22133pt x 9.38109pt.
-<mont.png, id=177, 576.1525pt x 290.08376pt>
+<mont.png, id=179, 576.1525pt x 290.08376pt>
 File: mont.png Graphic file (type png)
 <use mont.png>
-Package pdftex.def Info: mont.png  used on input line 1004.
+Package pdftex.def Info: mont.png  used on input line 1015.
 (pdftex.def)             Requested size: 14.22443pt x 7.16177pt.
-<tome.png, id=179, 575.14874pt x 286.06876pt>
+<tome.png, id=181, 575.14874pt x 286.06876pt>
 File: tome.png Graphic file (type png)
 <use tome.png>
-Package pdftex.def Info: tome.png  used on input line 1007.
+Package pdftex.def Info: tome.png  used on input line 1018.
 (pdftex.def)             Requested size: 14.22597pt x 7.07574pt.
-<cor.png, id=181, 555.07375pt x 350.30875pt>
+<cor.png, id=183, 555.07375pt x 350.30875pt>
 File: cor.png Graphic file (type png)
 <use cor.png>
-Package pdftex.def Info: cor.png  used on input line 1011.
+Package pdftex.def Info: cor.png  used on input line 1022.
 (pdftex.def)             Requested size: 14.22067pt x 8.9747pt.
-<sri.png, id=183, 575.14874pt x 286.06876pt>
+<sri.png, id=185, 575.14874pt x 286.06876pt>
 File: sri.png Graphic file (type png)
 <use sri.png>
-Package pdftex.def Info: sri.png  used on input line 1014.
+Package pdftex.def Info: sri.png  used on input line 1025.
 (pdftex.def)             Requested size: 14.22597pt x 7.07574pt.
 [12pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1027 O
+l.1038 O
         n décide alors d'observer la distribution de leurs deux premiers <./ta
 b2D.png> <./cambo.png> <./como.png> <./eri.png> <./malou.png> <./gui.png> <./ma
 ldi.png> <./mont.png> <./tome.png> <./cor.png> <./sri.png>]
-<benrep2.png, id=202, 839.135pt x 528.97626pt>
+<benrep2.png, id=204, 839.135pt x 528.97626pt>
 File: benrep2.png Graphic file (type png)
 <use benrep2.png>
-Package pdftex.def Info: benrep2.png  used on input line 1037.
+Package pdftex.def Info: benrep2.png  used on input line 1048.
 (pdftex.def)             Requested size: 341.43552pt x 215.23508pt.
 [13pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1058 \newpage
+l.1069 \newpage
                 <./benrep2.png>]
-Overfull \hbox (11.07745pt too wide) in paragraph at lines 1068--1169
+Overfull \hbox (11.07745pt too wide) in paragraph at lines 1079--1180
  [][] 
  []
 
@@ -864,90 +864,90 @@ Overfull \hbox (11.07745pt too wide) in paragraph at lines 1068--1169
 figure.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1322 \newpage
+l.1333 \newpage
                ]
-Overfull \hbox (11.07745pt too wide) in paragraph at lines 1331--1432
+Overfull \hbox (11.07745pt too wide) in paragraph at lines 1342--1443
  [][] 
  []
 
 [17] [18]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-588.
+599.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-1608.
+1619.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1614.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1625.
 
 LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 1790.
+(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 1801.
 
 
 [19pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1986 \end{Shaded}
+l.1997 \end{Shaded}
                    ]
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 [20]
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 [21]
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 [22]
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 [23]
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 [24]
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1986
+Underfull \vbox (badness 10000) detected at line 1997
  []
 
 [25] [26] (./Modelisation_benford.aux) ) 
 Here is how much of TeX's memory you used:
- 15063 strings out of 478994
- 224013 string characters out of 5858184
+ 15061 strings out of 478994
+ 223993 string characters out of 5858184
  645270 words of memory out of 5000000
  31960 multiletter control sequences out of 15000+600000
- 477366 words of font info for 163 fonts, out of 8000000 for 9000
+ 477283 words of font info for 162 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,11n,88p,1217b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fon
@@ -975,10 +975,10 @@ ype1/public/lm/lmtko10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/publ
 ic/lm/lmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtt
 i10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msbm10.pfb>
-Output written on Modelisation_benford.pdf (26 pages, 1482484 bytes).
+Output written on Modelisation_benford.pdf (26 pages, 1482364 bytes).
 PDF statistics:
- 433 PDF objects out of 1000 (max. 8388607)
- 344 compressed objects within 4 object streams
+ 435 PDF objects out of 1000 (max. 8388607)
+ 346 compressed objects within 4 object streams
  80 named destinations out of 1000 (max. 500000)
  39163 words of extra memory for PDF output out of 42996 (max. 10000000)
 
