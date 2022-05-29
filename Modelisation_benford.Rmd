@@ -400,6 +400,8 @@ Posons quelles notations : soit $r$ une nombre réel, on note $\{r\}$ sa partie 
 
 ### II.1 - Histoire mathématique de la loi de Benford
 
+Une partie des informations ci-dessous est tirée de \cite{lille}, et \cite{lill}.
+
 \medskip
 
 Partons de la loi de l'étalement uniforme de la partie fractionnaire d'un nombre réel, qui indique que les nombres d'une série dont on enlève ce qui précède la virgule ($8.235$ devient $0.235$; $143.488$ devient $0.488$) se répartissent à peu près uniformément dans l'intervalle $[0,1]$.
@@ -412,7 +414,7 @@ L'explication de cette loi est que, sauf cas particuliers, les parties fractionn
 
 \medskip
 
-**Évidence de la loi de Benford**
+**Évidence de la loi de Benford** 
 
 \medskip
 
@@ -444,7 +446,7 @@ Exemple :
 
 \smallskip
 
-La loi de Benford continue est donnée par la définition suivante : 
+La loi de Benford continue est donnée par la définition suivante :
 
 La mantisse $X \in [1;10[$ suit la loi de Benford continue si pour tout $[a,b[ \subset [1,10[$, la probabilité que la mantisse appartienne à $[a,b[$ vaut $log(b)-log(a)$.
 
@@ -590,7 +592,7 @@ Tout d'abord définissons ce qu'est un test lisse, un test d'ajustement.
 
 \medskip
 
-On appelle test d'ajustement tout test visant à vérifier si les données observées sont compatibles avec un modèle théorique. C'est un problème de la forme suivante :  (https://www.universalis.fr/encyclopedie/tests-d-hypotheses-statistiques/8-tests-d-ajustement/#)
+On appelle test d'ajustement tout test visant à vérifier si les données observées sont compatibles avec un modèle théorique. C'est un problème de la forme suivante : \cite{lee}
 
 $\;$Soit $(x_1,x_2, \cdots, x_N$ un échantillon de variables aléatoires indépendantes identiquement distribuées de fonction de répartition $F$ inconnue. Nous testons l'hypothèse (19) $\mathcal{H}_0$ : $F = F_0$, contre $\mathcal{H}_1$ : $F \ne F_0$, où $F_0$ est la fonction de répartition de la loi testée choisie.
 
@@ -598,7 +600,7 @@ Nous pouvons modifier l'énoncé dans le cas de données discrètes, avec une fo
 
 \medskip
 
-### III.1.1 - Test du $\chi^2$
+### III.1.1 - Test du $\chi^2$ \cite{lil}
 
 \medskip
 
@@ -696,7 +698,7 @@ Soit $(X_1,X_2, \cdots,X_N)$ un échantillon d'une variable aléatoire $X$ de lo
 
 De plus, notons $\hat F:\mathbb{R} \longrightarrow [0,1]$, la fonction de répartition empirique de l'échantillon $(X_1,X_2, \cdots,X_N)$. Commençons par trier par ordre croissant les valeurs des $X_i$ de l'échantillon, traditionnellement appelé les $\textit{statistiques d'ordre}$ de l'échantillon.
 
-La [fonction de répartition empirique](https://mistis.inrialpes.fr/software/SMEL/cours/ts/node7.html) est définie par :
+La fonction de répartition empirique est définie par : \cite{lii}
 
 \medskip
 
@@ -874,12 +876,12 @@ $$
 \section{Test lisse sur le bloc des deux premiers chiffres significatifs}
 
 
-L'objectif de cette partie est de reprendre la méthodologie de l'article (A CITER) sur la construction des tests lisses d'adéquation, pour l'appliquer à la loi de Benford sur le bloc des deux premiers chiffres significatifs.
+L'objectif de cette partie est de reprendre la méthodologie de l'article \cite{b} sur la construction des tests lisses d'adéquation, pour l'appliquer à la loi de Benford sur le bloc des deux premiers chiffres significatifs.
 
 Nous allons ainsi étendre les tests $T_{K}$ utilisés précédemment sur le premier chiffre significatif, pour les appliquer sur le bloc des deux premiers chiffres, et ainsi voire si les conclusions de rejet parmi les pays restent les mêmes.
 \\
 
-Dans un premier temps nous construirons donc ces nouveaux tests. Puis dans un second nous observerons leurs courbes de puissance par rapport à deux autres tests : $\chi^{2}$ et Freedman-Watson $(U^{2})$, sur deux alternatives : Rodriguez et Pietronero. Cela s'inspire complètement de (A CITER).
+Dans un premier temps nous construirons donc ces nouveaux tests. Puis dans un second nous observerons leurs courbes de puissance par rapport à deux autres tests : $\chi^{2}$ et Freedman-Watson $(U^{2})$, sur deux alternatives : Rodriguez et Pietronero. Cela s'inspire complètement de \cite{b}.
 
 
 \subsection{Préambule/Cadre Théorique \\}
@@ -900,7 +902,7 @@ Considérons $Y \in [\![ 10; 99 ]\!]$ les deux premiers chiffres significatifs d
 & = \log_{10} \left( 1 + \dfrac{1}{y} \right)
 \end{align*}
 
-\textbf{2) Théorèmes (issus de A CITER) :}
+\textbf{2) Théorèmes (issus de \cite{b}) :}
 \\
 
 Tout repose sur le théorème suivant. Il explique comment construire une famille de tests lisses d'adéquation, indexée par l'entier $K$. \\
@@ -941,7 +943,7 @@ $h_{3}(x) = -5.18781 + 4.869054e^{-01} x - 1.155519e^{-02} x^2 + 7.630402e^{-05}
 $h_{4}(x) = 9.725235 - 1.237520 x + 4.769440e^{-02} x^2 - 6.950207e^{-04} x^3 + 3.371880e^{-06} x^4$ \\
 
 Avec ces quatre fonctions nous pouvons donc construire $T_{K}$ pour $1 \leq K \leq 4$. Le choix de $K$ est important : s'il est trop grand alors le test sera très peu puissant, et s'il est trop petit alors il le sera également sur certaines alternatives. \\
-Dans le package associé à (A CITER), on peut calculer les tests pour $K$ entre $1$ et $7$. Pour des raisons pratiques ici, nous n'avons pas pu calculer les $h_{k}$ pour $k \geq 5$. En effet la $LB(2)$ a un support entre $10$ et $99$, et ses moments deviennent très rapidement élevés. Or dans le théorème numéro 2), nous calculons l'inverse de $M_{k}$, ce qui en fait une matrice avec de très petits coefficients. Petits à tel point que le logiciel "plante" car il "ne peut pas effectuer de division par zéro" lors du calcul de l'inverse. Autrement dit, R considère $M_{k}$ comme une matrice non-inversible, ce qui n'est pourtant pas le cas. \\
+Dans le package associé à \cite{b}, on peut calculer les tests pour $K$ entre $1$ et $7$. Pour des raisons pratiques ici, nous n'avons pas pu calculer les $h_{k}$ pour $k \geq 5$. En effet la $LB(2)$ a un support entre $10$ et $99$, et ses moments deviennent très rapidement élevés. Or dans le théorème numéro 2), nous calculons l'inverse de $M_{k}$, ce qui en fait une matrice avec de très petits coefficients. Petits à tel point que le logiciel "plante" car il "ne peut pas effectuer de division par zéro" lors du calcul de l'inverse. Autrement dit, R considère $M_{k}$ comme une matrice non-inversible, ce qui n'est pourtant pas le cas. \\
 Cependant, cela n'est pas gênant, car comme nous pourrons le voir plus tard lors du calcul des courbes de puissances, le test préféré est celui du $T_{2}$, surpassant $T_{3}$ et $T_{4}$. Ce qui fait des $T_{K}$, $K \geq 5$, de mauvais candidats. \\
 
 Nous pouvons donc maintenant calculer la statistique $T_{K}$ pour $1 \leq K \leq 4$, et effectuer le test proposé dans le théorème numéro 1) : On rejette $\mathcal{H}_{0}$ si $T_{K}$ dépasse le quantile d'ordre $1- \alpha$ de sa loi sous $\mathcal{H}_{0}$. \\
@@ -995,7 +997,7 @@ On constate toujours une extrême proximité des courbes bleus et noires. C'est 
 
 
 Nous allons présenter les courbes de puissance des quatre tests $T_{k}$ construits ci-dessus, du test du $\chi^{2}$, et de celui de Freedman-Watson $(U^{2})$, sur deux alternatives à la $LB(2)$ : La Rodriguez et la Pietronero bivarié. \\
-	
+    
 $\rightarrow$ Le test du $U^{2}$ étant moins connu que celui du $\chi^{2}$, on rappelle sa statistique : \\
 
 Pour $d \in [\![ 10; 99 ]\!]$, on pose $\hat{p_{d}} = n_{d}/n$ la proportion de $d$ dans l'échantillon $(X_{1}, X_{2}, ...,X_{n})$, et $\pi_{d}$ les probabilités théoriques de la $LB(2)$. Soit aussi $S_{d} = \sum \limits_{i=10}^{d} \hat{p_{i}}$ et $S_{d}^{*} = \sum \limits_{i=10}^{d}  \pi_{i}$. Posons $Z_{d} = S_{d} - S_{d}^{*}$ l'écart entre la fonction de répartition empirique et la fonction de répartition théorique de la $LB(2)$. Posons également $t_{d} = (\pi_{d} + \pi_{d+1})/2$ pour $d=10,11,...,98$, et $t_{99} = (\pi_{99} + \pi_{10})/2$. Alors :
@@ -1030,7 +1032,7 @@ $\mathbb{P}(X=d) = \left\{
 \end{center}
 \bigskip
 
-Dans (A CITER), voici les courbes de puissances obtenues pour les tests ci-dessus $(T^{2}, \chi^{2}, U^{2})$ portant sur l'adéquation du premier chiffre significatif avec la $LB(1)$ (loi de Benford simple), et pour les alternatives correspondantes univariées :
+Dans \cite{b}, voici les courbes de puissances obtenues pour les tests ci-dessus $(T^{2}, \chi^{2}, U^{2})$ portant sur l'adéquation du premier chiffre significatif avec la $LB(1)$ (loi de Benford simple), et pour les alternatives correspondantes univariées :
 
 \medskip
 \begin{center}
@@ -1064,8 +1066,7 @@ Nous avons les graphiques suivants :
 
 2) Pour l'alternative Pietronero. Le test du $\chi^{2}$ est toujours très mauvais. Sa courbe vient même toucher $y=0$, pour $x$ entre $0$ et $1$, ce qui est surprenant... Peut-être une erreur lors de la simulation, mais je n'ai pas pu la détecter. Pour les autres tests, le $U^{2}$ est cette fois-ci assez mauvais par rapport aux autres. Comme dans le cas univarié, il est moins bon que le $T_{2}$. Ce dernier $T_{2}$ reste toujours en tête du classement, mais il est dépassé de peu par le test du $T_{1}$. Malheureusement le $T_{1}$ était assez mauvais pour l'alternative Rodriguez. \\
 
-On retrouve tout de même des résultats proches de ceux du cas univarié. On peut même suspecter la même chose pour les alternatives que nous n'avons pas testée, et qui sont présentés dans (A CITER). Dans ces dernières alternatives, le test du $U^{2}$ s'effondrait, et le test du $T_{2}$ restait bon. De plus, juste en considérant les deux alternatives Rodriguez et Pietronero que nous avons présenté, ne sachant pas dans quelle situation on se situe dans la pratique, le test du $T_{2}$ est un bon candidat pour les deux alternatives. Nous allons d'ailleurs choisir ce test pour effectuer les analyses des données Covid par la suite.
-
+On retrouve tout de même des résultats proches de ceux du cas univarié. On peut même suspecter la même chose pour les alternatives que nous n'avons pas testée, et qui sont présentés dans \cite{b}. Dans ces dernières alternatives, le test du $U^{2}$ s'effondrait, et le test du $T_{2}$ restait bon. De plus, juste en considérant les deux alternatives Rodriguez et Pietronero que nous avons présenté, ne sachant pas dans quelle situation on se situe dans la pratique, le test du $T_{2}$ est un bon candidat pour les deux alternatives. Nous allons d'ailleurs choisir ce test pour effectuer les analyses des données Covid par la suite.
 
 
 
@@ -1436,7 +1437,6 @@ lines(x = baseBarplot[,1], y = benlaw2(digits2), col = "red", lwd = 1, pch = 23,
 
 #----------------------- tab 1st digit -----------------------------------
 ```
-
 
 ```{r}
 #----------------------- PARTIE TEST BLOC DEUX PREMIERS CHIFFRES --------------------------------
