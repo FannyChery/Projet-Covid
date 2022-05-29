@@ -1072,7 +1072,7 @@ On retrouve tout de même des résultats proches de ceux du cas univarié. On pe
 ```
 Après cette première analyse, nous décidons d'approfondir la recherche en analysant les deux premiers chiffres significatifs afin de repérer d'autres potentiels fraudeurs. \\
 
-Après analyse nous obtenons alors la table suivante représentative des individus pour lesquels on rejette $H_0$ (voir tableau complet figure ( $\ref{fig:2dgt}$) en annexe):
+Après analyse nous obtenons alors la table suivante représentative des individus pour lesquels on rejette $\mathcal{H}_0$ (voir tableau complet figure ( $\ref{fig:2dgt}$) en annexe):
 
 ```{=tex}
 \begin{figure}[h!] 
