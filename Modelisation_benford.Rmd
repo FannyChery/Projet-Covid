@@ -796,9 +796,9 @@ $$
 \\
 $$
 
-Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford. Par soucis de performance on décidera pour la suite d'appliquer le test du $T_2$ considéré comme l'un des plus puissants parmi les [[tests d'adéquations lisses pour la loi de Newcomb-Benford]{.ul}](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf).
+Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford. Par soucis de performance on décidera pour la suite d'appliquer le test du $T_2$ considéré comme l'un des plus puissants parmi les [[tests d'adéquations lisses pour la loi de Newcomb-Benford]{.ul}](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf). Pour ce faire on aura recours au package [benfordSmoothTest](https://github.com/st-homme/benfordSmoothTest).
 
-Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 215 pays (pour plus d'informations sur les données veuillez consulter le github du [CSSE](https://github.com/CSSEGISandData/COVID-19) basé notamment sur les données de l'OMS, de l'ECDC etc ...). Puis, dans un second temps nous procéderons à l'estimation des p-values "ajustées" à l'aide de la méthode de correction de Benjamini, Hochberg & Yekutieli.
+Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 215 pays (pour plus d'informations sur les données veuillez consulter le github du [CSSE](https://github.com/CSSEGISandData/COVID-19) basé notamment sur les données de l'OMS, de l'ECDC etc ...). Puis, dans un second temps nous procéderons à l'estimation des p-values "ajustées" à l'aide de la méthode de correction de Benjamini, Hochberg & Yekutieli. Plus précisément à l'aide de la commande ["p.adjust"](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/p.adjust)sur R.
 
 En effet, lorsque des comparaisons multiples sont réalisées, le risque de se tromper n'est plus contrôlé.
 
@@ -877,7 +877,7 @@ On remarque facilement une différence significative avec la distributions des p
 
 Voir tableau complet en annexe à la figure ($\ref{fig:1dgt}$).
 
-Nous observons effectivement des discordances non négligeables entre les répartitions théoriques des premiers chiffres siginificatifs suivant la loi de Newcomb-Benford et la répartition des premiers chiffres significatifs des échantillons observés. Ceci nous réconforte dans l'hypothèse de rejet de $H_0$.
+Nous observons effectivement des discordances non négligeables entre les répartitions théoriques des premiers chiffres significatifs suivant la loi de Newcomb-Benford et la répartition des premiers chiffres significatifs des échantillons observés. Ceci nous réconforte dans l'hypothèse de rejet de $H_0$.
 
 Nous observons tout de même la présence de pays pour lesquels nous ne pouvons pas conclure.
 
