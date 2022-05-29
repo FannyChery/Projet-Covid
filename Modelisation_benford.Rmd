@@ -431,7 +431,7 @@ Les parties fractionnaires des images par $log_{10}$ des nombres $r$ dont le pre
 
 \medskip
 
-Nous obtenons la mantisse d'un réel $x$ strictement positif en déplaçant la virgule après le premier chiffre significatif. Donc la mantisse d'un nombre appartient à l'intervalle $[0,10[$ et est obtenue à partie de la formule $mantisse(x)=10^{log_{10}(x)}$ (rappel : $\{.\}$ désigne la partie fractionnaire du nombre $x$).
+Nous obtenons la mantisse d'un réel $x$ strictement positif en déplaçant la virgule après le premier chiffre significatif. Donc la mantisse d'un nombre appartient à l'intervalle $[0,10[$ et est obtenue à partie de la formule $mantisse(x)=10^{\{log_{10}(x)\}}$ (rappel : $\{.\}$ désigne la partie fractionnaire du nombre $x$).
 
 \smallskip
 
@@ -463,7 +463,7 @@ De plus, la loi de Benford est invariante par changement d'échelle ou d'unité.
 
 \medskip
 
-Tout ceci se généralise bien sûr en base quelconque. Nous choisissons, communément la base $c=10$ comme base de référence pour le logarithme. Nous avons choisit la base $10$ pour le logarithme dans la suite.
+Tout ceci se généralise bien sûr en base quelconque. Nous choisissons, communément la base $c=10$ comme base de référence pour le logarithme. Nous avons choisi la base $10$ pour le logarithme dans la suite.
 
 \smallskip
 
@@ -507,7 +507,7 @@ Cette formule nous donne le tableau de probabilité suivant :
 ```
 \bigskip
 
-Ci-dessous , nous pouvons observer une représentation graphique de la loi de Benford discrète :
+Ci-dessous, nous pouvons observer une représentation graphique de la loi de Benford discrète :
 
 \bigskip
 
@@ -587,9 +587,7 @@ Tout d'abord définissons ce qu'est un test lisse, un test d'ajustement.
 
 \medskip
 
-On appelle test d'ajustement tout test servant à tester des hypothèses de type 19. C'est un test qui vise à vérifier si les données observées sont compatibles avec un modèle théorique.
-
-On appelle les [hypothèses de type 19](https://www.universalis.fr/encyclopedie/tests-d-hypotheses-statistiques/8-tests-d-ajustement/#) un problème de la forme suivante :
+On appelle test d'ajustement tout test visant à vérifier si les données observées sont compatibles avec un modèle théorique. C'est un problème de la forme suivante :  (https://www.universalis.fr/encyclopedie/tests-d-hypotheses-statistiques/8-tests-d-ajustement/#)
 
 $\;$Soit $(x_1,x_2, \cdots, x_N$ un échantillon de variables aléatoires indépendantes identiquement distribuées de fonction de répartition $F$ inconnue. Nous testons l'hypothèse (19) $\mathcal{H}_0$ : $F = F_0$, contre $\mathcal{H}_1$ : $F \ne F_0$, où $F_0$ est la fonction de répartition de la loi testée choisie.
 
@@ -601,9 +599,9 @@ Nous pouvons modifier l'énoncé dans le cas de données discrètes, avec une fo
 
 \medskip
 
-Le test du $\chi^2$ à été proposé par le statisticien Karl Pearson en 1900. Ce test du $\chi^2$ nous permet de vérifier si un échantillon d'une variable aléatoire $X$ nous donne des observations comparables à une loi de probabilité $\mathbb{P}$, ici la loi de Benford. C'est à dire, il nous permet de vérifier si les fréquences observées dans un échantillon correspondent aux fréquences attendues données par la loi de probabilité choisie.
+Le test du $\chi^2$ à été proposé par le statisticien Karl Pearson en 1900. Ce test du $\chi^2$ nous permet de vérifier si un échantillon d'une variable aléatoire $X$ nous donne des observations comparables à une loi de probabilité $\mathbb{P}$, ici la loi de Benford. C'est-à-dire, il nous permet de vérifier si les fréquences observées dans un échantillon correspondent aux fréquences attendues données par la loi de probabilité choisie.
 
-Le test du $\chi^2$ se défini comme ceci :
+Le test du $\chi^2$ se définit comme ceci :
 
 Soit un échantillon de données $(x_1, x_2, \cdots, x_N)$ d'une variable aléatoire $X$ qui prend un nombre fini $J$ de valeurs $(v_1,v_2, \cdots, v_J)$. Nous voulons tester la loi $\mathbb{P}$ avec $\forall j \in \{1,\cdots,J\}$, $\mathbb{P}(Y=v_j)=p_j$.
 
@@ -613,13 +611,13 @@ Nous testons donc :
 
 -   $\mathcal{H}_0$ : l'échantillon $(x_1, x_2, \cdots, x_N)$ suit la loi de $\mathbb{P}$
 
--   $\mathcal{H}_1$ : l'échantillon $(x_1, x_2, \cdots, x_N)$ ne suivent pas la loi de $\mathbb{P}$
+-   $\mathcal{H}_1$ : l'échantillon $(x_1, x_2, \cdots, x_N)$ ne suit pas la loi de $\mathbb{P}$
 
 \medskip
 
 Plus précisément nous testons $\mathcal{H}_0$ : La probabilité que $X$ prenne la valeur $v_j$ vaut $p_j$, pour $j\in \{1,\cdots,J\}$, avec $\sum\limits_{j=1}^Jp_j=1$.
 
-On appelle $\hat p_j$ la probabilité empirique que $X$ prenne la valeur $v_j$. C'est à dire le nombre d'observations $x_i$ qui prennent la valeur $v_j$ dans l'échantillon divisé par le nombre total $N$ d'observations :
+On appelle $\hat p_j$ la probabilité empirique que $X$ prenne la valeur $v_j$. C'est-à-dire le nombre d'observations $x_i$ qui prennent la valeur $v_j$ dans l'échantillon divisé par le nombre total $N$ d'observations :
 
 \medskip
 
