@@ -752,7 +752,7 @@ Sous l'hypothèse $\mathcal{H}_0$, la fonction de répartition $\hat F$ est trè
 
 \textcolor{blue}{Remarque :}
 
-:   Le test de Kolmogorov-Smirnov est préféré au test du $\chi^2$ lorsque le caractère observée prend des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
+:   Le test de Kolmogorov-Smirnov est préféré au test du $\chi^2$ lorsque le caractère observé prend des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
 
 \medskip
 
@@ -774,7 +774,7 @@ $$
 
 Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford. Par soucis de performance on décidera pour la suite d'appliquer le test du $T_2$ considéré comme l'un des plus puissants parmi les [[tests d'adéquations lisses pour la loi de Newcomb-Benford]{.ul}](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf). Pour ce faire on aura recours au package [benfordSmoothTest](https://github.com/st-homme/benfordSmoothTest).
 
-Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 215 pays (pour plus d'informations sur les données veuillez consulter le github du [CSSE](https://github.com/CSSEGISandData/COVID-19) basé notamment sur les données de l'OMS, de l'ECDC etc ...). Puis, dans un second temps nous procéderons à l'estimation des p-values "ajustées" à l'aide de la méthode de correction de Benjamini, Hochberg & Yekutieli. Plus précisément à l'aide de la commande ["p.adjust"](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/p.adjust)sur R.
+Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 215 pays (pour plus d'informations sur les données veuillez consulter le github du [CSSE](https://github.com/CSSEGISandData/COVID-19) basés notamment sur les données de l'OMS, de l'ECDC etc ...). Puis, dans un second temps nous procéderons à l'estimation des p-values "ajustées" à l'aide de la méthode de correction de Benjamini, Hochberg & Yekutieli. Plus précisément à l'aide de la commande ["p.adjust"](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/p.adjust)sur R.
 
 En effet, lorsque des comparaisons multiples sont réalisées, le risque de se tromper n'est plus contrôlé.
 
@@ -786,7 +786,7 @@ Dans notre situation il semble donc nécessaire d'ajuster les p-values obtenues 
 
 \medskip
 
-Après analyse, on observe qu'on rejette $H_0 :$ *l'échantillon suit une loi de Newcomb-Benford contre* $H_1 :$ *l'échantillon ne suis pas une loi de Newcomb-Benford* pour 33 pays. On remarque alors qu'on ne rejette pas $H_0$ pour les 182 autres pays avec un risque d'erreur $\alpha=5\%$.
+Après analyse, on observe qu'on rejette $\mathcal{H}_0 :$ *l'échantillon suit une loi de Newcomb-Benford contre* $\mathcal{H}_1 :$ *l'échantillon ne suis pas une loi de Newcomb-Benford* pour 33 pays. On remarque alors qu'on ne rejette pas $H_0$ pour les 182 autres pays avec un risque d'erreur $\alpha=5\%$.
 
 Cette étude nous permet de lever un drapeau d'alerte face aux pays qui ne passent pas le test.
 
@@ -805,13 +805,13 @@ Nous listerons ces pays dans le tableau ci-dessous indiquant pour chaque pays la
 
 \end{center}
 
-\caption{\textbf{Liste des pays pour lesquels on rejette $H_0$}}
+\caption{\textbf{Liste des pays pour lesquels on rejette $\mathcal{H}_0$}}
 
 \end{figure}
 ```
 \bigskip
 
-Parmi eux on retrouve notamment Cuba, le Qatar, la Russie, le Japon, le Royaume-Uni ou encore Taiwan.
+Parmi eux on retrouve notamment Cuba, le Qatar, la Russie, le Japon, le Royaume-Uni ou encore Taïwan.
 
 Ci-dessous nous décidons alors de représenter la distribution des premiers chiffres significatifs allant de 1 à 9 des données quotidiennes sur les nouveaux cas provenant de ces pays qui ne sont manifestement pas conformes à la loi de Newcomb-Benford.
 
@@ -832,7 +832,7 @@ Ci-dessous nous décidons alors de représenter la distribution des premiers chi
 ```
 \bigskip
 
-On remarque facilement une différence significative avec la distributions des premiers chiffres significatifs allant de 1 à 9 des données quotidiennes sur les nouveaux cas provenant des pays pour lesquels on ne rejette pas l'hypothèse selon laquelle ils seraient conforme à la loi de Benford :
+On remarque facilement une différence significative avec la distribution des premiers chiffres significatifs allant de 1 à 9 des données quotidiennes sur les nouveaux cas provenant des pays pour lesquels on ne rejette pas l'hypothèse selon laquelle ils seraient conformes à la loi de Benford :
 
 ```{=tex}
 \begin{figure}[h!] 
@@ -851,7 +851,7 @@ On remarque facilement une différence significative avec la distributions des p
 
 Voir tableau complet en annexe à la figure ($\ref{fig:1dgt}$).
 
-Nous observons effectivement des discordances non négligeables entre les répartitions théoriques des premiers chiffres significatifs suivant la loi de Newcomb-Benford et la répartition des premiers chiffres significatifs des échantillons observés. Ceci nous réconforte dans l'hypothèse de rejet de $H_0$.
+Nous observons effectivement des discordances non négligeables entre les répartitions théoriques des premiers chiffres significatifs suivant la loi de Newcomb-Benford et la répartition des premiers chiffres significatifs des échantillons observés. Ceci nous réconforte dans l'hypothèse de rejet de $\mathcal{H}_0$.
 
 Nous observons tout de même la présence de pays pour lesquels nous ne pouvons pas conclure.
 
@@ -873,7 +873,7 @@ $$
 
 L'objectif de cette partie est de reprendre la méthodologie de l'article (A CITER) sur la construction des tests lisses d'adéquation, pour l'appliquer à la loi de Benford sur le bloc des deux premiers chiffres significatifs.
 
-Nous allons ainsi étendre les tests $T_{K}$ utilisés précédemment sur le premier chiffre significatif, pour les appliqués sur le bloc des deux premiers chiffres, et ainsi voir si les conclusions de rejet parmi les pays restent les mêmes.
+Nous allons ainsi étendre les tests $T_{K}$ utilisés précédemment sur le premier chiffre significatif, pour les appliquer sur le bloc des deux premiers chiffres, et ainsi voire si les conclusions de rejet parmi les pays restent les mêmes.
 \\
 
 Dans un premier temps nous construirons donc ces nouveaux tests. Puis dans un second nous observerons leurs courbes de puissance par rapport à deux autres tests : $\chi^{2}$ et Freedman-Watson $(U^{2})$, sur deux alternatives : Rodriguez et Pietronero. Cela s'inspire complètement de (A CITER).
@@ -886,7 +886,7 @@ Dans un premier temps nous construirons donc ces nouveaux tests. Puis dans un se
 \\
 
 Soit $X \in [1;10[$ la mantisse de notre nombre aléatoire. \\
-On suppose que $\mathbb{P}(X \leq d) = \log_{10}(d)$ pour tout $d \in [1;10[$. C'est à dire $X$ suit la loi de Benford continue.
+On suppose que $\mathbb{P}(X \leq d) = \log_{10}(d)$ pour tout $d \in [1;10[$. C'est-à-dire $X$ suit la loi de Benford continue.
 \\
 
 Considérons $Y \in [\![ 10; 99 ]\!]$ les deux premiers chiffres significatifs de X. Alors par un raisonnement analogue à la construction de la loi de Benford sur le premier chiffre :
@@ -900,24 +900,24 @@ Considérons $Y \in [\![ 10; 99 ]\!]$ les deux premiers chiffres significatifs d
 \textbf{2) Théorèmes (issus de A CITER) :}
 \\
 
-Tout repose sur le théorème suivant. Il explique comment construire une famille de tests lisses d'adéquation, indéxée par l'entier $K$. \\
+Tout repose sur le théorème suivant. Il explique comment construire une famille de tests lisses d'adéquation, indexée par l'entier $K$. \\
 
 \textbf{Théorème 1)} : Soit $G$ une loi cible, ayant pour densité $f$ par rapport à une mesure dominante $\nu$. Soit $(X_{1}, X_{2}, ..., X_{n})$ un $n$-échantillon issu de $X \sim G_{A}$. On veut tester $H_{0}$ : $G_{A} = G$, contre $H_{1}$ : $G_{A} \ne G$. \\
 
-Soit $\{ h_{0} \equiv 1, h_{k}, k \geq 1 \}$ une famille de fonctions orthonormales par rapport à $f$, c'est à dire $\displaystyle \int h_{k}(x)h_{k^{'}}(x)f(x) \, \mathrm{d \nu}(x) = \delta_{kk^{'}}$, la fonction delta de Kronecker. \\
+Soit $\{ h_{0} \equiv 1, h_{k}, k \geq 1 \}$ une famille de fonctions orthonormales par rapport à $f$, c'est-à-dire $\displaystyle \int h_{k}(x)h_{k^{'}}(x)f(x) \, \mathrm{d \nu}(x) = \delta_{kk^{'}}$, la fonction delta de Kronecker. \\
 Soit $U_{k} = n^{-1/2} \sum \limits_{i=1}^{n} h_{k}(X_{i}) $, et soit pour un entier $K \geq1$, $T_{K} = \sum \limits_{k=1}^{K} U_{k}^{2}$. \\ 
 Alors sous $H_{0}$, $T_{K} \xrightarrow[n \to +\infty]{\mathcal{L}} \chi_{K}^{2}$ , et un test de niveau asymptotique $\alpha$ rejette $H_{0}$ au profit de $H_{1}$ si la valeur observée de $T_{K}$ dépasse $x_{1- \alpha}$ le quantile d'ordre $1- \alpha$ d'une loi $\chi_{K}^{2}$. \\
 
-Nous allons maintenant spécialisé ce théorème au cas où $G$ est la loi de Benford précédente sur le bloc des deux premiers chiffres significatifs. Nous obtiendrons ainsi plusieurs tests d'adéquation $T_{K}$ pour $G$. \\
+Nous allons maintenant spécialiser ce théorème au cas où $G$ est la loi de Benford précédente sur le bloc des deux premiers chiffres significatifs. Nous obtiendrons ainsi plusieurs tests d'adéquation $T_{K}$ pour $G$. \\
 Pour ce faire il nous faut calculer des fonctions orthonormales $h_{k}$ associées à $G$ comme dans le théorème ci-dessus. Nous utilisons le résultat suivant (qui est général) : \\
 
 \textbf{Théorème 2)} : Soit $X \sim G$, et $\mu_{k} = \mathbb{E}(X^{k})$, pour $k \geq0$. Soit aussi la matrice $M_{k} = [\mu_{i+j}]_{i,j=0,...,k-1}$, le vecteur $\lambda_{k} = (\mu_{k}, \mu_{k+1}, ..., \mu_{2k-1})^{T}$, et la constante $c_{k} = \mu_{2k} - \lambda_{k}^{T} M_{k}^{-1} \lambda_{k}$. Alors les polynômes :
 \begin{center}
 $h_{k}(x) = c_{k}^{-1/2} ( x^{k} - (1,x,x^{2},...,x^{k-1}) M_{k}^{-1} \lambda_{k} )$
 \end{center}
-satisfonts le théorème précédent. \\
+satisfont le théorème précédent. \\
 
-Heureusement pour nous, la loi de Benford à deux chiffres est bornée p.s., et donc admet un moment pour tous les ordres. Nous avons donc tout les éléments de "la recette de cuisine".
+Heureusement pour nous, la loi de Benford à deux chiffres est bornée p.s., et donc admet un moment pour tous les ordres. Nous avons donc tous les éléments de "la recette de cuisine".
 
 
 \subsection{Construction des tests lisses $T_{K}$ : \\}
@@ -925,7 +925,7 @@ Heureusement pour nous, la loi de Benford à deux chiffres est bornée p.s., et 
 
 Soit $X$ suivant la loi de Benford sur le bloc des deux premiers chiffres significatifs, $\forall x \in [\![ 10; 99 ]\!], \quad \mathbb{P}(X=x) = \log_{10} \left( 1 + \dfrac{1}{x} \right)$. On note $X \sim LB(2)$. \\
 
-Cette partie de construction a été effectuée sur R, et toute les commandes se trouvent en annexe. \\
+Cette partie de construction a été effectuée sur R, et toutes les commandes se trouvent en annexe. \\
 
 Nous commençons par calculer les fonctions orthonormales $h_{k}$ du théorème numéro 2) ci-dessus, associées à la $LB(2)$. On obtient : \\
 
@@ -937,18 +937,18 @@ $h_{3}(x) = -5.18781 + 4.869054e^{-01} x - 1.155519e^{-02} x^2 + 7.630402e^{-05}
 
 $h_{4}(x) = 9.725235 - 1.237520 x + 4.769440e^{-02} x^2 - 6.950207e^{-04} x^3 + 3.371880e^{-06} x^4$ \\
 
-Avec ces quatre fonctions nous pouvons donc construire $T_{K}$ pour $1 \leq K \leq 4$. Le choix de $K$ est important : si il est trop grand alors le test sera très peu puissant, et si il est trop petit alors il le sera également sur certaine alternative. \\
-Dans le package associé à (A CITER), on peut calculer les tests pour $K$ entre $1$ et $7$. Pour des raisons pratiques ici, nous n'avons pas pu calculer les $h_{k}$ pour $k \geq 5$. En effet la $LB(2)$ a un support entre $10$ et $99$, et ses moments deviennent très rapidement élevé. Or dans le théorème numéro 2), nous calculons l'inverse de $M_{k}$, ce qui en fait une matrice avec de très petit coefficients. Petit à tel point que le logiciel "plante" car il "ne peut pas effectuer de division par zéro" lors du calcul de l'inverse. Autrement dit, R considère $M_{k}$ comme une matrice non-inversible, ce qui n'est pourtant pas le cas. \\
+Avec ces quatre fonctions nous pouvons donc construire $T_{K}$ pour $1 \leq K \leq 4$. Le choix de $K$ est important : s'il est trop grand alors le test sera très peu puissant, et s'il est trop petit alors il le sera également sur certaines alternatives. \\
+Dans le package associé à (A CITER), on peut calculer les tests pour $K$ entre $1$ et $7$. Pour des raisons pratiques ici, nous n'avons pas pu calculer les $h_{k}$ pour $k \geq 5$. En effet la $LB(2)$ a un support entre $10$ et $99$, et ses moments deviennent très rapidement élevés. Or dans le théorème numéro 2), nous calculons l'inverse de $M_{k}$, ce qui en fait une matrice avec de très petits coefficients. Petits à tel point que le logiciel "plante" car il "ne peut pas effectuer de division par zéro" lors du calcul de l'inverse. Autrement dit, R considère $M_{k}$ comme une matrice non-inversible, ce qui n'est pourtant pas le cas. \\
 Cependant, cela n'est pas gênant, car comme nous pourrons le voir plus tard lors du calcul des courbes de puissances, le test préféré est celui du $T_{2}$, surpassant $T_{3}$ et $T_{4}$. Ce qui fait des $T_{K}$, $K \geq 5$, de mauvais candidats. \\
 
 Nous pouvons donc maintenant calculer la statistique $T_{K}$ pour $1 \leq K \leq 4$, et effectuer le test proposé dans le théorème numéro 1) : On rejette $H_{0}$ si $T_{K}$ dépasse le quantile d'ordre $1- \alpha$ de sa loi sous $H_{0}$. \\
-Pour une observation $T_{K}(\omega)=t$, nous calculons la p.value associé : $\mathbb{P}_{H_{0}}(t \leq T_{K})$. Si $n$, le nombre de $X_{i}$, est grand, alors on peut approximer la p.value asymptotiquement par $\mathbb{P}(t \leq \chi^{2}_{K})$. Dans la pratique, si $n \leq 100$, on fait l'approximation par Monte-Carlo, et sinon on la fait par approximation asymptotique du $\chi^{2}_{K}$. \\
+Pour une observation $T_{K}(\omega)=t$, nous calculons la p.value associée : $\mathbb{P}_{H_{0}}(t \leq T_{K})$. Si $n$, le nombre de $X_{i}$, est grand, alors on peut approximer la p.value asymptotiquement par $\mathbb{P}(t \leq \chi^{2}_{K})$. Dans la pratique, si $n \leq 100$, on fait l'approximation par Monte-Carlo, et sinon on la fait par approximation asymptotique du $\chi^{2}_{K}$. \\
 
 Justification du choix $n > 100$ : \\
 
 Ci-dessous, voici en couleur les fonctions de répartition empirique issues d'échantillons de taille 10 000 de $T_{K}$ (pour $n=101$, et $n=102$ données), et générés sous $H_{0}$. En noir la fonction de répartition théorique d'un $\chi^{2}_{K}$. Un graphique pour chaque $1 \leq K \leq 4$. \\
 
-On constate que pour n > 100, l'ecdf de $T_{K}$ est quasiment égale à la fonction de répartition théorique d'une $\chi^{2}_{K}$. A tel point qu'il est extrêmement difficile de distinguer cette dernière, c'est à dire la courbe noire, et cela même en zoomant (elle existe bien sur chaque graphique !).
+On constate que pour n > 100, l'ecdf de $T_{K}$ est quasiment égale à la fonction de répartition théorique d'une $\chi^{2}_{K}$. À tel point qu'il est extrêmement difficile de distinguer cette dernière, c'est-à-dire la courbe noire, et cela même en zoomant (elle existe bien sur chaque graphique !).
 
 \begin{center}
 \includegraphics[width=12cm]{ECDF1.pdf} \\
@@ -995,7 +995,7 @@ Nous allons présenter les courbes de puissance des quatre tests $T_{k}$ constru
 	
 $\rightarrow$ Le test du $U^{2}$ étant moins connu que celui du $\chi^{2}$, on rappelle sa statistique : \\
 
-Pour $d \in [\![ 10; 99 ]\!]$, on pose $\hat{p_{d}} = n_{d}/n$ la proportion de $d$ dans l'échantillon $(X_{1}, X_{2}, ...,X_{n})$, et $\pi_{d}$ les probabilités théorique de la $LB(2)$. Soit aussi $S_{d} = \sum \limits_{i=10}^{d} \hat{p_{i}}$ et $S_{d}^{*} = \sum \limits_{i=10}^{d}  \pi_{i}$. Posons $Z_{d} = S_{d} - S_{d}^{*}$ l'écart entre la fonctions de répartitions empirique et la fonction de répartition théorique de la $LB(2)$. Posons également $t_{d} = (\pi_{d} + \pi_{d+1})/2$ pour $d=10,11,...,98$, et $t_{99} = (\pi_{99} + \pi_{10})/2$. Alors :
+Pour $d \in [\![ 10; 99 ]\!]$, on pose $\hat{p_{d}} = n_{d}/n$ la proportion de $d$ dans l'échantillon $(X_{1}, X_{2}, ...,X_{n})$, et $\pi_{d}$ les probabilités théoriques de la $LB(2)$. Soit aussi $S_{d} = \sum \limits_{i=10}^{d} \hat{p_{i}}$ et $S_{d}^{*} = \sum \limits_{i=10}^{d}  \pi_{i}$. Posons $Z_{d} = S_{d} - S_{d}^{*}$ l'écart entre la fonction de répartition empirique et la fonction de répartition théorique de la $LB(2)$. Posons également $t_{d} = (\pi_{d} + \pi_{d+1})/2$ pour $d=10,11,...,98$, et $t_{99} = (\pi_{99} + \pi_{10})/2$. Alors :
 \begin{center}
 $U^{2} = \dfrac{1}{n} \sum \limits_{d=10}^{99} (Z_{d} - \bar{Z})^{2} t_{d}$
 \end{center}
