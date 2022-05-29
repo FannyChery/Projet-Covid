@@ -420,7 +420,7 @@ L'explication de cette loi est que, sauf cas particuliers, les parties fractionn
 
 La loi de l'étalement uniforme permet de déduire la loi de Benford. Grâce à cette loi d'étalement à la fois intuitive et formalisable, nous allons obtenir une justification naturelle et simple de la loi de Benford. L'idée consiste simplement à appliquer un logarithme décimal à la loi précédente et à creuser un peu.
 
-Reprenons l'énoncé précédent et appliquons-le non pas aux nombres $r$ de la série considérée, mais à leur logarithme décimal, $log_{10}(r)$. Si l'on choisit des nombres réels $r$ au hasard sur une large plage couvrant plusieurs ordres de grandeur (par exemple entre $1$ et $10^{20}$), et que la loi qui indique la probabilité de tomber sur une des valeurs possibles est assez **régulière** et **étalée**, alors les parties fractionnaires des logarithmes décimaux des nombres, c'est-à-dire les $\{log_{10}(r)\}$, seront, à peu de chose près, uniformément réparties entre $0$ et $1$. Pour aller plus loin, ou pour plus d'informations sur les notions de [[**régularité et d'étalement**]{.ul}](https://journals.openedition.org/msh/10363?file=1) :
+Reprenons l'énoncé précédent et appliquons-le non pas aux nombres $r$ de la série considérée, mais à leur logarithme décimal, $log_{10}(r)$. Si l'on choisit des nombres réels $r$ au hasard sur une large plage couvrant plusieurs ordres de grandeur (par exemple entre $1$ et $10^{20}$), et que la loi qui indique la probabilité de tomber sur une des valeurs possibles est assez **régulière** et **étalée**, alors les parties fractionnaires des logarithmes décimaux des nombres, c'est-à-dire les $\{log_{10}(r)\}$, seront, à peu de chose près, uniformément réparties entre $0$ et $1$. Pour aller plus loin, ou pour plus d'informations sur les notions de [**régularité et d'étalement**]{.ul} **(**\cite{lill}):
 
 Ce que nous venons d'énoncer est la loi de Benford (ou plus exactement une loi dénommée «loi de Benford continue»). En effet, affirmer que $c$ est le premier chiffre significatif du nombre $r$ équivaut à énoncer que $log_{10}(c)\le \{log_{10}(r) \} \le log_{10}(c+1)$.
 
@@ -737,7 +737,7 @@ $$
 
 \medskip
 
-Voici une représentation du calcul de la [distance de Kolmogorov-Smirnov](https://bdesgraupes.pagesperso-orange.fr/UPX/L2/MethStats_seance_11_doc.pdf). Graphiquement, c'est le plus grand écart vertical en valeur absolue entre la valeur empirique et la valeur théorique.
+Voici une représentation du calcul de la distance de Kolmogorov-Smirnov (\cite{lii}) . Graphiquement, c'est le plus grand écart vertical en valeur absolue entre la valeur empirique et la valeur théorique.
 
 \bigskip
 
@@ -872,13 +872,13 @@ $$
 \\
 $$
 
-L'objectif de cette partie est de reprendre la méthodologie de l'article \\cite{b} sur la construction des tests lisses d'adéquation, pour l'appliquer à la loi de Benford sur le bloc des deux premiers chiffres significatifs.
+L'objectif de cette partie est de reprendre la méthodologie de l'article \cite{d} sur la construction des tests lisses d'adéquation, pour l'appliquer à la loi de Benford sur le bloc des deux premiers chiffres significatifs.
 
-Nous allons ainsi étendre les tests \$T\_{K}\$ utilisés précédemment sur le premier chiffre significatif, pour les appliquer sur le bloc des deux premiers chiffres, et ainsi voire si les conclusions de rejet parmi les pays restent les mêmes.
+Nous allons ainsi étendre les tests $T_{K}$ utilisés précédemment sur le premier chiffre significatif, pour les appliquer sur le bloc des deux premiers chiffres, et ainsi voire si les conclusions de rejet parmi les pays restent les mêmes.
 
 \medskip
 
-Dans un premier temps nous construirons donc ces nouveaux tests. Puis dans un second nous observerons leurs courbes de puissance par rapport à deux autres tests : $\chi^{2}$ et Freedman-Watson ($U^{2}$), sur deux alternatives : Rodriguez et Pietronero. Cela s'inspire complètement de \cite{b}.
+Dans un premier temps nous construirons donc ces nouveaux tests. Puis dans un second nous observerons leurs courbes de puissance par rapport à deux autres tests : $\chi^{2}$ et Freedman-Watson ($U^{2}$), sur deux alternatives : Rodriguez et Pietronero. Cela s'inspire complètement de \cite{d}.
 
 \medskip
 
@@ -912,7 +912,7 @@ Considérons $Y \in [\![ 10; 99 ]\!]$ les deux premiers chiffres significatifs d
 ```
 \medskip
 
-\textbf{2) Théorèmes (issus de \cite{b}) :}
+\textbf{2) Théorèmes (issus de \cite{d}) :}
 
 \medskip
 
@@ -930,7 +930,7 @@ Théorème 1 :
 
     \smallskip
 
-    Soit \$U\_{k} = n\^{-1/2} \\sum \\limits\_{i=1}\^{n} h\_{k}(X\_{i}) \$, et soit pour un entier $K \geq1$, $T_{K} = \sum \limits_{k=1}^{K} U_{k}^{2}$.
+    Soit $U_{k} = n^{-1/2} \sum \limits_{i=1}^{n} h_{k}(X_{i})$, et soit pour un entier $K \geq1$, $T_{K} = \sum \limits_{k=1}^{K} U_{k}^{2}$.
 
     \smallskip
 
@@ -990,7 +990,7 @@ Nous commençons par calculer les fonctions orthonormales $h_{k}$ du théorème 
 
 Avec ces quatre fonctions nous pouvons donc construire $T_{K}$ pour $1 \leq K \leq 4$. Le choix de $K$ est important : s'il est trop grand alors le test sera très peu puissant, et s'il est trop petit alors il le sera également sur certaines alternatives.
 
-Dans le package associé à \cite{b}, on peut calculer les tests pour $K$ entre $1$ et $7$. Pour des raisons pratiques ici, nous n'avons pas pu calculer les $h_{k}$ pour $k \geq 5$. En effet la $LB(2)$ a un support entre $10$ et $99$, et ses moments deviennent très rapidement élevés. Or dans le théorème numéro 2), nous calculons l'inverse de $M_{k}$, ce qui en fait une matrice avec de très petits coefficients. Petits à tel point que le logiciel "plante" car il "ne peut pas effectuer de division par zéro" lors du calcul de l'inverse. Autrement dit, R considère $M_{k}$ comme une matrice non-inversible, ce qui n'est pourtant pas le cas.
+Dans le package associé à \cite{d}, on peut calculer les tests pour $K$ entre $1$ et $7$. Pour des raisons pratiques ici, nous n'avons pas pu calculer les $h_{k}$ pour $k \geq 5$. En effet la $LB(2)$ a un support entre $10$ et $99$, et ses moments deviennent très rapidement élevés. Or dans le théorème numéro 2), nous calculons l'inverse de $M_{k}$, ce qui en fait une matrice avec de très petits coefficients. Petits à tel point que le logiciel "plante" car il "ne peut pas effectuer de division par zéro" lors du calcul de l'inverse. Autrement dit, R considère $M_{k}$ comme une matrice non-inversible, ce qui n'est pourtant pas le cas.
 
 Cependant, cela n'est pas gênant, car comme nous pourrons le voir plus tard lors du calcul des courbes de puissances, le test préféré est celui du $T_{2}$, surpassant $T_{3}$ et $T_{4}$. Ce qui fait des $T_{K}$, $K \geq 5$, de mauvais candidats.
 
@@ -1050,7 +1050,7 @@ Nous allons présenter les courbes de puissance des quatre tests $T_{k}$ constru
 
 $\rightarrow$ Le test du \$U\^{2}\$ étant moins connu que celui du \$\\chi\^{2}\$, on rappelle sa statistique :
 
-Pour $d \in [\![ 10; 99 ]\!]$, on pose $\hat{p_{d}} = n_{d}/n$ la proportion de $d$ dans l'échantillon $(X_{1}, X_{2}, …,X_{n})$, et $\pi_{d}$ les probabilités théoriques de la $LB(2)$. Soit aussi $S_{d} = \sum \limits_{i=10}^{d} \hat{p_{i}}$ et $S_{d}^{*} = \sum \limits_{i=10}^{d}  \pi_{i}$. Posons $Z_{d} = S_{d} - S_{d}^{*}$ l'écart entre la fonction de répartition empirique et la fonction de répartition théorique de la $LB(2)$. Posons également $t_{d} = (\pi_{d} + \pi_{d+1})/2$ pour $d=10,11,…,98$, et $t_{99} = (\pi_{99} + \pi_{10})/2$. Alors :
+Pour $d \in [\![ 10; 99 ]\!]$, on pose $\hat{p_{d}} = n_{d}/n$ la proportion de $d$ dans l'échantillon $(X_{1}, X_{2}, …,X_{n})$, et $\pi_{d}$ les probabilités théoriques de la $LB(2)$. Soit aussi $S_{d} = \sum \limits_{i=10}^{d} \hat{p_{i}}$ et $S_{d}^{*} = \sum \limits_{i=10}^{d} \pi_{i}$. Posons $Z_{d} = S_{d} - S_{d}^{*}$ l'écart entre la fonction de répartition empirique et la fonction de répartition théorique de la $LB(2)$. Posons également $t_{d} = (\pi_{d} + \pi_{d+1})/2$ pour $d=10,11,…,98$, et $t_{99} = (\pi_{99} + \pi_{10})/2$. Alors :
 
 \medskip
 
@@ -1064,7 +1064,7 @@ $\rightarrow$ On présente également les alternatives à la $LB(2)$ :
 
 \medskip
 
-1) Rodriguez bivarié : ($\gamma =-1$ : on retrouve la $LB(2)$)
+1)  Rodriguez bivarié : ($\gamma =-1$ : on retrouve la $LB(2)$)
 
 \medskip
 
@@ -1074,7 +1074,7 @@ $$
 
 \medskip
 
-2) Pietronero bivarié : ($\gamma =0$ : on retrouve la $LB(2)$)
+2)  Pietronero bivarié : ($\gamma =0$ : on retrouve la $LB(2)$)
 
 \medskip
 
@@ -1084,7 +1084,7 @@ $$
 
 \medskip
 
-Dans \cite{b}, voici les courbes de puissances obtenues pour les tests ci-dessus $(T^{2}, \chi^{2}, U^{2})$ portant sur l'adéquation du premier chiffre significatif avec la $LB(1)$ (loi de Benford simple), et pour les alternatives correspondantes univariées :
+Dans \cite{d}, voici les courbes de puissances obtenues pour les tests ci-dessus $(T^{2}, \chi^{2}, U^{2})$ portant sur l'adéquation du premier chiffre significatif avec la $LB(1)$ (loi de Benford simple), et pour les alternatives correspondantes univariées :
 
 \medskip
 
@@ -1124,15 +1124,15 @@ Nous avons les graphiques suivants :
 \textbf{Figure H}
 \end{center}
 ```
-1) Pour l'alternative Rodriguez tout d'abord. On retrouve le test du $T_{2}$ et celui du $U^{2}$parmi les meilleurs. Le $U^{2}$ est même légèrement mieux que le $T_{2}$, en particulier pour des $\gamma < -1$. Exactement comme pour le cas univarié. On retrouve aussi un test du $\chi^{2}$ très mauvais. Cependant on constate que les tests $T_{3}$ et $T_{4}$ sont les meilleurs parmi ceux proposés, pour des $\gamma < -1$. On pourra même préférer le $T_{3}$ au $T_{4}$ car pour des $\gamma > -1$, il est meilleur. Par conséquent, si l'on suspecte une alternative Rodriguez avec des $\gamma < -1$ ou bien des $\gamma > -1$, on pourra privilégier le $T_{3}$, ou bien le $U^{2}$. Le problème c'est qu'une telle chose est difficilement suspectable.
+1)  Pour l'alternative Rodriguez tout d'abord. On retrouve le test du $T_{2}$ et celui du $U^{2}$parmi les meilleurs. Le $U^{2}$ est même légèrement mieux que le $T_{2}$, en particulier pour des $\gamma < -1$. Exactement comme pour le cas univarié. On retrouve aussi un test du $\chi^{2}$ très mauvais. Cependant on constate que les tests $T_{3}$ et $T_{4}$ sont les meilleurs parmi ceux proposés, pour des $\gamma < -1$. On pourra même préférer le $T_{3}$ au $T_{4}$ car pour des $\gamma > -1$, il est meilleur. Par conséquent, si l'on suspecte une alternative Rodriguez avec des $\gamma < -1$ ou bien des $\gamma > -1$, on pourra privilégier le $T_{3}$, ou bien le $U^{2}$. Le problème c'est qu'une telle chose est difficilement suspectable.
 
 \smallskip
 
-2) Pour l'alternative Pietronero. Le test du $\chi^{2}$ est toujours très mauvais. Sa courbe vient même toucher $y=0$, pour $x$ entre $0$ et $1$, ce qui est surprenant... Peut-être une erreur lors de la simulation, mais je n'ai pas pu la détecter. Pour les autres tests, le $U^{2}$ est cette fois-ci assez mauvais par rapport aux autres. Comme dans le cas univarié, il est moins bon que le $T_{2}$. Ce dernier $T_{2}$ reste toujours en tête du classement, mais il est dépassé de peu par le test du $T_{1}$. Malheureusement le $T_{1}$ était assez mauvais pour l'alternative Rodriguez.
+2)  Pour l'alternative Pietronero. Le test du $\chi^{2}$ est toujours très mauvais. Sa courbe vient même toucher $y=0$, pour $x$ entre $0$ et $1$, ce qui est surprenant... Peut-être une erreur lors de la simulation, mais je n'ai pas pu la détecter. Pour les autres tests, le $U^{2}$ est cette fois-ci assez mauvais par rapport aux autres. Comme dans le cas univarié, il est moins bon que le $T_{2}$. Ce dernier $T_{2}$ reste toujours en tête du classement, mais il est dépassé de peu par le test du $T_{1}$. Malheureusement le $T_{1}$ était assez mauvais pour l'alternative Rodriguez.
 
 \smallskip
 
-On retrouve tout de même des résultats proches de ceux du cas univarié. On peut même suspecter la même chose pour les alternatives que nous n'avons pas testée, et qui sont présentés dans \cite{b}. Dans ces dernières alternatives, le test du $U^{2}$ s'effondrait, et le test du $T_{2}$ restait bon. De plus, juste en considérant les deux alternatives Rodriguez et Pietronero que nous avons présenté, ne sachant pas dans quelle situation on se situe dans la pratique, le test du $T_{2}$ est un bon candidat pour les deux alternatives. Nous allons d'ailleurs choisir ce test pour effectuer les analyses des données Covid par la suite.
+On retrouve tout de même des résultats proches de ceux du cas univarié. On peut même suspecter la même chose pour les alternatives que nous n'avons pas testée, et qui sont présentés dans \cite{d}. Dans ces dernières alternatives, le test du $U^{2}$ s'effondrait, et le test du $T_{2}$ restait bon. De plus, juste en considérant les deux alternatives Rodriguez et Pietronero que nous avons présenté, ne sachant pas dans quelle situation on se situe dans la pratique, le test du $T_{2}$ est un bon candidat pour les deux alternatives. Nous allons d'ailleurs choisir ce test pour effectuer les analyses des données Covid par la suite.
 
 \medskip
 
@@ -1191,7 +1191,7 @@ On ne peut que constater que pour ce test on ne rejette pas $\mathcal{H}_0$ ni p
 
 Nous décidons alors de pousser l'analyse sur ces deux pays afin d'essayer de comprendre la cause.
 
-On décide alors d'observer la distribution de leurs deux premiers chiffres significatifs par rapport à la distribution théorique de Benford (vue sur la figure ($\ref{fig:b2}$)).
+On décide alors d'observer la distribution de leurs deux premiers chiffres significatifs par rapport à la distribution théorique de Benford.
 
 \bigskip
 
