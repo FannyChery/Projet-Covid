@@ -647,7 +647,7 @@ $T \geq F^{-1}_{\chi^2(J-1)}(1- \alpha)$ avec $F^{-1}_{\chi^2(J-1)}(1-\alpha)$ l
 
 Le test du $\chi^2$ pour la loi de probabilité de Benford s'écrit sous la forme :
 
-Soit $(x_1, x_2, \cdots ,x_N)$ un échantillon de données d'une variable aléatoire $X$, dans notre cas le premier chiffres significatif des données du Covid, qui prend un nombre fini $J=9$ de valeurs $(v_1=1, v_2=2, \cdots, v_9=9)$.
+Soit $(x_1, x_2, \cdots ,x_N)$ un échantillon de données d'une variable aléatoire $X$, dans notre cas le premier chiffre significatif des données du Covid, qui prend un nombre fini $J=9$ de valeurs $(v_1=1, v_2=2, \cdots, v_9=9)$.
 
 Nous voulons donc tester :
 
@@ -659,7 +659,7 @@ Nous voulons donc tester :
 
 \medskip
 
-Nous avons la probabilité théorique qu'une variable aléatoire suivant la loi de Benford prenne la valeur $v_j$ vaut $p_j$, nous avons vu le tableau des probabilité plus haut. Et la probabilité que $X$ prennent la valeur $v_j$ qui vaut $\hat p_j$.
+Nous avons la probabilité théorique qu'une variable aléatoire suivant la loi de Benford prenne la valeur $v_j$ vaut $p_j$, nous avons vu le tableau des probabilités plus haut. Et la probabilité que $X$ prennent la valeur $v_j$ qui vaut $\hat p_j$.
 
 Nous obtenons la statistique de test du $\chi^2$ qui vaut :
 
@@ -687,7 +687,7 @@ Sa principale différence avec le test du $\chi^2$ est qu'il est fondé sur les 
 
 Le test de Kolmogorov-Smirnov est un test d'ajustement, qui compare la distribution observée d'un échantillon à une distribution théorique choisie. Ce test mesure l'**écart maximum** qui existe entre la fonction de répartition empirique et la fonction de répartition théorique de la loi probabilité choisie. Il s'adapte aux échelles ordinales ce qui est un avantage, mais son principal défaut est de ne pas être très efficace dans les queues de distribution.
 
-Le test de Kolmogorov-Smirnov se défini comme ceci :
+Le test de Kolmogorov-Smirnov se définit comme ceci :
 
 Soit $(X_1,X_2, \cdots,X_N)$ un échantillon d'une variable aléatoire $X$ de loi inconnue $\mathbb{P}$. Nous voulons tester si la loi de $\mathbb{P}$ a pour fonction de répartition $F$, avec $F$ la fonction de répartition d'une loi de probabilité choisie.
 
@@ -752,7 +752,7 @@ Sous l'hypothèse $\mathcal{H}_0$, la fonction de répartition $\hat F$ est trè
 
 \textcolor{blue}{Remarque :}
 
-:   Le test de Kolmogorov-Smirnov est préféré au test du $\chi^2$ lorsque le caractère observée prennent des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
+:   Le test de Kolmogorov-Smirnov est préféré au test du $\chi^2$ lorsque le caractère observée prend des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
 
 \medskip
 
