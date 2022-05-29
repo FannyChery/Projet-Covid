@@ -1,5 +1,5 @@
 ---
-title: "Projet fraudes covid"
+title: "Projet fraude covid - loi de benford"
 author: "LUCEA Lenny - VALDEYRON Mathieu - CHERY Fanny"
 date: "`r Sys.Date()`"
 bibliography : ybi.bib
@@ -556,7 +556,7 @@ Ce qui nous donne le tableau de probabilité suivante :
 ```
 \bigskip
 
-### II.3.3 - Loi de Benford sur une bloc de $k$ chiffres
+### II.3.3 - Loi de Benford sur un bloc de $k$ chiffres
 
 \medskip
 
@@ -1222,7 +1222,7 @@ Il serait donc quand même préférable de mener une enquête.
 
 Les résultats présentés ici confirment la possibilité de corruption des données rapportées sur la COVID-19 dans de nombreux pays présentant des données douteuses comme Taiwan ou encore la Russie. Cependant, ces résultats nous permettent également de repérer des pays auxquels nous n'aurions pas pensé comme l'Australie ou encore les Maldives. Il serait donc fortement recommandé de mener une enquête concernant la véracité des données de ces pays car ces fraudes peuvent avoir un grand impact sur la prise de décision et sur la gestion de la pandémie de COVID-19 dans le monde entier
 
-Cependant, notre étude n'est pas exempte de critique. En effet, il faut manier ce test avec précautions car il existe des fraudes qui restent indécelables avec cette analyse. Typiquement nous ne pouvons rien conclure sur les pays qui ne présentent que très peut de données.
+Cependant, notre étude n'est pas exempte de critique. En effet, il faut manier ce test avec précautions car il existe des fraudes qui restent indécelables avec cette analyse. Typiquement nous ne pouvons rien conclure sur les pays qui ne présentent que très peut de données. De plus le fait qu'un échantillon ne suit pas une loi de Benford ne signifie pas forcément qu'il comporte des données frauduleuses.
 
 \newpage
 

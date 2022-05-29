@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  29 MAY 2022 23:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  29 MAY 2022 23:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -924,7 +924,7 @@ l.1482 \newpage
                 <./cambo.png> <./como.png> <./eri.png> <./malou.png> <./gui.png
 > <./maldi.png> <./mont.png> <./tome.png> <./cor.png> <./sri.png> <./benrep2.pn
 g>] [21] (./Modelisation_benford.bbl) [22]
-Overfull \hbox (11.07745pt too wide) in paragraph at lines 1523--1624
+Overfull \hbox (11.07745pt too wide) in paragraph at lines 1525--1626
  [][] 
  []
 
@@ -932,245 +932,245 @@ Overfull \hbox (11.07745pt too wide) in paragraph at lines 1523--1624
 figure.10}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1777 \newpage
+l.1779 \newpage
                ]
-Overfull \hbox (11.07745pt too wide) in paragraph at lines 1786--1887
+Overfull \hbox (11.07745pt too wide) in paragraph at lines 1788--1889
  [][] 
  []
 
 [26] [27]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-043.
+045.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-2063.
+2065.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2069.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2071.
 [28pdfTeX warning (ext4): destination with the same identifier (name{figure.11}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.2236 \end{Shaded}
+l.2238 \end{Shaded}
                    ]
-Underfull \vbox (badness 10000) detected at line 2236
+Underfull \vbox (badness 10000) detected at line 2238
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2236
+Underfull \vbox (badness 10000) detected at line 2238
  []
 
 [29]
-Underfull \vbox (badness 10000) detected at line 2236
+Underfull \vbox (badness 10000) detected at line 2238
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2236
+Underfull \vbox (badness 10000) detected at line 2238
  []
 
 [30]
 
 LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 2312.
+(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 2314.
 
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [31]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [32]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [33]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [34]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [35]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [36]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [37]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [38]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [39]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [40]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [41]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [42]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [43]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [44]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [45]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [46]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [47]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [48]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [49]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [50]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [51]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [52]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [53]
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3492
+Underfull \vbox (badness 10000) detected at line 3494
  []
 
 [54] [55] [56] (./Modelisation_benford.aux) ) 
 Here is how much of TeX's memory you used:
  15300 strings out of 478994
- 227003 string characters out of 5858184
- 856039 words of memory out of 5000000
+ 227001 string characters out of 5858184
+ 856221 words of memory out of 5000000
  32095 multiletter control sequences out of 15000+600000
  478434 words of font info for 176 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1200,7 +1200,7 @@ nts/type1/public/lm/lmtko10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /public/lm/lmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm
 /lmtti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/sy
 mbols/msbm10.pfb>
-Output written on Modelisation_benford.pdf (56 pages, 2176801 bytes).
+Output written on Modelisation_benford.pdf (56 pages, 2177360 bytes).
 PDF statistics:
  692 PDF objects out of 1000 (max. 8388607)
  558 compressed objects within 6 object streams
