@@ -373,9 +373,9 @@ $$
 \\
 $$
 
-Aujourd'hui connu sous le nom de loi de Benford, la loi de probabilité Benford - Newcomb a été découverte deux fois. Une première fois en $1881$ par Simon Newcomb $(1835-1909)$, mathématicien, statisticien et astronome américain d'origine canadienne du $19^{\text{ème}}$ siècle, puis par Frank Benford $(1883-1948)$ en $1938$ qui est un ingénieur physicien américain. Simon Newcomb remarqua en $1881$ une détérioration des tables de logarithmes bien plus importante pour les pages des nombres commençant par 1 pour les pages des nombres commençant par 9. Suite à quelques travaux dessus, il découvrit cette loi de probabilité et il publia un article sur ce sujet dans le "Journal of Mathematics" qui passa inaperçu. Mais $57$ ans plus tard, Franck Benford remarqua la même usure sur les pages des tables de logarithmes , et redécouvrit cette loi de probabilité qui aujourd'hui porte son nom.
+Aujourd'hui connue sous le nom de loi de Benford, la loi de probabilité Benford - Newcomb a été découverte deux fois. Une première fois en $1881$ par Simon Newcomb $(1835-1909)$, mathématicien, statisticien et astronome américain d'origine canadienne du $19^{\text{ème}}$ siècle, puis par Frank Benford $(1883-1948)$ en $1938$ qui est un ingénieur physicien américain. Simon Newcomb remarqua en $1881$ une détérioration des tables de logarithmes bien plus importante pour les pages des nombres commençant par 1 pour les pages des nombres commençant par 9. Suite à quelques travaux dessus, il découvrit cette loi de probabilité et il publia un article sur ce sujet dans le "Journal of Mathematics" qui passa inaperçu. Mais $57$ ans plus tard, Franck Benford remarqua la même usure sur les pages des tables de logarithmes , et redécouvrit cette loi de probabilité qui aujourd'hui porte son nom.
 
-La loi de Benford - Newcomb est une loi qui porte sur l'apparition des chiffres dans la nature, plus précisément l'apparition du premier chiffres significatif, c'est-à-dire qu'elle donne la probabilité d'un chiffres de 1 à 9 soit le premier chiffre significatif d'un nombre. Le premier chiffre significatif d'un nombre est le premier chiffre partant de gauche qui est différent de $0$, par exemple le premier chiffre significatif de $3759$ est $3$, celui de $0,0821$ et $8$. Maintenant que nous avons compris ce qu'est le premier chiffre significatif d'un nombre, passons à la loi de Benford - Newcomb qui nous donne la répartition de l'apparition de ces chiffres.
+La loi de Benford - Newcomb est une loi qui porte sur l'apparition des chiffres dans la nature, plus précisément l'apparition du premier chiffre significatif, c'est-à-dire qu'elle donne la probabilité d'un chiffre de 1 à 9 soit le premier chiffre significatif d'un nombre. Le premier chiffre significatif d'un nombre est le premier chiffre partant de gauche qui est différent de $0$, par exemple le premier chiffre significatif de $3759$ est $3$, celui de $0,0821$ et $8$. Maintenant que nous avons compris ce qu'est le premier chiffre significatif d'un nombre, passons à la loi de Benford - Newcomb qui nous donne la répartition de l'apparition de ces chiffres.
 
 Contre-intuitivement cette loi n'est pas une loi uniforme sur $[1,9]$ sur l'échelle additive, nous pourrions logiquement penser que la probabilité que $d \in \{1,2, \cdots, 9\}$ soit le premier chiffre significatif d'un nombre $X$ est égale à $\frac{1}{9}\approx0.111$. Et bien non, c'est ce qu'on découvert Newcomb et Benford avec cette loi de probabilité, cette dernière est bien une loi uniforme sur $[1,9]$ mais sur l'échelle logarithmique, $\textit{ie}$ multiplicative, ce qui donne que la probabilité que le premier chiffre significatif soit $d$ est égale à $log_{10}\left(1+\frac{1}{d}\right)$.
 
@@ -403,7 +403,7 @@ Partons de la loi de l'étalement uniforme de la partie fractionnaire d'un nombr
 
 En voici l'énoncé plus explicite : si l'on choisit au hasard des nombres réels sur une plage large de plusieurs unités (par exemple entre $1$ et $20$), et que la loi donnant la probabilité de tomber sur une des valeurs possibles est assez régulière, alors la partie fractionnaire des nombres qu'on trouvera sera, à peu de chose près, uniformément répartie entre $0$ et $1$.
 
-Plus généralement, si l'on se donne deux nombres $\textit{a}$ et $\textit{b}$ compris entre $0$ et $1$ tel que $\textit{a}<\textit{b}$, alors la proportion de réel dont la partie fractionnaire est compris entre $\textit{a}$ et $\textit{b}$ vaut $\textit{a}-\textit{b}$, ie la longueur de l'intervalle $[\textit{a},\textit{b}]$.
+Plus généralement, si l'on se donne deux nombres $\textit{a}$ et $\textit{b}$ compris entre $0$ et $1$ tel que $\textit{a}<\textit{b}$, alors la proportion de réel dont la partie fractionnaire est comprise entre $\textit{a}$ et $\textit{b}$ vaut $\textit{a}-\textit{b}$, ie la longueur de l'intervalle $[\textit{a},\textit{b}]$.
 
 L'explication de cette loi est que, sauf cas particuliers, les parties fractionnaires des nombres ne seront pas concentrées sur la même zone de l'intervalle $[0,1]$. Et si cas échéant, les irrégularités possibles de densité sur les $20$ intervalles possibles entre deux entiers consécutifs se compenseront plus ou moins, ce qui uniformisera la série des parties fractionnaires, que nous pouvons voir comme une sorte de moyenne de ce qui se passe sur chacun des 20 intervalles entre deux entiers.
 
@@ -415,7 +415,7 @@ L'explication de cette loi est que, sauf cas particuliers, les parties fractionn
 
 La loi de l'étalement uniforme permet de déduire la loi de Benford. Grâce à cette loi d'étalement à la fois intuitive et formalisable, nous allons obtenir une justification naturelle et simple de la loi de Benford. L'idée consiste simplement à appliquer un logarithme décimal à la loi précédente et à creuser un peu.
 
-Reprenons l'énoncé précédent et appliquons le non pas aux nombres $r$ de la série considérée, mais à leur logarithme décimal, $log_{10}(r)$. Si l'on choisit des nombres réels $r$ au hasard sur une large plage couvrant plusieurs ordres de grandeur (par exemple entre $1$ et $10^{20}$), et que la loi qui indique la probabilité de tomber sur une des valeurs possibles est assez **régulière** et **étalée**, alors les parties fractionnaires des logarithmes décimaux des nombres, c'est à dire les $\{log_{10}(r)\}$, seront, à peu de chose près, uniformément réparties entre $0$ et $1$. Pour aller plus loin, ou pour plus d'informations sur les notions de [[**régularité et d'étalement**]{.ul}](https://journals.openedition.org/msh/10363?file=1) :
+Reprenons l'énoncé précédent et appliquons-le non pas aux nombres $r$ de la série considérée, mais à leur logarithme décimal, $log_{10}(r)$. Si l'on choisit des nombres réels $r$ au hasard sur une large plage couvrant plusieurs ordres de grandeur (par exemple entre $1$ et $10^{20}$), et que la loi qui indique la probabilité de tomber sur une des valeurs possibles est assez **régulière** et **étalée**, alors les parties fractionnaires des logarithmes décimaux des nombres, c'est-à-dire les $\{log_{10}(r)\}$, seront, à peu de chose près, uniformément réparties entre $0$ et $1$. Pour aller plus loin, ou pour plus d'informations sur les notions de [[**régularité et d'étalement**]{.ul}](https://journals.openedition.org/msh/10363?file=1) :
 
 Ce que nous venons d'énoncer est la loi de Benford (ou plus exactement une loi dénommée «loi de Benford continue»). En effet, affirmer que $c$ est le premier chiffre significatif du nombre $r$ équivaut à énoncer que $log_{10}(c)\le \{log_{10}(r) \} \le log_{10}(c+1)$.
 
@@ -423,7 +423,7 @@ En effet, soit $r$ un réel, il se décompose de manière unique comme $r=q*10^{
 
 Par croissance de la fonction $log_{10}$, nous obtenons $1\le q < 10 \Rightarrow 0 \le log_{10}(q)<1$ et donc $\{log_{10}(r)\}=log_{10}(q)$. De plus, par définition $[q] \le q < [q]+1 \Leftrightarrow c \le q <c+1$ et par croissance du $log_{10}$ nous obtenons $log_{10}(c) \le log_{10}(q) < log_{10}(c+1)$.
 
-Les parties fractionnaires des images par $log_{10}$ des nombres $r$ dont le premier chiffres significatifs est $c$ occupent donc dans l'intervalle $[0,1]$ un intervalle de longueur $log_{10}(c+1)-log_{10}(c)$. Cela signifie, si l'on admet l'uniforme répartition, que leur proportion est $log_{10}(c+1)-log_{10}(c)=log_{10}(\frac{c+1}{c})=log_{10}(1+\frac{1}{c})$. C'est exactement ce qu'exprime la loi de Benford formulée au sujet du premier chiffre significatif en base décimale.
+Les parties fractionnaires des images par $log_{10}$ des nombres $r$ dont le premier chiffre significatifs est $c$ occupent donc dans l'intervalle $[0,1]$ un intervalle de longueur $log_{10}(c+1)-log_{10}(c)$. Cela signifie, si l'on admet l'uniforme répartition, que leur proportion est $log_{10}(c+1)-log_{10}(c)=log_{10}(\frac{c+1}{c})=log_{10}(1+\frac{1}{c})$. C'est exactement ce qu'exprime la loi de Benford formulée au sujet du premier chiffre significatif en base décimale.
 
 \medskip
 
@@ -431,7 +431,7 @@ Les parties fractionnaires des images par $log_{10}$ des nombres $r$ dont le pre
 
 \medskip
 
-Nous obtenons la mantisse d'un réel $x$ strictement positif en déplaçant la virgule après le premier chiffre significatif. Donc la mantisse d'un nombre appartient à l'intervalle $[0,10[$ et est obtenue à partie de la formule $mantisse(x)=10^{log_{10}}$ (rappel : $\{.\}$ désigne la partie fractionnaire du nombre $x$).
+Nous obtenons la mantisse d'un réel $x$ strictement positif en déplaçant la virgule après le premier chiffre significatif. Donc la mantisse d'un nombre appartient à l'intervalle $[0,10[$ et est obtenue à partie de la formule $mantisse(x)=10^{\{log_{10}(x)\}}$ (rappel : $\{.\}$ désigne la partie fractionnaire du nombre $x$).
 
 \smallskip
 
@@ -441,7 +441,9 @@ Exemple :
 
 \smallskip
 
-La loi de Benford continue est donnée par la définition suivante : Une série de nombres réels en écriture décimale suit la loi de Benford continue si pour tout $[a,b[ \subset [1,10[$, la fréquence des nombre de la série dont la mantisse appartient à $[a,b[$ vaut $log(b)-log(a)$.
+La loi de Benford continue est donnée par la définition suivante : 
+
+La mantisse $X \in [1;10[$ suit la loi de Benford continue si pour tout $[a,b[ \subset [1,10[$, la probabilité que la mantisse appartienne à $[a,b[$ vaut $log(b)-log(a)$.
 
 Sa fonction de répartition est définie par :
 
@@ -461,7 +463,7 @@ De plus, la loi de Benford est invariante par changement d'échelle ou d'unité.
 
 \medskip
 
-Tout ceci se généralise bien sûr en base quelconque. Nous choisissons, communément la base $c=10$ comme base de référence pour le logarithme. Nous avons choisit la base $10$ pour le logarithme dans la suite.
+Tout ceci se généralise bien sûr en base quelconque. Nous choisissons, communément la base $c=10$ comme base de référence pour le logarithme. Nous avons choisi la base $10$ pour le logarithme dans la suite.
 
 \smallskip
 
@@ -505,7 +507,7 @@ Cette formule nous donne le tableau de probabilité suivant :
 ```
 \bigskip
 
-Ci-dessous , nous pouvons observer une représentation graphique de la loi de Benford discrète :
+Ci-dessous, nous pouvons observer une représentation graphique de la loi de Benford discrète :
 
 \bigskip
 
@@ -521,7 +523,7 @@ Ci-dessous , nous pouvons observer une représentation graphique de la loi de Be
 ```
 \bigskip
 
-### II.3.2 - Loi de Benford sur les deux premiers chiffres significatif
+### II.3.2 - Loi de Benford sur le deuxième chiffre significatif
 
 \medskip
 
@@ -545,26 +547,6 @@ Ce qui nous donne le tableau de probabilité suivante :
 
 \end{center}
 \caption{\textbf{Tableau de probabilité d'appartion du second chiffre significatif}}
-\end{figure}
-```
-\bigskip
-
-Nous obtenons alors la représentation graphique suivante :
-
-\bigskip
-
-```{=tex}
-\begin{figure}[h!] 
-
-\begin{center}
-
-\includegraphics[width = 12cm]{benlaw2.png}
-
-\end{center}
-
-\caption{\textbf{Répartition théorique selon la loi de benford}}
-\label{fig:b2}
-
 \end{figure}
 ```
 \bigskip
@@ -605,9 +587,7 @@ Tout d'abord définissons ce qu'est un test lisse, un test d'ajustement.
 
 \medskip
 
-On appelle test d'ajustement tout test servant à tester des hypothèses de type 19. C'est un test qui vise à vérifier si les données observées sont compatibles avec un modèle théorique.
-
-On appelle les [hypothèses de type 19](https://www.universalis.fr/encyclopedie/tests-d-hypotheses-statistiques/8-tests-d-ajustement/#) un problème de la forme suivante :
+On appelle test d'ajustement tout test visant à vérifier si les données observées sont compatibles avec un modèle théorique. C'est un problème de la forme suivante :  (https://www.universalis.fr/encyclopedie/tests-d-hypotheses-statistiques/8-tests-d-ajustement/#)
 
 $\;$Soit $(x_1,x_2, \cdots, x_N$ un échantillon de variables aléatoires indépendantes identiquement distribuées de fonction de répartition $F$ inconnue. Nous testons l'hypothèse (19) $\mathcal{H}_0$ : $F = F_0$, contre $\mathcal{H}_1$ : $F \ne F_0$, où $F_0$ est la fonction de répartition de la loi testée choisie.
 
@@ -615,17 +595,13 @@ Nous pouvons modifier l'énoncé dans le cas de données discrètes, avec une fo
 
 \medskip
 
-### III.2 - Test lisse
-
-\smallskip
-
-### III.2.1 - Test du $\chi^2$
+### III.1.1 - Test du $\chi^2$
 
 \medskip
 
-Le test du $\chi^2$ à été proposé par le statisticien Karl Pearson en 1900. Ce test du $\chi^2$ nous permet de vérifier si un échantillon d'une variable aléatoire $X$ nous donne des observations comparables à une loi de probabilité $\mathbb{P}$, ici la loi de Benford. C'est à dire, il nous permet de vérifier si les fréquences observées dans un échantillon correspondent aux fréquences attendues données par la loi de probabilité choisie.
+Le test du $\chi^2$ à été proposé par le statisticien Karl Pearson en 1900. Ce test du $\chi^2$ nous permet de vérifier si un échantillon d'une variable aléatoire $X$ nous donne des observations comparables à une loi de probabilité $\mathbb{P}$, ici la loi de Benford. C'est-à-dire, il nous permet de vérifier si les fréquences observées dans un échantillon correspondent aux fréquences attendues données par la loi de probabilité choisie.
 
-Le test du $\chi^2$ se défini comme ceci :
+Le test du $\chi^2$ se définit comme ceci :
 
 Soit un échantillon de données $(x_1, x_2, \cdots, x_N)$ d'une variable aléatoire $X$ qui prend un nombre fini $J$ de valeurs $(v_1,v_2, \cdots, v_J)$. Nous voulons tester la loi $\mathbb{P}$ avec $\forall j \in \{1,\cdots,J\}$, $\mathbb{P}(Y=v_j)=p_j$.
 
@@ -635,13 +611,13 @@ Nous testons donc :
 
 -   $\mathcal{H}_0$ : l'échantillon $(x_1, x_2, \cdots, x_N)$ suit la loi de $\mathbb{P}$
 
--   $\mathcal{H}_1$ : l'échantillon $(x_1, x_2, \cdots, x_N)$ ne suivent pas la loi de $\mathbb{P}$
+-   $\mathcal{H}_1$ : l'échantillon $(x_1, x_2, \cdots, x_N)$ ne suit pas la loi de $\mathbb{P}$
 
 \medskip
 
 Plus précisément nous testons $\mathcal{H}_0$ : La probabilité que $X$ prenne la valeur $v_j$ vaut $p_j$, pour $j\in \{1,\cdots,J\}$, avec $\sum\limits_{j=1}^Jp_j=1$.
 
-On appelle $\hat p_j$ la probabilité empirique que $X$ prenne la valeur $v_j$. C'est à dire le nombre d'observations $x_i$ qui prennent la valeur $v_j$ dans l'échantillon divisé par le nombre total $N$ d'observations :
+On appelle $\hat p_j$ la probabilité empirique que $X$ prenne la valeur $v_j$. C'est-à-dire le nombre d'observations $x_i$ qui prennent la valeur $v_j$ dans l'échantillon divisé par le nombre total $N$ d'observations :
 
 \medskip
 
@@ -671,7 +647,7 @@ $T \geq F^{-1}_{\chi^2(J-1)}(1- \alpha)$ avec $F^{-1}_{\chi^2(J-1)}(1-\alpha)$ l
 
 Le test du $\chi^2$ pour la loi de probabilité de Benford s'écrit sous la forme :
 
-Soit $(x_1, x_2, \cdots ,x_N)$ un échantillon de données d'une variable aléatoire $X$, dans notre cas le premier chiffres significatif des données du Covid, qui prend un nombre fini $J=9$ de valeurs $(v_1=1, v_2=2, \cdots, v_9=9)$.
+Soit $(x_1, x_2, \cdots ,x_N)$ un échantillon de données d'une variable aléatoire $X$, dans notre cas le premier chiffre significatif des données du Covid, qui prend un nombre fini $J=9$ de valeurs $(v_1=1, v_2=2, \cdots, v_9=9)$.
 
 Nous voulons donc tester :
 
@@ -683,7 +659,7 @@ Nous voulons donc tester :
 
 \medskip
 
-Nous avons la probabilité théorique qu'une variable aléatoire suivant la loi de Benford prenne la valeur $v_j$ vaut $p_j$, nous avons vu le tableau des probabilité plus haut. Et la probabilité que $X$ prennent la valeur $v_j$ qui vaut $\hat p_j$.
+Nous avons la probabilité théorique qu'une variable aléatoire suivant la loi de Benford prenne la valeur $v_j$ vaut $p_j$, nous avons vu le tableau des probabilités plus haut. Et la probabilité que $X$ prennent la valeur $v_j$ qui vaut $\hat p_j$.
 
 Nous obtenons la statistique de test du $\chi^2$ qui vaut :
 
@@ -701,7 +677,7 @@ Nous obtenons donc un test à $\alpha=0.05$, ie à $5\%$, en rejetant l'hypothè
 
 \medskip
 
-### III.2.2 - Test de Kolmogorov-Smirnov
+### III.1.2 - Test de Kolmogorov-Smirnov
 
 \medskip
 
@@ -711,7 +687,7 @@ Sa principale différence avec le test du $\chi^2$ est qu'il est fondé sur les 
 
 Le test de Kolmogorov-Smirnov est un test d'ajustement, qui compare la distribution observée d'un échantillon à une distribution théorique choisie. Ce test mesure l'**écart maximum** qui existe entre la fonction de répartition empirique et la fonction de répartition théorique de la loi probabilité choisie. Il s'adapte aux échelles ordinales ce qui est un avantage, mais son principal défaut est de ne pas être très efficace dans les queues de distribution.
 
-Le test de Kolmogorov-Smirnov se défini comme ceci :
+Le test de Kolmogorov-Smirnov se définit comme ceci :
 
 Soit $(X_1,X_2, \cdots,X_N)$ un échantillon d'une variable aléatoire $X$ de loi inconnue $\mathbb{P}$. Nous voulons tester si la loi de $\mathbb{P}$ a pour fonction de répartition $F$, avec $F$ la fonction de répartition d'une loi de probabilité choisie.
 
@@ -776,11 +752,11 @@ Sous l'hypothèse $\mathcal{H}_0$, la fonction de répartition $\hat F$ est trè
 
 \textcolor{blue}{Remarque :}
 
-:   Le test de Kolmogorov-Smirnov est préféré au test du $\chi^2$ lorsque le caractère observée prennent des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
+:   Le test de Kolmogorov-Smirnov est préféré au test du $\chi^2$ lorsque le caractère observé prend des valeurs continues. Ici, les données du Covid des pays du monde sont des données à caractère discret, donc nous allons pas utiliser ce test.
 
 \medskip
 
-### III.2.3 - Test du [$T_k$](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf)
+### III.1.3 - Test du [$T_k$](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf)
 
 \medskip
 
@@ -798,7 +774,7 @@ $$
 
 Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford. Par soucis de performance on décidera pour la suite d'appliquer le test du $T_2$ considéré comme l'un des plus puissants parmi les [[tests d'adéquations lisses pour la loi de Newcomb-Benford]{.ul}](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf). Pour ce faire on aura recours au package [benfordSmoothTest](https://github.com/st-homme/benfordSmoothTest).
 
-Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 215 pays (pour plus d'informations sur les données veuillez consulter le github du [CSSE](https://github.com/CSSEGISandData/COVID-19) basé notamment sur les données de l'OMS, de l'ECDC etc ...). Puis, dans un second temps nous procéderons à l'estimation des p-values "ajustées" à l'aide de la méthode de correction de Benjamini, Hochberg & Yekutieli. Plus précisément à l'aide de la commande ["p.adjust"](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/p.adjust)sur R.
+Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 215 pays (pour plus d'informations sur les données veuillez consulter le github du [CSSE](https://github.com/CSSEGISandData/COVID-19) basés notamment sur les données de l'OMS, de l'ECDC etc ...). Puis, dans un second temps nous procéderons à l'estimation des p-values "ajustées" à l'aide de la méthode de correction de Benjamini, Hochberg & Yekutieli. Plus précisément à l'aide de la commande ["p.adjust"](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/p.adjust)sur R.
 
 En effet, lorsque des comparaisons multiples sont réalisées, le risque de se tromper n'est plus contrôlé.
 
@@ -810,7 +786,7 @@ Dans notre situation il semble donc nécessaire d'ajuster les p-values obtenues 
 
 \medskip
 
-Après analyse, on observe qu'on rejette $H_0 :$ *l'échantillon suit une loi de Newcomb-Benford contre* $H_1 :$ *l'échantillon ne suis pas une loi de Newcomb-Benford* pour 33 pays. On remarque alors qu'on ne rejette pas $H_0$ pour les 182 autres pays avec un risque d'erreur $\alpha=5\%$.
+Après analyse, on observe qu'on rejette $\mathcal{H}_0 :$ *l'échantillon suit une loi de Newcomb-Benford contre* $\mathcal{H}_1 :$ *l'échantillon ne suis pas une loi de Newcomb-Benford* pour 33 pays. On remarque alors qu'on ne rejette pas $\mathcal{H}_0$ pour les 182 autres pays avec un risque d'erreur $\alpha=5\%$.
 
 Cette étude nous permet de lever un drapeau d'alerte face aux pays qui ne passent pas le test.
 
@@ -829,13 +805,13 @@ Nous listerons ces pays dans le tableau ci-dessous indiquant pour chaque pays la
 
 \end{center}
 
-\caption{\textbf{Liste des pays pour lesquels on rejette $H_0$}}
+\caption{\textbf{Liste des pays pour lesquels on rejette $\mathcal{H}_0$}}
 
 \end{figure}
 ```
 \bigskip
 
-Parmi eux on retrouve notamment Cuba, le Qatar, la Russie, le Japon, le Royaume-Uni ou encore Taiwan.
+Parmi eux on retrouve notamment Cuba, le Qatar, la Russie, le Japon, le Royaume-Uni ou encore Taïwan.
 
 Ci-dessous nous décidons alors de représenter la distribution des premiers chiffres significatifs allant de 1 à 9 des données quotidiennes sur les nouveaux cas provenant de ces pays qui ne sont manifestement pas conformes à la loi de Newcomb-Benford.
 
@@ -856,7 +832,7 @@ Ci-dessous nous décidons alors de représenter la distribution des premiers chi
 ```
 \bigskip
 
-On remarque facilement une différence significative avec la distributions des premiers chiffres significatifs allant de 1 à 9 des données quotidiennes sur les nouveaux cas provenant des pays pour lesquels on ne rejette pas l'hypothèse selon laquelle ils seraient conforme à la loi de Benford :
+Nous remarquons facilement une différence significative avec la distribution des premiers chiffres significatifs allant de 1 à 9 des données quotidiennes sur les nouveaux cas provenant des pays pour lesquels nous ne rejettons pas l'hypothèse selon laquelle ils seraient conformes à la loi de Benford :
 
 ```{=tex}
 \begin{figure}[h!] 
@@ -875,7 +851,7 @@ On remarque facilement une différence significative avec la distributions des p
 
 Voir tableau complet en annexe à la figure ($\ref{fig:1dgt}$).
 
-Nous observons effectivement des discordances non négligeables entre les répartitions théoriques des premiers chiffres significatifs suivant la loi de Newcomb-Benford et la répartition des premiers chiffres significatifs des échantillons observés. Ceci nous réconforte dans l'hypothèse de rejet de $H_0$.
+Nous observons effectivement des discordances non négligeables entre les répartitions théoriques des premiers chiffres significatifs suivant la loi de Newcomb-Benford et la répartition des premiers chiffres significatifs des échantillons observés. Ceci nous réconforte dans l'hypothèse de rejet de $\mathcal{H}_0$.
 
 Nous observons tout de même la présence de pays pour lesquels nous ne pouvons pas conclure.
 
@@ -897,7 +873,7 @@ $$
 
 L'objectif de cette partie est de reprendre la méthodologie de l'article (A CITER) sur la construction des tests lisses d'adéquation, pour l'appliquer à la loi de Benford sur le bloc des deux premiers chiffres significatifs.
 
-Nous allons ainsi étendre les tests $T_{K}$ utilisés précédemment sur le premier chiffre significatif, pour les appliqués sur le bloc des deux premiers chiffres, et ainsi voir si les conclusions de rejet parmi les pays restent les mêmes.
+Nous allons ainsi étendre les tests $T_{K}$ utilisés précédemment sur le premier chiffre significatif, pour les appliquer sur le bloc des deux premiers chiffres, et ainsi voire si les conclusions de rejet parmi les pays restent les mêmes.
 \\
 
 Dans un premier temps nous construirons donc ces nouveaux tests. Puis dans un second nous observerons leurs courbes de puissance par rapport à deux autres tests : $\chi^{2}$ et Freedman-Watson $(U^{2})$, sur deux alternatives : Rodriguez et Pietronero. Cela s'inspire complètement de (A CITER).
@@ -910,7 +886,7 @@ Dans un premier temps nous construirons donc ces nouveaux tests. Puis dans un se
 \\
 
 Soit $X \in [1;10[$ la mantisse de notre nombre aléatoire. \\
-On suppose que $\mathbb{P}(X \leq d) = \log_{10}(d)$ pour tout $d \in [1;10[$. C'est à dire $X$ suit la loi de Benford continue.
+On suppose que $\mathbb{P}(X \leq d) = \log_{10}(d)$ pour tout $d \in [1;10[$. C'est-à-dire $X$ suit la loi de Benford continue.
 \\
 
 Considérons $Y \in [\![ 10; 99 ]\!]$ les deux premiers chiffres significatifs de X. Alors par un raisonnement analogue à la construction de la loi de Benford sur le premier chiffre :
@@ -924,24 +900,24 @@ Considérons $Y \in [\![ 10; 99 ]\!]$ les deux premiers chiffres significatifs d
 \textbf{2) Théorèmes (issus de A CITER) :}
 \\
 
-Tout repose sur le théorème suivant. Il explique comment construire une famille de tests lisses d'adéquation, indéxée par l'entier $K$. \\
+Tout repose sur le théorème suivant. Il explique comment construire une famille de tests lisses d'adéquation, indexée par l'entier $K$. \\
 
-\textbf{Théorème 1)} : Soit $G$ une loi cible, ayant pour densité $f$ par rapport à une mesure dominante $\nu$. Soit $(X_{1}, X_{2}, ..., X_{n})$ un $n$-échantillon issu de $X \sim G_{A}$. On veut tester $H_{0}$ : $G_{A} = G$, contre $H_{1}$ : $G_{A} \ne G$. \\
+\textbf{Théorème 1)} : Soit $G$ une loi cible, ayant pour densité $f$ par rapport à une mesure dominante $\nu$. Soit $(X_{1}, X_{2}, ..., X_{n})$ un $n$-échantillon issu de $X \sim G_{A}$. On veut tester $\mathcal{H}_{0}$ : $G_{A} = G$, contre $\mathcal{H}_{1}$ : $G_{A} \ne G$. \\
 
-Soit $\{ h_{0} \equiv 1, h_{k}, k \geq 1 \}$ une famille de fonctions orthonormales par rapport à $f$, c'est à dire $\displaystyle \int h_{k}(x)h_{k^{'}}(x)f(x) \, \mathrm{d \nu}(x) = \delta_{kk^{'}}$, la fonction delta de Kronecker. \\
+Soit $\{ h_{0} \equiv 1, h_{k}, k \geq 1 \}$ une famille de fonctions orthonormales par rapport à $f$, c'est-à-dire $\displaystyle \int h_{k}(x)h_{k^{'}}(x)f(x) \, \mathrm{d \nu}(x) = \delta_{kk^{'}}$, la fonction delta de Kronecker. \\
 Soit $U_{k} = n^{-1/2} \sum \limits_{i=1}^{n} h_{k}(X_{i}) $, et soit pour un entier $K \geq1$, $T_{K} = \sum \limits_{k=1}^{K} U_{k}^{2}$. \\ 
-Alors sous $H_{0}$, $T_{K} \xrightarrow[n \to +\infty]{\mathcal{L}} \chi_{K}^{2}$ , et un test de niveau asymptotique $\alpha$ rejette $H_{0}$ au profit de $H_{1}$ si la valeur observée de $T_{K}$ dépasse $x_{1- \alpha}$ le quantile d'ordre $1- \alpha$ d'une loi $\chi_{K}^{2}$. \\
+Alors sous $H_{0}$, $T_{K} \xrightarrow[n \to +\infty]{\mathcal{L}} \chi_{K}^{2}$ , et un test de niveau asymptotique $\alpha$ rejette $\mathcal{H}_{0}$ au profit de $\mathcal{H}_{1}$ si la valeur observée de $T_{K}$ dépasse $x_{1- \alpha}$ le quantile d'ordre $1- \alpha$ d'une loi $\chi_{K}^{2}$. \\
 
-Nous allons maintenant spécialisé ce théorème au cas où $G$ est la loi de Benford précédente sur le bloc des deux premiers chiffres significatifs. Nous obtiendrons ainsi plusieurs tests d'adéquation $T_{K}$ pour $G$. \\
+Nous allons maintenant spécialiser ce théorème au cas où $G$ est la loi de Benford précédente sur le bloc des deux premiers chiffres significatifs. Nous obtiendrons ainsi plusieurs tests d'adéquation $T_{K}$ pour $G$. \\
 Pour ce faire il nous faut calculer des fonctions orthonormales $h_{k}$ associées à $G$ comme dans le théorème ci-dessus. Nous utilisons le résultat suivant (qui est général) : \\
 
 \textbf{Théorème 2)} : Soit $X \sim G$, et $\mu_{k} = \mathbb{E}(X^{k})$, pour $k \geq0$. Soit aussi la matrice $M_{k} = [\mu_{i+j}]_{i,j=0,...,k-1}$, le vecteur $\lambda_{k} = (\mu_{k}, \mu_{k+1}, ..., \mu_{2k-1})^{T}$, et la constante $c_{k} = \mu_{2k} - \lambda_{k}^{T} M_{k}^{-1} \lambda_{k}$. Alors les polynômes :
 \begin{center}
 $h_{k}(x) = c_{k}^{-1/2} ( x^{k} - (1,x,x^{2},...,x^{k-1}) M_{k}^{-1} \lambda_{k} )$
 \end{center}
-satisfonts le théorème précédent. \\
+satisfont le théorème précédent. \\
 
-Heureusement pour nous, la loi de Benford à deux chiffres est bornée p.s., et donc admet un moment pour tous les ordres. Nous avons donc tout les éléments de "la recette de cuisine".
+Heureusement pour nous, la loi de Benford à deux chiffres est bornée p.s., et donc admet un moment pour tous les ordres. Nous avons donc tous les éléments de "la recette de cuisine".
 
 
 \subsection{Construction des tests lisses $T_{K}$ : \\}
@@ -949,7 +925,7 @@ Heureusement pour nous, la loi de Benford à deux chiffres est bornée p.s., et 
 
 Soit $X$ suivant la loi de Benford sur le bloc des deux premiers chiffres significatifs, $\forall x \in [\![ 10; 99 ]\!], \quad \mathbb{P}(X=x) = \log_{10} \left( 1 + \dfrac{1}{x} \right)$. On note $X \sim LB(2)$. \\
 
-Cette partie de construction a été effectuée sur R, et toute les commandes se trouvent en annexe. \\
+Cette partie de construction a été effectuée sur R, et toutes les commandes se trouvent en annexe. \\
 
 Nous commençons par calculer les fonctions orthonormales $h_{k}$ du théorème numéro 2) ci-dessus, associées à la $LB(2)$. On obtient : \\
 
@@ -961,18 +937,18 @@ $h_{3}(x) = -5.18781 + 4.869054e^{-01} x - 1.155519e^{-02} x^2 + 7.630402e^{-05}
 
 $h_{4}(x) = 9.725235 - 1.237520 x + 4.769440e^{-02} x^2 - 6.950207e^{-04} x^3 + 3.371880e^{-06} x^4$ \\
 
-Avec ces quatre fonctions nous pouvons donc construire $T_{K}$ pour $1 \leq K \leq 4$. Le choix de $K$ est important : si il est trop grand alors le test sera très peu puissant, et si il est trop petit alors il le sera également sur certaine alternative. \\
-Dans le package associé à (A CITER), on peut calculer les tests pour $K$ entre $1$ et $7$. Pour des raisons pratiques ici, nous n'avons pas pu calculer les $h_{k}$ pour $k \geq 5$. En effet la $LB(2)$ a un support entre $10$ et $99$, et ses moments deviennent très rapidement élevé. Or dans le théorème numéro 2), nous calculons l'inverse de $M_{k}$, ce qui en fait une matrice avec de très petit coefficients. Petit à tel point que le logiciel "plante" car il "ne peut pas effectuer de division par zéro" lors du calcul de l'inverse. Autrement dit, R considère $M_{k}$ comme une matrice non-inversible, ce qui n'est pourtant pas le cas. \\
+Avec ces quatre fonctions nous pouvons donc construire $T_{K}$ pour $1 \leq K \leq 4$. Le choix de $K$ est important : s'il est trop grand alors le test sera très peu puissant, et s'il est trop petit alors il le sera également sur certaines alternatives. \\
+Dans le package associé à (A CITER), on peut calculer les tests pour $K$ entre $1$ et $7$. Pour des raisons pratiques ici, nous n'avons pas pu calculer les $h_{k}$ pour $k \geq 5$. En effet la $LB(2)$ a un support entre $10$ et $99$, et ses moments deviennent très rapidement élevés. Or dans le théorème numéro 2), nous calculons l'inverse de $M_{k}$, ce qui en fait une matrice avec de très petits coefficients. Petits à tel point que le logiciel "plante" car il "ne peut pas effectuer de division par zéro" lors du calcul de l'inverse. Autrement dit, R considère $M_{k}$ comme une matrice non-inversible, ce qui n'est pourtant pas le cas. \\
 Cependant, cela n'est pas gênant, car comme nous pourrons le voir plus tard lors du calcul des courbes de puissances, le test préféré est celui du $T_{2}$, surpassant $T_{3}$ et $T_{4}$. Ce qui fait des $T_{K}$, $K \geq 5$, de mauvais candidats. \\
 
-Nous pouvons donc maintenant calculer la statistique $T_{K}$ pour $1 \leq K \leq 4$, et effectuer le test proposé dans le théorème numéro 1) : On rejette $H_{0}$ si $T_{K}$ dépasse le quantile d'ordre $1- \alpha$ de sa loi sous $H_{0}$. \\
-Pour une observation $T_{K}(\omega)=t$, nous calculons la p.value associé : $\mathbb{P}_{H_{0}}(t \leq T_{K})$. Si $n$, le nombre de $X_{i}$, est grand, alors on peut approximer la p.value asymptotiquement par $\mathbb{P}(t \leq \chi^{2}_{K})$. Dans la pratique, si $n \leq 100$, on fait l'approximation par Monte-Carlo, et sinon on la fait par approximation asymptotique du $\chi^{2}_{K}$. \\
+Nous pouvons donc maintenant calculer la statistique $T_{K}$ pour $1 \leq K \leq 4$, et effectuer le test proposé dans le théorème numéro 1) : On rejette $\mathcal{H}_{0}$ si $T_{K}$ dépasse le quantile d'ordre $1- \alpha$ de sa loi sous $\mathcal{H}_{0}$. \\
+Pour une observation $T_{K}(\omega)=t$, nous calculons la p.value associée : $\mathbb{P}_{H_{0}}(t \leq T_{K})$. Si $n$, le nombre de $X_{i}$, est grand, alors on peut approximer la p.value asymptotiquement par $\mathbb{P}(t \leq \chi^{2}_{K})$. Dans la pratique, si $n \leq 100$, on fait l'approximation par Monte-Carlo, et sinon on la fait par approximation asymptotique du $\chi^{2}_{K}$. \\
 
 Justification du choix $n > 100$ : \\
 
-Ci-dessous, voici en couleur les fonctions de répartition empirique issues d'échantillons de taille 10 000 de $T_{K}$ (pour $n=101$, et $n=102$ données), et générés sous $H_{0}$. En noir la fonction de répartition théorique d'un $\chi^{2}_{K}$. Un graphique pour chaque $1 \leq K \leq 4$. \\
+Ci-dessous, voici en couleur les fonctions de répartition empirique issues d'échantillons de taille 10 000 de $T_{K}$ (pour $n=101$, et $n=102$ données), et générés sous $\mathcal{H}_{0}$. En noir la fonction de répartition théorique d'un $\chi^{2}_{K}$. Un graphique pour chaque $1 \leq K \leq 4$. \\
 
-On constate que pour n > 100, l'ecdf de $T_{K}$ est quasiment égale à la fonction de répartition théorique d'une $\chi^{2}_{K}$. A tel point qu'il est extrêmement difficile de distinguer cette dernière, c'est à dire la courbe noire, et cela même en zoomant (elle existe bien sur chaque graphique !).
+On constate que pour n > 100, l'ecdf de $T_{K}$ est quasiment égale à la fonction de répartition théorique d'une $\chi^{2}_{K}$. À tel point qu'il est extrêmement difficile de distinguer cette dernière, c'est-à-dire la courbe noire, et cela même en zoomant (elle existe bien sur chaque graphique !).
 
 \begin{center}
 \includegraphics[width=12cm]{ECDF1.pdf} \\
@@ -1019,7 +995,7 @@ Nous allons présenter les courbes de puissance des quatre tests $T_{k}$ constru
 	
 $\rightarrow$ Le test du $U^{2}$ étant moins connu que celui du $\chi^{2}$, on rappelle sa statistique : \\
 
-Pour $d \in [\![ 10; 99 ]\!]$, on pose $\hat{p_{d}} = n_{d}/n$ la proportion de $d$ dans l'échantillon $(X_{1}, X_{2}, ...,X_{n})$, et $\pi_{d}$ les probabilités théorique de la $LB(2)$. Soit aussi $S_{d} = \sum \limits_{i=10}^{d} \hat{p_{i}}$ et $S_{d}^{*} = \sum \limits_{i=10}^{d}  \pi_{i}$. Posons $Z_{d} = S_{d} - S_{d}^{*}$ l'écart entre la fonctions de répartitions empirique et la fonction de répartition théorique de la $LB(2)$. Posons également $t_{d} = (\pi_{d} + \pi_{d+1})/2$ pour $d=10,11,...,98$, et $t_{99} = (\pi_{99} + \pi_{10})/2$. Alors :
+Pour $d \in [\![ 10; 99 ]\!]$, on pose $\hat{p_{d}} = n_{d}/n$ la proportion de $d$ dans l'échantillon $(X_{1}, X_{2}, ...,X_{n})$, et $\pi_{d}$ les probabilités théoriques de la $LB(2)$. Soit aussi $S_{d} = \sum \limits_{i=10}^{d} \hat{p_{i}}$ et $S_{d}^{*} = \sum \limits_{i=10}^{d}  \pi_{i}$. Posons $Z_{d} = S_{d} - S_{d}^{*}$ l'écart entre la fonction de répartition empirique et la fonction de répartition théorique de la $LB(2)$. Posons également $t_{d} = (\pi_{d} + \pi_{d+1})/2$ pour $d=10,11,...,98$, et $t_{99} = (\pi_{99} + \pi_{10})/2$. Alors :
 \begin{center}
 $U^{2} = \dfrac{1}{n} \sum \limits_{d=10}^{99} (Z_{d} - \bar{Z})^{2} t_{d}$
 \end{center}
@@ -1060,11 +1036,11 @@ Dans (A CITER), voici les courbes de puissances obtenues pour les tests ci-dessu
 \end{center}
 \medskip
 
-Les tests du $T^{2}$ et du $U^{2}$ sont très bon. Tandis que celui du $\chi^{2}$ est très mauvais. Voyons voir si nous avons équivalence avec le cas bivarié à deux chiffres significatifs. \\
+Les tests du $T^{2}$ et du $U^{2}$ sont très bons. Tandis que celui du $\chi^{2}$ est très mauvais. Voyons voir si nous avons équivalence avec le cas bivarié à deux chiffres significatifs. \\
 
-Nous allons effectuer des simulations pour trois choix de $n$ : 50, 100, et 150. Ces ordres de grandeurs correspondent à la taille moyenne des échantillons que l'on peut rencontrer sur les données covid des pays. \\
+Nous allons effectuer des simulations pour trois choix de $n$ : 50, 100, et 150. Ces ordres de grandeur correspondent à la taille moyenne des échantillons que l'on peut rencontrer sur les données Covid des pays. \\
 Notons également que chaque test sera effectué au niveau $5\%$. \\
-Dans un premier temps, pour chaque choix de $n$, nous approximons les quantiles de référence de chacun des tests par les quantiles empiriques d'ordres $95\%$ des statistiques précédentes sous $H_{0}$ : $X \sim LB(2)$. Cela dans le but d'être sûr de bien comparer la puissance de différent tests à $5\%$. Nous effectuons 100 000 réplications pour cela. \\
+Dans un premier temps, pour chaque choix de $n$, nous approximons les quantiles de référence de chacun des tests par les quantiles empiriques d'ordres $95\%$ des statistiques précédentes sous $\mathcal{H}_{0}$ : $X \sim LB(2)$. Cela dans le but d'être sûr de bien comparer la puissance des différents tests à $5\%$. Nous effectuons 100 000 réplications pour cela. \\
 Ensuite pour chaque alternative, chaque choix de $n$, nous allons générer 10 000 échantillons de taille $n$, pour un $\gamma$ fixé, et appliquer les tests à chacun de ces échantillons, puis compter le nombre de rejet parmi le nombre total afin d'approximer par Monte-Carlo $\mathbb{P}_{\gamma}(\Phi = 1)$. Nous allons parcourir une centaine de $\gamma$ sur un intervalle $[-5;5]$. \\
 
 Notons que nous obtenons une erreur d'approximation des probabilités qui ne dépasse jamais les $0.01$ pour Monte-Carlo (au niveau de confiance $95 \%$). \\
@@ -1085,7 +1061,7 @@ Nous avons les graphiques suivants :
 
 2) Pour l'alternative Pietronero. Le test du $\chi^{2}$ est toujours très mauvais. Sa courbe vient même toucher $y=0$, pour $x$ entre $0$ et $1$, ce qui est surprenant... Peut-être une erreur lors de la simulation, mais je n'ai pas pu la détecter. Pour les autres tests, le $U^{2}$ est cette fois-ci assez mauvais par rapport aux autres. Comme dans le cas univarié, il est moins bon que le $T_{2}$. Ce dernier $T_{2}$ reste toujours en tête du classement, mais il est dépassé de peu par le test du $T_{1}$. Malheureusement le $T_{1}$ était assez mauvais pour l'alternative Rodriguez. \\
 
-On retrouve tout de même des résultats proches de ceux du cas univarié. On peut même suspecter la même chose pour les alternatives que nous n'avons pas testée, et qui sont présenter dans (A CITER). Dans ces dernières alternatives, le test du $U^{2}$ s'effondrait, et le test du $T_{2}$ restait bon. De plus, juste en considérant les deux alternatives Rodriguez et Pietronero que nous avons présenté, ne sachant pas dans qu'elle situation on se situe dans la pratique, le test du $T_{2}$ est un bon candidat pour les deux alternatives. Nous allons d'ailleurs choisir ce test pour effectuer les analyses des données covid par la suite.
+On retrouve tout de même des résultats proches de ceux du cas univarié. On peut même suspecter la même chose pour les alternatives que nous n'avons pas testée, et qui sont présentés dans (A CITER). Dans ces dernières alternatives, le test du $U^{2}$ s'effondrait, et le test du $T_{2}$ restait bon. De plus, juste en considérant les deux alternatives Rodriguez et Pietronero que nous avons présenté, ne sachant pas dans quelle situation on se situe dans la pratique, le test du $T_{2}$ est un bon candidat pour les deux alternatives. Nous allons d'ailleurs choisir ce test pour effectuer les analyses des données Covid par la suite.
 
 
 
@@ -1094,9 +1070,7 @@ On retrouve tout de même des résultats proches de ceux du cas univarié. On pe
 
 
 ```
-Après cette première analyse, nous décidons d'approfondir la recherche en analysant les deux premiers chiffres significatifs afin de repérer d'autres potentiels fraudeurs.
-
-intro mathieu
+Après cette première analyse, nous décidons d'approfondir la recherche en analysant les deux premiers chiffres significatifs afin de repérer d'autres potentiels fraudeurs. \\
 
 Après analyse nous obtenons alors la table suivante représentative des individus pour lesquels on rejette $H_0$ (voir tableau complet figure ( $\ref{fig:2dgt}$) en annexe):
 
@@ -1115,9 +1089,9 @@ Après analyse nous obtenons alors la table suivante représentative des individ
 ```
 \bigskip
 
-On remarque que pour nos deux analyses on retrouves 31 pays identiques dont la Russie, le Qatar ou encore le Royaume-Uni ce qui permet de confirmer le doute.
+Nous remarquons que pour nos deux analyses nous retrouvons 31 pays identiques dont la Russie, le Qatar ou encore le Royaume-Uni ce qui permet de confirmer le doute.
 
-Par cette méthode on découvre également d'autre suspects que nous n'avions pas réussi à repérer précédemment qui sont :
+Par cette méthode on découvre également d'autres suspects que nous n'avions pas réussi à repérer précédemment qui sont :
 
 \medskip
 
@@ -1143,7 +1117,7 @@ Par cette méthode on découvre également d'autre suspects que nous n'avions pa
 
 \medskip
 
-On ne peut que constater que pour ce test on ne rejette pas $H_0$ ni pour la Grèce ni pour la Syrie qui étaient considérés comme suspects en vue des résultats des tests sur le premier chiffre significatif.
+On ne peut que constater que pour ce test on ne rejette pas $\mathcal{H}_0$ ni pour la Grèce ni pour la Syrie qui étaient considérés comme suspects en vue des résultats des tests sur le premier chiffre significatif.
 
 Nous décidons alors de pousser l'analyse sur ces deux pays afin d'essayer de comprendre la cause.
 
