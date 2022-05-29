@@ -373,9 +373,9 @@ $$
 \\
 $$
 
-Aujourd'hui connu sous le nom de loi de Benford, la loi de probabilité Benford - Newcomb a été découverte deux fois. Une première fois en $1881$ par Simon Newcomb $(1835-1909)$, mathématicien, statisticien et astronome américain d'origine canadienne du $19^{\text{ème}}$ siècle, puis par Frank Benford $(1883-1948)$ en $1938$ qui est un ingénieur physicien américain. Simon Newcomb remarqua en $1881$ une détérioration des tables de logarithmes bien plus importante pour les pages des nombres commençant par 1 pour les pages des nombres commençant par 9. Suite à quelques travaux dessus, il découvrit cette loi de probabilité et il publia un article sur ce sujet dans le "Journal of Mathematics" qui passa inaperçu. Mais $57$ ans plus tard, Franck Benford remarqua la même usure sur les pages des tables de logarithmes , et redécouvrit cette loi de probabilité qui aujourd'hui porte son nom.
+Aujourd'hui connue sous le nom de loi de Benford, la loi de probabilité Benford - Newcomb a été découverte deux fois. Une première fois en $1881$ par Simon Newcomb $(1835-1909)$, mathématicien, statisticien et astronome américain d'origine canadienne du $19^{\text{ème}}$ siècle, puis par Frank Benford $(1883-1948)$ en $1938$ qui est un ingénieur physicien américain. Simon Newcomb remarqua en $1881$ une détérioration des tables de logarithmes bien plus importante pour les pages des nombres commençant par 1 pour les pages des nombres commençant par 9. Suite à quelques travaux dessus, il découvrit cette loi de probabilité et il publia un article sur ce sujet dans le "Journal of Mathematics" qui passa inaperçu. Mais $57$ ans plus tard, Franck Benford remarqua la même usure sur les pages des tables de logarithmes , et redécouvrit cette loi de probabilité qui aujourd'hui porte son nom.
 
-La loi de Benford - Newcomb est une loi qui porte sur l'apparition des chiffres dans la nature, plus précisément l'apparition du premier chiffres significatif, c'est-à-dire qu'elle donne la probabilité d'un chiffres de 1 à 9 soit le premier chiffre significatif d'un nombre. Le premier chiffre significatif d'un nombre est le premier chiffre partant de gauche qui est différent de $0$, par exemple le premier chiffre significatif de $3759$ est $3$, celui de $0,0821$ et $8$. Maintenant que nous avons compris ce qu'est le premier chiffre significatif d'un nombre, passons à la loi de Benford - Newcomb qui nous donne la répartition de l'apparition de ces chiffres.
+La loi de Benford - Newcomb est une loi qui porte sur l'apparition des chiffres dans la nature, plus précisément l'apparition du premier chiffre significatif, c'est-à-dire qu'elle donne la probabilité d'un chiffre de 1 à 9 soit le premier chiffre significatif d'un nombre. Le premier chiffre significatif d'un nombre est le premier chiffre partant de gauche qui est différent de $0$, par exemple le premier chiffre significatif de $3759$ est $3$, celui de $0,0821$ et $8$. Maintenant que nous avons compris ce qu'est le premier chiffre significatif d'un nombre, passons à la loi de Benford - Newcomb qui nous donne la répartition de l'apparition de ces chiffres.
 
 Contre-intuitivement cette loi n'est pas une loi uniforme sur $[1,9]$ sur l'échelle additive, nous pourrions logiquement penser que la probabilité que $d \in \{1,2, \cdots, 9\}$ soit le premier chiffre significatif d'un nombre $X$ est égale à $\frac{1}{9}\approx0.111$. Et bien non, c'est ce qu'on découvert Newcomb et Benford avec cette loi de probabilité, cette dernière est bien une loi uniforme sur $[1,9]$ mais sur l'échelle logarithmique, $\textit{ie}$ multiplicative, ce qui donne que la probabilité que le premier chiffre significatif soit $d$ est égale à $log_{10}\left(1+\frac{1}{d}\right)$.
 
@@ -403,7 +403,7 @@ Partons de la loi de l'étalement uniforme de la partie fractionnaire d'un nombr
 
 En voici l'énoncé plus explicite : si l'on choisit au hasard des nombres réels sur une plage large de plusieurs unités (par exemple entre $1$ et $20$), et que la loi donnant la probabilité de tomber sur une des valeurs possibles est assez régulière, alors la partie fractionnaire des nombres qu'on trouvera sera, à peu de chose près, uniformément répartie entre $0$ et $1$.
 
-Plus généralement, si l'on se donne deux nombres $\textit{a}$ et $\textit{b}$ compris entre $0$ et $1$ tel que $\textit{a}<\textit{b}$, alors la proportion de réel dont la partie fractionnaire est compris entre $\textit{a}$ et $\textit{b}$ vaut $\textit{a}-\textit{b}$, ie la longueur de l'intervalle $[\textit{a},\textit{b}]$.
+Plus généralement, si l'on se donne deux nombres $\textit{a}$ et $\textit{b}$ compris entre $0$ et $1$ tel que $\textit{a}<\textit{b}$, alors la proportion de réel dont la partie fractionnaire est comprise entre $\textit{a}$ et $\textit{b}$ vaut $\textit{a}-\textit{b}$, ie la longueur de l'intervalle $[\textit{a},\textit{b}]$.
 
 L'explication de cette loi est que, sauf cas particuliers, les parties fractionnaires des nombres ne seront pas concentrées sur la même zone de l'intervalle $[0,1]$. Et si cas échéant, les irrégularités possibles de densité sur les $20$ intervalles possibles entre deux entiers consécutifs se compenseront plus ou moins, ce qui uniformisera la série des parties fractionnaires, que nous pouvons voir comme une sorte de moyenne de ce qui se passe sur chacun des 20 intervalles entre deux entiers.
 
@@ -415,7 +415,7 @@ L'explication de cette loi est que, sauf cas particuliers, les parties fractionn
 
 La loi de l'étalement uniforme permet de déduire la loi de Benford. Grâce à cette loi d'étalement à la fois intuitive et formalisable, nous allons obtenir une justification naturelle et simple de la loi de Benford. L'idée consiste simplement à appliquer un logarithme décimal à la loi précédente et à creuser un peu.
 
-Reprenons l'énoncé précédent et appliquons le non pas aux nombres $r$ de la série considérée, mais à leur logarithme décimal, $log_{10}(r)$. Si l'on choisit des nombres réels $r$ au hasard sur une large plage couvrant plusieurs ordres de grandeur (par exemple entre $1$ et $10^{20}$), et que la loi qui indique la probabilité de tomber sur une des valeurs possibles est assez **régulière** et **étalée**, alors les parties fractionnaires des logarithmes décimaux des nombres, c'est à dire les $\{log_{10}(r)\}$, seront, à peu de chose près, uniformément réparties entre $0$ et $1$. Pour aller plus loin, ou pour plus d'informations sur les notions de [[**régularité et d'étalement**]{.ul}](https://journals.openedition.org/msh/10363?file=1) :
+Reprenons l'énoncé précédent et appliquons-le non pas aux nombres $r$ de la série considérée, mais à leur logarithme décimal, $log_{10}(r)$. Si l'on choisit des nombres réels $r$ au hasard sur une large plage couvrant plusieurs ordres de grandeur (par exemple entre $1$ et $10^{20}$), et que la loi qui indique la probabilité de tomber sur une des valeurs possibles est assez **régulière** et **étalée**, alors les parties fractionnaires des logarithmes décimaux des nombres, c'est-à-dire les $\{log_{10}(r)\}$, seront, à peu de chose près, uniformément réparties entre $0$ et $1$. Pour aller plus loin, ou pour plus d'informations sur les notions de [[**régularité et d'étalement**]{.ul}](https://journals.openedition.org/msh/10363?file=1) :
 
 Ce que nous venons d'énoncer est la loi de Benford (ou plus exactement une loi dénommée «loi de Benford continue»). En effet, affirmer que $c$ est le premier chiffre significatif du nombre $r$ équivaut à énoncer que $log_{10}(c)\le \{log_{10}(r) \} \le log_{10}(c+1)$.
 
@@ -423,7 +423,7 @@ En effet, soit $r$ un réel, il se décompose de manière unique comme $r=q*10^{
 
 Par croissance de la fonction $log_{10}$, nous obtenons $1\le q < 10 \Rightarrow 0 \le log_{10}(q)<1$ et donc $\{log_{10}(r)\}=log_{10}(q)$. De plus, par définition $[q] \le q < [q]+1 \Leftrightarrow c \le q <c+1$ et par croissance du $log_{10}$ nous obtenons $log_{10}(c) \le log_{10}(q) < log_{10}(c+1)$.
 
-Les parties fractionnaires des images par $log_{10}$ des nombres $r$ dont le premier chiffres significatifs est $c$ occupent donc dans l'intervalle $[0,1]$ un intervalle de longueur $log_{10}(c+1)-log_{10}(c)$. Cela signifie, si l'on admet l'uniforme répartition, que leur proportion est $log_{10}(c+1)-log_{10}(c)=log_{10}(\frac{c+1}{c})=log_{10}(1+\frac{1}{c})$. C'est exactement ce qu'exprime la loi de Benford formulée au sujet du premier chiffre significatif en base décimale.
+Les parties fractionnaires des images par $log_{10}$ des nombres $r$ dont le premier chiffre significatifs est $c$ occupent donc dans l'intervalle $[0,1]$ un intervalle de longueur $log_{10}(c+1)-log_{10}(c)$. Cela signifie, si l'on admet l'uniforme répartition, que leur proportion est $log_{10}(c+1)-log_{10}(c)=log_{10}(\frac{c+1}{c})=log_{10}(1+\frac{1}{c})$. C'est exactement ce qu'exprime la loi de Benford formulée au sujet du premier chiffre significatif en base décimale.
 
 \medskip
 
@@ -431,7 +431,7 @@ Les parties fractionnaires des images par $log_{10}$ des nombres $r$ dont le pre
 
 \medskip
 
-Nous obtenons la mantisse d'un réel $x$ strictement positif en déplaçant la virgule après le premier chiffre significatif. Donc la mantisse d'un nombre appartient à l'intervalle $[0,10[$ et est obtenue à partie de la formule $mantisse(x)=10^{log_{10}}$ (rappel : $\{.\}$ désigne la partie fractionnaire du nombre $x$).
+Nous obtenons la mantisse d'un réel $x$ strictement positif en déplaçant la virgule après le premier chiffre significatif. Donc la mantisse d'un nombre appartient à l'intervalle $[0,10[$ et est obtenue à partie de la formule $mantisse(x)=10^{log_{10}(x)}$ (rappel : $\{.\}$ désigne la partie fractionnaire du nombre $x$).
 
 \smallskip
 
@@ -441,7 +441,9 @@ Exemple :
 
 \smallskip
 
-La loi de Benford continue est donnée par la définition suivante : Une série de nombres réels en écriture décimale suit la loi de Benford continue si pour tout $[a,b[ \subset [1,10[$, la fréquence des nombre de la série dont la mantisse appartient à $[a,b[$ vaut $log(b)-log(a)$.
+La loi de Benford continue est donnée par la définition suivante : 
+
+La mantisse $X \in [1;10[$ suit la loi de Benford continue si pour tout $[a,b[ \subset [1,10[$, la probabilité que la mantisse appartienne à $[a,b[$ vaut $log(b)-log(a)$.
 
 Sa fonction de répartition est définie par :
 
@@ -521,7 +523,7 @@ Ci-dessous , nous pouvons observer une représentation graphique de la loi de Be
 ```
 \bigskip
 
-### II.3.2 - Loi de Benford sur les deux premiers chiffres significatif
+### II.3.2 - Loi de Benford sur le deuxième chiffre significatif
 
 \medskip
 
@@ -545,26 +547,6 @@ Ce qui nous donne le tableau de probabilité suivante :
 
 \end{center}
 \caption{\textbf{Tableau de probabilité d'appartion du second chiffre significatif}}
-\end{figure}
-```
-\bigskip
-
-Nous obtenons alors la représentation graphique suivante :
-
-\bigskip
-
-```{=tex}
-\begin{figure}[h!] 
-
-\begin{center}
-
-\includegraphics[width = 12cm]{benlaw2.png}
-
-\end{center}
-
-\caption{\textbf{Répartition théorique selon la loi de benford}}
-\label{fig:b2}
-
 \end{figure}
 ```
 \bigskip
@@ -615,11 +597,7 @@ Nous pouvons modifier l'énoncé dans le cas de données discrètes, avec une fo
 
 \medskip
 
-### III.2 - Test lisse
-
-\smallskip
-
-### III.2.1 - Test du $\chi^2$
+### III.1.1 - Test du $\chi^2$
 
 \medskip
 
@@ -701,7 +679,7 @@ Nous obtenons donc un test à $\alpha=0.05$, ie à $5\%$, en rejetant l'hypothè
 
 \medskip
 
-### III.2.2 - Test de Kolmogorov-Smirnov
+### III.1.2 - Test de Kolmogorov-Smirnov
 
 \medskip
 
@@ -780,7 +758,7 @@ Sous l'hypothèse $\mathcal{H}_0$, la fonction de répartition $\hat F$ est trè
 
 \medskip
 
-### III.2.3 - Test du [$T_k$](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf)
+### III.1.3 - Test du [$T_k$](https://www.openscience.fr/IMG/pdf/iste_mas20v3n1_1.pdf)
 
 \medskip
 
