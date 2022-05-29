@@ -1032,7 +1032,7 @@ On constate que pour n \> 100, l'ecdf de $T_{K}$ est quasiment égale à la fonc
 ```
 Nous avons même recommencé l'opération, toujours avec des échantillons de 10 000 $T_{k}$, mais cette fois-ci pour $n=50$. En bleu la fonction de répartition empirique de $T_{k}$, et en noir la fonction de répartition théorique d'un $\chi_{K}^{2}$.
 
-On constate toujours une extrême proximité des courbes bleus et noires. C'est pourquoi le choix de \$n \> 100\$ est même peut-être trop exigeant.
+On constate toujours une extrême proximité des courbes bleus et noires. C'est pourquoi le choix de $n > 100$ est même peut-être trop exigeant.
 
 ```{=tex}
 \begin{center}
@@ -1048,7 +1048,7 @@ On constate toujours une extrême proximité des courbes bleus et noires. C'est 
 
 Nous allons présenter les courbes de puissance des quatre tests $T_{k}$ construits ci-dessus, du test du $\chi^{2}$, et de celui de Freedman-Watson $(U^{2})$, sur deux alternatives à la $LB(2)$ : La Rodriguez et la Pietronero bivarié.
 
-$\rightarrow$ Le test du \$U\^{2}\$ étant moins connu que celui du \$\\chi\^{2}\$, on rappelle sa statistique :
+$\rightarrow$ Le test du $U^{2}$ étant moins connu que celui du $\chi^{2}$, on rappelle sa statistique :
 
 Pour $d \in [\![ 10; 99 ]\!]$, on pose $\hat{p_{d}} = n_{d}/n$ la proportion de $d$ dans l'échantillon $(X_{1}, X_{2}, …,X_{n})$, et $\pi_{d}$ les probabilités théoriques de la $LB(2)$. Soit aussi $S_{d} = \sum \limits_{i=10}^{d} \hat{p_{i}}$ et $S_{d}^{*} = \sum \limits_{i=10}^{d} \pi_{i}$. Posons $Z_{d} = S_{d} - S_{d}^{*}$ l'écart entre la fonction de répartition empirique et la fonction de répartition théorique de la $LB(2)$. Posons également $t_{d} = (\pi_{d} + \pi_{d+1})/2$ pour $d=10,11,…,98$, et $t_{99} = (\pi_{99} + \pi_{10})/2$. Alors :
 
@@ -1104,7 +1104,7 @@ Notons également que chaque test sera effectué au niveau $5\%$.
 
 Dans un premier temps, pour chaque choix de $n$, nous approximons les quantiles de référence de chacun des tests par les quantiles empiriques d'ordres $95\%$ des statistiques précédentes sous $\mathcal{H}_{0}$ : $X \sim LB(2)$. Cela dans le but d'être sûr de bien comparer la puissance des différents tests à $5\%$. Nous effectuons 100 000 réplications pour cela.
 
-Ensuite pour chaque alternative, chaque choix de $n$, nous allons générer 10 000 échantillons de taille $n$, pour un $\gamma$ fixé, et appliquer les tests à chacun de ces échantillons, puis compter le nombre de rejet parmi le nombre total afin d'approximer par Monte-Carlo $\mathbb{P}_{\gamma}(\Phi = 1)$. Nous allons parcourir une centaine de \$\\gamma\$ sur un intervalle $[-5;5]$.
+Ensuite pour chaque alternative, chaque choix de $n$, nous allons générer 10 000 échantillons de taille $n$, pour un $\gamma$ fixé, et appliquer les tests à chacun de ces échantillons, puis compter le nombre de rejet parmi le nombre total afin d'approximer par Monte-Carlo $\mathbb{P}_{\gamma}(\Phi = 1)$. Nous allons parcourir une centaine de $\gamma$ sur un intervalle $[-5;5]$.
 
 Notons que nous obtenons une erreur d'approximation des probabilités qui ne dépasse jamais les $0.01$ pour Monte-Carlo (au niveau de confiance $95 \%$).
 

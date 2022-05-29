@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  29 MAY 2022 22:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  29 MAY 2022 23:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -823,108 +823,108 @@ Package pdftex.def Info: ECDF4.pdf  used on input line 1178.
 <ECDF5.pdf, id=213, 505.89pt x 361.35pt>
 File: ECDF5.pdf Graphic file (type pdf)
 <use ECDF5.pdf>
-Package pdftex.def Info: ECDF5.pdf  used on input line 1192.
+Package pdftex.def Info: ECDF5.pdf  used on input line 1191.
 (pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
 [15 <./ECDF3.pdf> <./ECDF4.pdf>]
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 1213.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 1212.
 
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 1220.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 1219.
 
 [16 <./ECDF5.pdf>]
 <Capture1.JPG, id=244, 785.93625pt x 312.56775pt>
 File: Capture1.JPG Graphic file (type jpg)
 <use Capture1.JPG>
-Package pdftex.def Info: Capture1.JPG  used on input line 1273.
+Package pdftex.def Info: Capture1.JPG  used on input line 1272.
 (pdftex.def)             Requested size: 341.43579pt x 135.7894pt.
 <Rplot1.pdf, id=245, 505.89pt x 361.35pt>
 File: Rplot1.pdf Graphic file (type pdf)
 <use Rplot1.pdf>
-Package pdftex.def Info: Rplot1.pdf  used on input line 1313.
+Package pdftex.def Info: Rplot1.pdf  used on input line 1312.
 (pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
 [17 <./Capture1.JPG>]
 <Rplot2.pdf, id=250, 505.89pt x 361.35pt>
 File: Rplot2.pdf Graphic file (type pdf)
 <use Rplot2.pdf>
-Package pdftex.def Info: Rplot2.pdf  used on input line 1318.
+Package pdftex.def Info: Rplot2.pdf  used on input line 1317.
 (pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
 [18 <./Rplot1.pdf> <./Rplot2.pdf>]
 <tab2D.png, id=271, 630.355pt x 456.70625pt>
 File: tab2D.png Graphic file (type png)
 <use tab2D.png>
-Package pdftex.def Info: tab2D.png  used on input line 1391.
+Package pdftex.def Info: tab2D.png  used on input line 1390.
 (pdftex.def)             Requested size: 455.24992pt x 329.83871pt.
 [19pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1409 
+l.1408 
         <./tab2D.png>]
 <cambo.png, id=281, 575.14874pt x 370.38374pt>
 File: cambo.png Graphic file (type png)
 <use cambo.png>
-Package pdftex.def Info: cambo.png  used on input line 1412.
+Package pdftex.def Info: cambo.png  used on input line 1411.
 (pdftex.def)             Requested size: 14.22597pt x 9.16122pt.
 <como.png, id=283, 576.1525pt x 345.29pt>
 File: como.png Graphic file (type png)
 <use como.png>
-Package pdftex.def Info: como.png  used on input line 1415.
+Package pdftex.def Info: como.png  used on input line 1414.
 (pdftex.def)             Requested size: 14.22443pt x 8.52473pt.
 <eri.png, id=285, 576.1525pt x 286.06876pt>
 File: eri.png Graphic file (type png)
 <use eri.png>
-Package pdftex.def Info: eri.png  used on input line 1418.
+Package pdftex.def Info: eri.png  used on input line 1417.
 (pdftex.def)             Requested size: 14.22443pt x 7.06265pt.
 <malou.png, id=287, 577.15625pt x 290.08376pt>
 File: malou.png Graphic file (type png)
 <use malou.png>
-Package pdftex.def Info: malou.png  used on input line 1421.
+Package pdftex.def Info: malou.png  used on input line 1420.
 (pdftex.def)             Requested size: 14.2228pt x 7.1485pt.
 <gui.png, id=289, 576.1525pt x 287.0725pt>
 File: gui.png Graphic file (type png)
 <use gui.png>
-Package pdftex.def Info: gui.png  used on input line 1425.
+Package pdftex.def Info: gui.png  used on input line 1424.
 (pdftex.def)             Requested size: 14.22443pt x 7.08743pt.
 <maldi.png, id=291, 572.1375pt x 377.41pt>
 File: maldi.png Graphic file (type png)
 <use maldi.png>
-Package pdftex.def Info: maldi.png  used on input line 1429.
+Package pdftex.def Info: maldi.png  used on input line 1428.
 (pdftex.def)             Requested size: 14.22133pt x 9.38109pt.
 <mont.png, id=293, 576.1525pt x 290.08376pt>
 File: mont.png Graphic file (type png)
 <use mont.png>
-Package pdftex.def Info: mont.png  used on input line 1432.
+Package pdftex.def Info: mont.png  used on input line 1431.
 (pdftex.def)             Requested size: 14.22443pt x 7.16177pt.
 <tome.png, id=295, 575.14874pt x 286.06876pt>
 File: tome.png Graphic file (type png)
 <use tome.png>
-Package pdftex.def Info: tome.png  used on input line 1435.
+Package pdftex.def Info: tome.png  used on input line 1434.
 (pdftex.def)             Requested size: 14.22597pt x 7.07574pt.
 <cor.png, id=297, 555.07375pt x 350.30875pt>
 File: cor.png Graphic file (type png)
 <use cor.png>
-Package pdftex.def Info: cor.png  used on input line 1439.
+Package pdftex.def Info: cor.png  used on input line 1438.
 (pdftex.def)             Requested size: 14.22067pt x 8.9747pt.
 <sri.png, id=299, 575.14874pt x 286.06876pt>
 File: sri.png Graphic file (type png)
 <use sri.png>
-Package pdftex.def Info: sri.png  used on input line 1442.
+Package pdftex.def Info: sri.png  used on input line 1441.
 (pdftex.def)             Requested size: 14.22597pt x 7.07574pt.
 <benrep2.png, id=301, 839.135pt x 528.97626pt>
 File: benrep2.png Graphic file (type png)
 <use benrep2.png>
-Package pdftex.def Info: benrep2.png  used on input line 1466.
+Package pdftex.def Info: benrep2.png  used on input line 1465.
 (pdftex.def)             Requested size: 341.43552pt x 215.23508pt.
 [20pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1483 \newpage
+l.1482 \newpage
                 <./cambo.png> <./como.png> <./eri.png> <./malou.png> <./gui.png
 > <./maldi.png> <./mont.png> <./tome.png> <./cor.png> <./sri.png> <./benrep2.pn
 g>] [21] (./Modelisation_benford.bbl) [22]
-Overfull \hbox (11.07745pt too wide) in paragraph at lines 1524--1625
+Overfull \hbox (11.07745pt too wide) in paragraph at lines 1523--1624
  [][] 
  []
 
@@ -932,247 +932,247 @@ Overfull \hbox (11.07745pt too wide) in paragraph at lines 1524--1625
 figure.10}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1778 \newpage
+l.1777 \newpage
                ]
-Overfull \hbox (11.07745pt too wide) in paragraph at lines 1787--1888
+Overfull \hbox (11.07745pt too wide) in paragraph at lines 1786--1887
  [][] 
  []
 
 [26] [27]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-044.
+043.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-2064.
+2063.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2070.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2069.
 [28pdfTeX warning (ext4): destination with the same identifier (name{figure.11}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.2237 \end{Shaded}
+l.2236 \end{Shaded}
                    ]
-Underfull \vbox (badness 10000) detected at line 2237
+Underfull \vbox (badness 10000) detected at line 2236
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2237
+Underfull \vbox (badness 10000) detected at line 2236
  []
 
 [29]
-Underfull \vbox (badness 10000) detected at line 2237
+Underfull \vbox (badness 10000) detected at line 2236
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2237
+Underfull \vbox (badness 10000) detected at line 2236
  []
 
 [30]
 
 LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 2313.
+(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 2312.
 
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [31]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [32]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [33]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [34]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [35]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [36]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [37]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [38]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [39]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [40]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [41]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [42]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [43]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [44]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [45]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [46]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [47]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [48]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [49]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [50]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [51]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [52]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [53]
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3493
+Underfull \vbox (badness 10000) detected at line 3492
  []
 
 [54] [55] [56] (./Modelisation_benford.aux) ) 
 Here is how much of TeX's memory you used:
- 15298 strings out of 478994
- 226983 string characters out of 5858184
- 857060 words of memory out of 5000000
+ 15300 strings out of 478994
+ 227003 string characters out of 5858184
+ 856039 words of memory out of 5000000
  32095 multiletter control sequences out of 15000+600000
- 478351 words of font info for 175 fonts, out of 8000000 for 9000
+ 478434 words of font info for 176 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,12n,88p,1217b,421s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dis
@@ -1200,10 +1200,10 @@ nts/type1/public/lm/lmtko10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /public/lm/lmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm
 /lmtti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/sy
 mbols/msbm10.pfb>
-Output written on Modelisation_benford.pdf (56 pages, 2177610 bytes).
+Output written on Modelisation_benford.pdf (56 pages, 2176801 bytes).
 PDF statistics:
- 693 PDF objects out of 1000 (max. 8388607)
- 559 compressed objects within 6 object streams
+ 692 PDF objects out of 1000 (max. 8388607)
+ 558 compressed objects within 6 object streams
  143 named destinations out of 1000 (max. 500000)
  39222 words of extra memory for PDF output out of 42996 (max. 10000000)
 
