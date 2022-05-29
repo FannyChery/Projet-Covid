@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  29 MAY 2022 12:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  29 MAY 2022 14:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -673,7 +673,7 @@ Package microtype Info: Fixing zero fontdimen6 for font `U/dsrom/m/n/7'
 Package microtype Info: Fixing zero fontdimen6 for font `U/dsrom/m/n/5'
 (microtype)             (new value: 5.0pt) on input line 330.
 [3]
-<benlaw1.png, id=84, 805.0075pt x 506.89375pt>
+<benlaw1.png, id=95, 805.0075pt x 506.89375pt>
 File: benlaw1.png Graphic file (type png)
 <use benlaw1.png>
 Package pdftex.def Info: benlaw1.png  used on input line 403.
@@ -700,7 +700,7 @@ name{figure.2}) has been already used, duplicate ignored
                                                   
 l.438 \end{figure}
                    <./benlaw1.png>]
-<benlaw2.png, id=95, 819.06pt x 493.845pt>
+<benlaw2.png, id=106, 819.06pt x 493.845pt>
 File: benlaw2.png Graphic file (type png)
 <use benlaw2.png>
 Package pdftex.def Info: benlaw2.png  used on input line 450.
@@ -739,7 +739,7 @@ Overfull \hbox (18.76662pt too wide) detected at line 743
 [] [] [] [] [] [] 
  []
 
-<DistanceKS.png, id=123, 378.41376pt x 330.23375pt>
+<DistanceKS.png, id=134, 378.41376pt x 330.23375pt>
 File: DistanceKS.png Graphic file (type png)
 <use DistanceKS.png>
 Package pdftex.def Info: DistanceKS.png  used on input line 757.
@@ -750,12 +750,12 @@ has been already used, duplicate ignored
                                                   
 l.780 \end{description}
                         <./DistanceKS.png>] [9]
-<h1.png, id=143, 588.1975pt x 373.395pt>
+<h1.png, id=155, 588.1975pt x 373.395pt>
 File: h1.png Graphic file (type png)
 <use h1.png>
 Package pdftex.def Info: h1.png  used on input line 874.
 (pdftex.def)             Requested size: 341.43301pt x 216.74586pt.
-<disbenf.png, id=144, 777.90625pt x 519.9425pt>
+<disbenf.png, id=156, 777.90625pt x 519.9425pt>
 File: disbenf.png Graphic file (type png)
 <use disbenf.png>
 Package pdftex.def Info: disbenf.png  used on input line 898.
@@ -771,214 +771,445 @@ l.913
                                                   
 l.913 
        <./h1.png> <./disbenf.png>]
-<benfh0.png, id=154, 778.91pt x 502.87875pt>
+<benfh0.png, id=165, 778.91pt x 502.87875pt>
 File: benfh0.png Graphic file (type png)
 <use benfh0.png>
-Package pdftex.def Info: benfh0.png  used on input line 920.
+Package pdftex.def Info: benfh0.png  used on input line 918.
 (pdftex.def)             Requested size: 341.42598pt x 220.43094pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 961--963
+
+ []
+
 [11pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.968 \newpage
-               <./benfh0.png>]
-<tab2D.png, id=166, 630.355pt x 456.70625pt>
+l.967 \subsection
+                 {Préambule/Cadre Théorique \\} <./benfh0.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 967--967
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 967.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 970--972
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 973--976
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 985--987
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--989
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 990--991
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 992--995
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 996--998
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1003--1004
+
+ []
+
+[12]
+Package microtype Info: Fixing zero fontdimen6 for font `U/dsrom/m/n/12'
+(microtype)             (new value: 12.0pt) on input line 1008.
+Package microtype Info: Fixing zero fontdimen6 for font `U/dsrom/m/n/8'
+(microtype)             (new value: 8.0pt) on input line 1008.
+Package microtype Info: Fixing zero fontdimen6 for font `U/dsrom/m/n/6'
+(microtype)             (new value: 6.0pt) on input line 1008.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1008--1008
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1008.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 1008.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1008.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 1008.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1011--1012
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1013--1014
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1015--1016
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1017--1018
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1019--1020
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1021--1022
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1023--1024
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1028
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1029--1031
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1032--1033
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
+
+ []
+
+[13]
+<ECDF1.pdf, id=186, 505.89pt x 361.35pt>
+File: ECDF1.pdf Graphic file (type pdf)
+<use ECDF1.pdf>
+Package pdftex.def Info: ECDF1.pdf  used on input line 1039.
+(pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
+<ECDF2.pdf, id=187, 505.89pt x 361.35pt>
+File: ECDF2.pdf Graphic file (type pdf)
+<use ECDF2.pdf>
+Package pdftex.def Info: ECDF2.pdf  used on input line 1045.
+(pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
+<ECDF3.pdf, id=188, 505.89pt x 361.35pt>
+File: ECDF3.pdf Graphic file (type pdf)
+<use ECDF3.pdf>
+Package pdftex.def Info: ECDF3.pdf  used on input line 1052.
+(pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
+[14 <./ECDF1.pdf> <./ECDF2.pdf>]
+<ECDF4.pdf, id=205, 505.89pt x 361.35pt>
+File: ECDF4.pdf Graphic file (type pdf)
+<use ECDF4.pdf>
+Package pdftex.def Info: ECDF4.pdf  used on input line 1059.
+(pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1066
+
+ []
+
+<ECDF5.pdf, id=206, 505.89pt x 361.35pt>
+File: ECDF5.pdf Graphic file (type pdf)
+<use ECDF5.pdf>
+Package pdftex.def Info: ECDF5.pdf  used on input line 1071.
+(pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
+[15 <./ECDF3.pdf> <./ECDF4.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1076--1076
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 1076.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1079--1080
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1081--1082
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1088--1089
+
+ []
+
+[16 <./ECDF5.pdf>]
+<Capture1.JPG, id=233, 785.93625pt x 312.56775pt>
+File: Capture1.JPG Graphic file (type jpg)
+<use Capture1.JPG>
+Package pdftex.def Info: Capture1.JPG  used on input line 1119.
+(pdftex.def)             Requested size: 341.43579pt x 135.7894pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1124--1125
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1126--1130
+
+ []
+
+<Rplot1.pdf, id=234, 505.89pt x 361.35pt>
+File: Rplot1.pdf Graphic file (type pdf)
+<use Rplot1.pdf>
+Package pdftex.def Info: Rplot1.pdf  used on input line 1136.
+(pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
+[17 <./Capture1.JPG>]
+<Rplot2.pdf, id=239, 505.89pt x 361.35pt>
+File: Rplot2.pdf Graphic file (type pdf)
+<use Rplot2.pdf>
+Package pdftex.def Info: Rplot2.pdf  used on input line 1140.
+(pdftex.def)             Requested size: 341.43785pt x 243.88419pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1148
+
+ []
+
+[18 <./Rplot1.pdf> <./Rplot2.pdf>]
+<tab2D.png, id=257, 630.355pt x 456.70625pt>
 File: tab2D.png Graphic file (type png)
 <use tab2D.png>
-Package pdftex.def Info: tab2D.png  used on input line 974.
+Package pdftex.def Info: tab2D.png  used on input line 1169.
 (pdftex.def)             Requested size: 455.24992pt x 329.83871pt.
-<cambo.png, id=167, 575.14874pt x 370.38374pt>
-File: cambo.png Graphic file (type png)
-<use cambo.png>
-Package pdftex.def Info: cambo.png  used on input line 995.
-(pdftex.def)             Requested size: 14.22597pt x 9.16122pt.
-<como.png, id=169, 576.1525pt x 345.29pt>
-File: como.png Graphic file (type png)
-<use como.png>
-Package pdftex.def Info: como.png  used on input line 998.
-(pdftex.def)             Requested size: 14.22443pt x 8.52473pt.
-<eri.png, id=171, 576.1525pt x 286.06876pt>
-File: eri.png Graphic file (type png)
-<use eri.png>
-Package pdftex.def Info: eri.png  used on input line 1001.
-(pdftex.def)             Requested size: 14.22443pt x 7.06265pt.
-<malou.png, id=173, 577.15625pt x 290.08376pt>
-File: malou.png Graphic file (type png)
-<use malou.png>
-Package pdftex.def Info: malou.png  used on input line 1004.
-(pdftex.def)             Requested size: 14.2228pt x 7.1485pt.
-<gui.png, id=175, 576.1525pt x 287.0725pt>
-File: gui.png Graphic file (type png)
-<use gui.png>
-Package pdftex.def Info: gui.png  used on input line 1008.
-(pdftex.def)             Requested size: 14.22443pt x 7.08743pt.
-<maldi.png, id=177, 572.1375pt x 377.41pt>
-File: maldi.png Graphic file (type png)
-<use maldi.png>
-Package pdftex.def Info: maldi.png  used on input line 1012.
-(pdftex.def)             Requested size: 14.22133pt x 9.38109pt.
-<mont.png, id=179, 576.1525pt x 290.08376pt>
-File: mont.png Graphic file (type png)
-<use mont.png>
-Package pdftex.def Info: mont.png  used on input line 1015.
-(pdftex.def)             Requested size: 14.22443pt x 7.16177pt.
-<tome.png, id=181, 575.14874pt x 286.06876pt>
-File: tome.png Graphic file (type png)
-<use tome.png>
-Package pdftex.def Info: tome.png  used on input line 1018.
-(pdftex.def)             Requested size: 14.22597pt x 7.07574pt.
-<cor.png, id=183, 555.07375pt x 350.30875pt>
-File: cor.png Graphic file (type png)
-<use cor.png>
-Package pdftex.def Info: cor.png  used on input line 1022.
-(pdftex.def)             Requested size: 14.22067pt x 8.9747pt.
-<sri.png, id=185, 575.14874pt x 286.06876pt>
-File: sri.png Graphic file (type png)
-<use sri.png>
-Package pdftex.def Info: sri.png  used on input line 1025.
-(pdftex.def)             Requested size: 14.22597pt x 7.07574pt.
-[12pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
+[19pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1038 O
-        n décide alors d'observer la distribution de leurs deux premiers <./ta
-b2D.png> <./cambo.png> <./como.png> <./eri.png> <./malou.png> <./gui.png> <./ma
-ldi.png> <./mont.png> <./tome.png> <./cor.png> <./sri.png>]
-<benrep2.png, id=204, 839.135pt x 528.97626pt>
+l.1190   \includegraphics
+                         [width = 0.5cm]{cambo.png} <./tab2D.png>]
+<cambo.png, id=266, 575.14874pt x 370.38374pt>
+File: cambo.png Graphic file (type png)
+<use cambo.png>
+Package pdftex.def Info: cambo.png  used on input line 1190.
+(pdftex.def)             Requested size: 14.22597pt x 9.16122pt.
+<como.png, id=268, 576.1525pt x 345.29pt>
+File: como.png Graphic file (type png)
+<use como.png>
+Package pdftex.def Info: como.png  used on input line 1193.
+(pdftex.def)             Requested size: 14.22443pt x 8.52473pt.
+<eri.png, id=270, 576.1525pt x 286.06876pt>
+File: eri.png Graphic file (type png)
+<use eri.png>
+Package pdftex.def Info: eri.png  used on input line 1196.
+(pdftex.def)             Requested size: 14.22443pt x 7.06265pt.
+<malou.png, id=272, 577.15625pt x 290.08376pt>
+File: malou.png Graphic file (type png)
+<use malou.png>
+Package pdftex.def Info: malou.png  used on input line 1199.
+(pdftex.def)             Requested size: 14.2228pt x 7.1485pt.
+<gui.png, id=274, 576.1525pt x 287.0725pt>
+File: gui.png Graphic file (type png)
+<use gui.png>
+Package pdftex.def Info: gui.png  used on input line 1203.
+(pdftex.def)             Requested size: 14.22443pt x 7.08743pt.
+<maldi.png, id=276, 572.1375pt x 377.41pt>
+File: maldi.png Graphic file (type png)
+<use maldi.png>
+Package pdftex.def Info: maldi.png  used on input line 1207.
+(pdftex.def)             Requested size: 14.22133pt x 9.38109pt.
+<mont.png, id=278, 576.1525pt x 290.08376pt>
+File: mont.png Graphic file (type png)
+<use mont.png>
+Package pdftex.def Info: mont.png  used on input line 1210.
+(pdftex.def)             Requested size: 14.22443pt x 7.16177pt.
+<tome.png, id=280, 575.14874pt x 286.06876pt>
+File: tome.png Graphic file (type png)
+<use tome.png>
+Package pdftex.def Info: tome.png  used on input line 1213.
+(pdftex.def)             Requested size: 14.22597pt x 7.07574pt.
+<cor.png, id=282, 555.07375pt x 350.30875pt>
+File: cor.png Graphic file (type png)
+<use cor.png>
+Package pdftex.def Info: cor.png  used on input line 1217.
+(pdftex.def)             Requested size: 14.22067pt x 8.9747pt.
+<sri.png, id=284, 575.14874pt x 286.06876pt>
+File: sri.png Graphic file (type png)
+<use sri.png>
+Package pdftex.def Info: sri.png  used on input line 1220.
+(pdftex.def)             Requested size: 14.22597pt x 7.07574pt.
+<benrep2.png, id=287, 839.135pt x 528.97626pt>
 File: benrep2.png Graphic file (type png)
 <use benrep2.png>
-Package pdftex.def Info: benrep2.png  used on input line 1048.
+Package pdftex.def Info: benrep2.png  used on input line 1243.
 (pdftex.def)             Requested size: 341.43552pt x 215.23508pt.
-[13pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
+[20pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1069 \newpage
-                <./benrep2.png>]
-Overfull \hbox (11.07745pt too wide) in paragraph at lines 1079--1180
+l.1264 \newpage
+                <./cambo.png> <./como.png> <./eri.png> <./malou.png> <./gui.png
+> <./maldi.png> <./mont.png> <./tome.png> <./cor.png> <./sri.png> <./benrep2.pn
+g>]
+Overfull \hbox (11.07745pt too wide) in paragraph at lines 1274--1375
  [][] 
  []
 
-[14] [15] [16pdfTeX warning (ext4): destination with the same identifier (name{
+[21] [22] [23pdfTeX warning (ext4): destination with the same identifier (name{
 figure.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1333 \newpage
+l.1528 \newpage
                ]
-Overfull \hbox (11.07745pt too wide) in paragraph at lines 1342--1443
+Overfull \hbox (11.07745pt too wide) in paragraph at lines 1537--1638
  [][] 
  []
 
-[17] [18]
+[24] [25]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-599.
+794.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-1619.
+1814.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1625.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1820.
 
 LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 1801.
+(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 1996.
 
 
-[19pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
+[26pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1997 \end{Shaded}
+l.2192 \end{Shaded}
                    ]
-Underfull \vbox (badness 10000) detected at line 1997
+Underfull \vbox (badness 10000) detected at line 2192
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1997
+Underfull \vbox (badness 10000) detected at line 2192
  []
 
-[20]
-Underfull \vbox (badness 10000) detected at line 1997
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1997
- []
-
-[21]
-Underfull \vbox (badness 10000) detected at line 1997
+[27]
+Underfull \vbox (badness 10000) detected at line 2192
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1997
+Underfull \vbox (badness 10000) detected at line 2192
  []
 
-[22]
-Underfull \vbox (badness 10000) detected at line 1997
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1997
- []
-
-[23]
-Underfull \vbox (badness 10000) detected at line 1997
+[28]
+Underfull \vbox (badness 10000) detected at line 2192
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1997
+Underfull \vbox (badness 10000) detected at line 2192
  []
 
-[24]
-Underfull \vbox (badness 10000) detected at line 1997
+[29]
+Underfull \vbox (badness 10000) detected at line 2192
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1997
+Underfull \vbox (badness 10000) detected at line 2192
  []
 
-[25] [26] (./Modelisation_benford.aux) ) 
+[30]
+Underfull \vbox (badness 10000) detected at line 2192
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2192
+ []
+
+[31]
+Underfull \vbox (badness 10000) detected at line 2192
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2192
+ []
+
+[32] [33] (./Modelisation_benford.aux) ) 
 Here is how much of TeX's memory you used:
- 15061 strings out of 478994
- 223993 string characters out of 5858184
- 645270 words of memory out of 5000000
- 31960 multiletter control sequences out of 15000+600000
- 477283 words of font info for 162 fonts, out of 8000000 for 9000
+ 15162 strings out of 478994
+ 225339 string characters out of 5858184
+ 646242 words of memory out of 5000000
+ 32014 multiletter control sequences out of 15000+600000
+ 478650 words of font info for 178 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 85i,11n,88p,1217b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 85i,12n,88p,1217b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fon
 ts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/l
-m/lm-ts1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.e
-nc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/l
+m/lm-ts1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.e
+nc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/l
 ocal/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2
 021/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2021/texmf-
 dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/public/lm/lmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pu
 blic/lm/lmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lm
-mi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/t
-exlive/2021/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2021
-/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2021/texmf-dist
-/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
-1/public/lm/lmr5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/
-lmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb><
-/usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2021/texmf-di
-st/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
-ype1/public/lm/lmtko10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/publ
-ic/lm/lmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtt
-i10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols
-/msbm10.pfb>
-Output written on Modelisation_benford.pdf (26 pages, 1482364 bytes).
+mi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/typ
+e1/public/lm/lmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/l
+m/lmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr5.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
+ype1/public/lm/lmsy7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public
+/lm/lmtk10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtko1
+0.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></us
+r/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtti10.pfb></usr/local/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Modelisation_benford.pdf (33 pages, 2199916 bytes).
 PDF statistics:
- 435 PDF objects out of 1000 (max. 8388607)
- 346 compressed objects within 4 object streams
- 80 named destinations out of 1000 (max. 500000)
- 39163 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 548 PDF objects out of 1000 (max. 8388607)
+ 434 compressed objects within 5 object streams
+ 91 named destinations out of 1000 (max. 500000)
+ 39235 words of extra memory for PDF output out of 42996 (max. 10000000)
 
