@@ -7,7 +7,7 @@ link-citation : yes
 nocite: '@*'
 output: 
   pdf_document:
-    extra_dependencies: ["bbm", "threeparttable", "dsfont","zref-user"]
+    extra_dependencies: ["bbm", "threeparttable", "dsfont","zref-user","url"]
     df_print: kable
 ---
 
@@ -777,7 +777,7 @@ $$
 \\
 $$
 
-Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford. Par soucis de performance on décidera pour la suite d'appliquer le test du $T_2$ considéré comme l'un des plus puissants parmi les tests d'adéquations lisses pour la loi de Newcomb-Benford (\cite{b}). Pour ce faire on aura recours au package benfordSmoothTest (\cite{bst}) .
+Comme observé précédemment il existe de nombreux tests d'adéquation pour la détection de fraudes via la loi de Newcomb-Benford. Par soucis de performance on décidera pour la suite d'appliquer le test du $T_2$ considéré comme l'un des plus puissants parmi les tests d'adéquations lisses pour la loi de Newcomb-Benford (\cite{d}). Pour ce faire on aura recours au package benfordSmoothTest (\cite{bst}) .
 
 Nous décidons alors dans un premier temps d'appliquer le test du $T_2$ sur la fréquence de distribution du premier chiffre significatif des nouveaux cas quotidiens de COVID-19 rapportés par 215 pays (pour plus d'informations sur les données veuillez consulter le github du CSSE (\cite{bdd}) basés notamment sur les données de l'OMS, de l'ECDC etc ...). Puis, dans un second temps nous procéderons à l'estimation des p-values "ajustées" à l'aide de la méthode de correction de Benjamini, Hochberg & Yekutieli. Plus précisément à l'aide de la commande "p.adjust" (\cite{adj}) sur R.
 
