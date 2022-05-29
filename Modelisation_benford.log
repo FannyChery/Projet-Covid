@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  28 MAY 2022 20:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.30)  29 MAY 2022 12:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -892,60 +892,60 @@ LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <10> not available
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1970 \end{Shaded}
+l.1986 \end{Shaded}
                    ]
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 [20]
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 [21]
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 [22]
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 [23]
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 [24]
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1970
+Underfull \vbox (badness 10000) detected at line 1986
  []
 
 [25] [26] (./Modelisation_benford.aux) ) 
 Here is how much of TeX's memory you used:
  15063 strings out of 478994
  224013 string characters out of 5858184
- 641692 words of memory out of 5000000
+ 645270 words of memory out of 5000000
  31960 multiletter control sequences out of 15000+600000
  477366 words of font info for 163 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -975,7 +975,7 @@ ype1/public/lm/lmtko10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/publ
 ic/lm/lmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/lm/lmtt
 i10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msbm10.pfb>
-Output written on Modelisation_benford.pdf (26 pages, 1482086 bytes).
+Output written on Modelisation_benford.pdf (26 pages, 1482484 bytes).
 PDF statistics:
  433 PDF objects out of 1000 (max. 8388607)
  344 compressed objects within 4 object streams
